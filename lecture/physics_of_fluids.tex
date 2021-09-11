@@ -1,0 +1,148 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\documentclass[11pt,a4paper,twoside]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{empheq}
+\usepackage[semibold]{ebgaramond}
+\usepackage[cmintegrals,cmbraces]{newtxmath}
+\usepackage{ebgaramond-maths}
+\usepackage{bm}
+\usepackage[OMLmathrm, OMLmathsfit, rmdefault=mdugm]{isomath}
+\usepackage{tocbibind}
+\usepackage{makeidx}
+\makeindex
+
+\makeatletter
+  \DeclareSymbolFont{ntxletters}{OML}{ntxmi}{m}{it}
+  \SetSymbolFont{ntxletters}{bold}{OML}{ntxmi}{b}{it}
+  \re@DeclareMathSymbol{\leftharpoonup}{\mathrel}{ntxletters}{"28}
+  \re@DeclareMathSymbol{\leftharpoondown}{\mathrel}{ntxletters}{"29}
+  \re@DeclareMathSymbol{\rightharpoonup}{\mathrel}{ntxletters}{"2A}
+  \re@DeclareMathSymbol{\rightharpoondown}{\mathrel}{ntxletters}{"2B}
+  \re@DeclareMathSymbol{\triangleleft}{\mathbin}{ntxletters}{"2F}
+  \re@DeclareMathSymbol{\triangleright}{\mathbin}{ntxletters}{"2E}
+  \re@DeclareMathSymbol{\partial}{\mathord}{ntxletters}{"40}
+  \re@DeclareMathSymbol{\flat}{\mathord}{ntxletters}{"5B}
+  \re@DeclareMathSymbol{\natural}{\mathord}{ntxletters}{"5C}
+  \re@DeclareMathSymbol{\star}{\mathbin}{ntxletters}{"3F}
+  \re@DeclareMathSymbol{\smile}{\mathrel}{ntxletters}{"5E}
+  \re@DeclareMathSymbol{\frown}{\mathrel}{ntxletters}{"5F}
+  \re@DeclareMathSymbol{\sharp}{\mathord}{ntxletters}{"5D}
+  \re@DeclareMathAccent{\vec}{\mathord}{ntxletters}{"7E}
+\makeatother
+
+\usepackage{array}
+% to produce a comma between multiple footnotes / https://tex.stackexchange.com/questions/40072/incompatibility-between-footmisc-option-multiple-and-hyperref/62091#62091
+\let\oldFootnote\footnote
+\newcommand\nextToken\relax
+\renewcommand\footnote[1]{%
+    \oldFootnote{#1}\futurelet\nextToken\isFootnote}
+\newcommand\isFootnote{%
+    \ifx\footnote\nextToken\textsuperscript{,}\fi}
+
+\defaultfontfeatures{Ligatures=TeX} % makes this a feature for all selected fonts
+\usepackage{esint}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\usepackage[text={18cm,26cm},centering]{geometry} % 
+\usepackage{natbib}
+\usepackage{graphicx}
+\graphicspath{{pics/}}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[export]{adjustbox}
+
+\hypersetup{
+  colorlinks,
+  citecolor=bleuSU,
+  linkcolor=bleuSU
+}
+\definecolor{bleuSU}{RGB}{26,39,101}
+
+\usepackage[normalem]{ulem}
+\makeatletter
+\renewcommand*{\uuline}{%
+  \bgroup
+  \UL@setULdepth
+  \markoverwith{%
+    \lower\ULdepth\hbox{%
+      \kern-.03em%
+      \vtop{%
+        \hrule width.2em%
+        \kern 0.6pt % distance between the two underlines
+        \hrule
+      }%
+      \kern-.03em%
+    }%
+  }%
+  \ULon
+}
+\makeatother
+\setlength{\ULdepth}{-2pt}  % distance from double underline to letter
+
+\newcommand{\delS}{\delta S}
+\newcommand{\delA}{\delta A}
+\newcommand{\delh}{\delta h}
+\newcommand{\delt}{\delta t}
+\newcommand{\delz}{\delta z}
+\newcommand{\delbx}{\delta \matrixsym x}
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+\newcommand{\itA}{\textit A}
+\newcommand{\itB}{\textit B}
+\newcommand{\dAB}{\mathcal D_{AB}}
+\newcommand{\bA}{\matrixsym A}
+\newcommand{\bff}{\matrixsym{f}}
+\newcommand{\bF}{\matrixsym{F}}
+\newcommand{\bj}{\matrixsym{j}}
+\newcommand{\bJ}{\matrixsym J}
+\newcommand{\bn}{\matrixsym{n}}
+\newcommand{\bN}{\matrixsym N}
+\newcommand{\bP}{\matrixsym{P}}
+\newcommand{\br}{\matrixsym r}
+\newcommand{\bt}{\matrixsym t}
+\newcommand{\be}{\matrixsym e}
+\newcommand{\bu}{\matrixsym u}
+\newcommand{\bv}{\matrixsym v}
+\newcommand{\bw}{\matrixsym w}
+\newcommand{\bx}{\matrixsym x}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\D}[2]{\frac{D #1}{D #2}}
+\newcommand{\dd}[2]{\frac{\mathrm d #1}{\mathrm d #2}}
+\newcommand{\dA}{\mathrm dA}
+\newcommand{\dV}{\mathrm dV}
+\newcommand{\dS}{\mathrm dS}
+\newcommand{\prg}[1]{\paragraph{$\rhd$ #1}}
+\newcommand{\alphaijkl}{\alpha_{ijkl}}
+\newcommand{\Aijkl}{A_{ijkl}}
+\newcommand{\delij}{\delta_{ij}}
+\newcommand{\sigij}{\sigma_{ij}}
+\newcommand{\sigji}{\sigma_{ji}}
+\newcommand{\sigxy}{\sigma_{xy}}
+\newcommand{\matL}{\mathcal L}
+\newcommand{\matO}{\mathcal O}
+\newcommand{\matS}{\mathcal S}
+\newcommand{\kij}{k_{ij}}
+\newcommand{\tensor}[1]{\smash{\uuline{#1}{}}}
+\setlength{\parindent}{0pt} % remove indent
+  
+\begin{document}
+{
+\title{\textit{Physics of fluids \& nonlinear physics}}
+%\author{Arnaud Antkowiak \qquad Camille Duprat}
+\author{
+  Arnaud Antkowiak\footnote{\href{mailto:arnaud.antkowiak@upmc.fr}{arnaud.antkowiak@upmc.fr}}
+  \and
+  Camille Duprat\footnote{\href{mailto:camille.duprat@ladhyx.polytechnique.fr}{camille.duprat@ladhyx.polytechnique.fr}}
+}
+\date{v0.21.09$_\text{06}$}
+\maketitle
+\tableofcontents
+}
+\input{./01_equations.tex}
+\input{./02_boundary_conditions.tex}
+\bibliographystyle{jfm}
+\bibliography{biblio_pof}
+\printindex
+\end{document}
