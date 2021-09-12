@@ -89,3 +89,35 @@ We can understand adherence condition (continuity of $\bu$ across an interface) 
 \begin{equation}
 \bu_\text{\textsc{i}} = \bu_\text{\textsc{ii}} \quad \text{and} \quad T_\text{\textsc{i}} = T_\text{\textsc{ii}}.
 \end{equation}
+
+\section{Where is the interface?}
+A wide range of flows are associated with interfaces: avalanches, rivers, oceans, emulsion droplets, rain or ink drops etc. As we shall see, an interface between a liquide and another fluid is not just an immaterial boundary geometrically delimiting portions of space occupied by fluids. An interface is an \textbf{active region} where surface tension forces act, in some way analogous to those exerted by a taut membrane.
+
+But before precising the nature of these forces acting on the interface, we first need to be able to know where the interface is! Indeed, an interface is constantly moving by definition and we have to start tracking the interface through time and space. This is the purpose of the \textit{kinematic boundary condition} which will allow us to follow the interface in its motion.
+\subsection{Kinematic boundary condition.\index{boundary conditions!kinematic}} In order to describe the motion of any given interface, as a free surface for example, let's introduce an arbitrary function $\mathcal S(\bx,t)$ that vanishes on the interface at all times: for each point $\bx_\text{interf}$ of the interface,~$\mathcal S(\bx_\text{interf},t)~=~0$. Between two successive instants, an interface point is displaced with a distance $\delbx = \bu_\text i \delt$ and:
+$$
+\mathcal S(\bx_\text{interf} + \bu_\text i \delt, t + \delt) \approx \underbrace{\vphantom{\lp\pd{\mathcal S}{t}\rp}\mathcal S(\bx_\text{interf},t)}_0 + \delt\underbrace{\lp\pd{\mathcal S}{t} + \lp\bu_\text  i \cdot \nabla\rp\mathcal S\rp}_{\D{_\text i\mathcal S}{t}} = 0.
+$$
+To get the interface velocity $\bu_\text i$\footnote{We note that in the expression of $\mathcal S$, only the normal component $\bu_\text i \cdot \bn$ of $\bu_\text i$ at the interface is involved.} we just need to express the mass flux boundary condition at the interface. If there is no mass transfer at the interface (such as e.g. evaporation), the latter reads:
+\begin{equation}
+\rho \lp \bu - \bu_\text i\rp \cdot \bn = 0 \quad \text{thus} \quad \bu \cdot \bn = \bu_\text i \cdot \bn,
+\end{equation}
+so that the kinematic boundary condition describing the motion of a free surface simply reads:
+\begin{equation}
+\D{\mathcal S}{t} = 0
+\end{equation}
+\prg{Example: description of a free surface.} Consider a free surface such as the ocean's, characterised\footnote{We here suppose that the interface is single valued (no wave breaking!).} with $z = \zeta(x,y,t)$. The surface is described at each instant by the vanishing of the function\footnote{We could imagine other functions as well, e.g. $\mathcal S(\bx,t) = \tanh\lp z - \zeta\lp x,y,t\rp\rp$ \ldots} :
+\begin{equation}
+\mathcal S(\bx,t) = z - \zeta(x,y,t).
+\label{eq:bumped_free_surface}
+\end{equation}
+The kinematic boundary condition describing the position of the free surface is therefore:
+\begin{equation}
+\D{\mathcal S}{t} = 0 \quad \text{hence}\quad \pd{\zeta}{t} = u_z - u_x \pd{\zeta}{x} - u_y \pd{\zeta}{y}
+\end{equation}
+\subsection{Surface geometry I. Normals.\index{normal vector}} In a number of problems involving free surfaces, deformable and/or complex boundaries, the expression for the normal vector has to be provided. A systematic procedure to obtain the expression for this vector stems in remarking that the free surface coincides with a $\mathcal S$-isosurface. As a result the normal vector is necessarily parallel with the \textbf{gradient} of $\mathcal S$ :
+\begin{equation}
+\bn = \frac{\nabla \matS}{\|\nabla \matS\|}
+\end{equation}
+
+
