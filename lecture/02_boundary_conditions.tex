@@ -60,7 +60,7 @@ On using the impermeability condition on the velocity field~(\ref{eq:impermeabil
 This Neumann condition is also called a \textbf{no-flux boundary condition.}
 \prg{Mass transfer at an interface: evaporation.\index{boundary conditions!evaporation}} One last example of boundary conditions arising from conservation considerations is the continuity of the mass flux across a liquid-gas interface, when the liquid is evaporating.
 
-Let's write a mass balance on a fluid element analogous to the previous one: a small cylindrical element of base $\delA$ and height $\delh$ located across a moving interface with velocity $\bu_\text i$. We let the height $\delh$ of the element tend to zero, so that the element mass equally tends to zero. The mass balance over this element is:
+Let's write a mass balance on a fluid element analogous to the previous one: a small cylindrical element of base $\delA$ and height~$\delh$ located across a moving interface with velocity $\bu_\text i$. We let the height $\delh$ of the element tend to zero, so that the element mass equally tends to zero. The mass balance over this element is:
 \begin{equation}
 \bj_\text{liquid conv.} = \bj_\text{gas conv.} + \bj_\text{gas diff.}
 \end{equation}
@@ -72,6 +72,8 @@ In the case of a violent evaporation (e.g. combustion front), the flux is domina
 $$\bu_g \sim \underbrace{\frac{\rho_\ell}{\rho_v}}_{\gg 1} \bu_\ell$$
 so that the (so-called Stefan) flow induced in the vapour is much stronger than that in the liquid.
 In the other limit where evaporation is very slow (case of a slowly drying water drop), it is rather the diffusive term that dominates.
+%fixme: add reference on Stefan flow
+%fixme: add d2 law for evaporating droplets (e.g. Cazabat et al.) -> tutorial?
 \section{Phenomenological conditions: adherence and continuity}
 In addition to the previous boundary conditions arising from conservation principles, fluids are also subject to other boundary conditions as well. The latter have been established and confirmed on experimental grounds, so there is a consensus about their relevance but not an exact demonstration. These phenomenological conditions are \textbf{field continuity conditions} at interfaces and apply on velocity, temperature etc.
 
@@ -80,6 +82,7 @@ In addition to the previous boundary conditions arising from conservation princi
 But during the \textsc{xix}$^\text{th}$ century alternate theories appeared. Girard proposed that the lqiuid layer adjacent to a wall had differing physical properties, leading it to adhere the solid. The next fluid layer (composed of ``regular fluid'') could then freely slip onto the first affixed layer. Navier also got interested into this problem and suggested a boundary condition involving a slip directly proportional to the shear stress $\beta u = \mu \pd{u}{n}$. Here the ratio $\mu/\beta$ has the dimension of a length: it is the \textit{slip length}. From there a period of relative confusion ensued where famous theoreticians of the time (Poisson, Stokes) alternately adopted one or the other of the boundary conditions.
 
 With time however, delicate experiments conducted by Couette or Maxwell advocated definitely for the adherence condition. Maxwell suggested on molecular dynamics considerations that if Navier's condition was effectively valid, the length over which slip occurred was so small -- of the order of a few mean free paths -- that considering it to be zero was a really reasonable hypothesis. This amounted to consider adherence at the wall: $\bu = \bu_\text s$ \citep{Maxwell1879}. This is in particular verified in the usual conditions of laboratory experiments, but not necessarily for rarefied gas flows (e.g. atmospheric reentry, hypersonic flight) or flows involving fluids with long polymer chains (microfluidic flows), as experiments confirm.
+%fixme: add ref on polymer slip
 
 During the \textsc{xx}$^\text{th}$ century, the almost perfect agreement between experimental observations and theoretical predictions using adherence condition for a number of flows (Poiseuille flow, Couette flow, Stokes' sphere settlement in a viscous fluid, the instability threshold for the Taylor-Couette experiment etc) definitely settled the validity of this condition.
 
@@ -95,9 +98,9 @@ A wide range of flows are associated with interfaces: avalanches, rivers, oceans
 
 But before precising the nature of these forces acting on the interface, we first need to be able to know where the interface is! Indeed, an interface is constantly moving by definition and we have to start tracking the interface through time and space. This is the purpose of the \textit{kinematic boundary condition} which will allow us to follow the interface in its motion.
 \subsection{Kinematic boundary condition.\index{boundary conditions!kinematic}} In order to describe the motion of any given interface, as a free surface for example, let's introduce an arbitrary function $\mathcal S(\bx,t)$ that vanishes on the interface at all times: for each point $\bx_\text{interf}$ of the interface,~$\mathcal S(\bx_\text{interf},t)~=~0$. Between two successive instants, an interface point is displaced with a distance $\delbx = \bu_\text i \delt$ and:
-$$
+\begin{equation}
 \mathcal S(\bx_\text{interf} + \bu_\text i \delt, t + \delt) \approx \underbrace{\vphantom{\lp\pd{\mathcal S}{t}\rp}\mathcal S(\bx_\text{interf},t)}_0 + \delt\underbrace{\lp\pd{\mathcal S}{t} + \lp\bu_\text  i \cdot \nabla\rp\mathcal S\rp}_{\D{_\text i\mathcal S}{t}} = 0.
-$$
+\end{equation}
 To get the interface velocity $\bu_\text i$\footnote{We note that in the expression of $\mathcal S$, only the normal component $\bu_\text i \cdot \bn$ of $\bu_\text i$ at the interface is involved.} we just need to express the mass flux boundary condition at the interface. If there is no mass transfer at the interface (such as e.g. evaporation), the latter reads:
 \begin{equation}
 \rho \lp \bu - \bu_\text i\rp \cdot \bn = 0 \quad \text{thus} \quad \bu \cdot \bn = \bu_\text i \cdot \bn,
@@ -178,7 +181,7 @@ As a matter of fact, each force contribution is balanced by another because the 
 \begin{center}
 \includegraphics[width=10cm]{principal_curvature.pdf} 
 \end{center}
-\caption{A curved surface potion intersected with a plane displays different radii of curvature depending on the plane orientation.}
+\caption{A curved surface portion intersected with a plane displays different radii of curvature depending on the plane orientation.}
 \label{fig:principal_curvature}
 \end{figure}
 Let's consider the portion of curved interface represented figure~\ref{fig:principal_curvature}. The curvature of the surface on a given point is a geometric quantity that can be built as follows. Start by identifying the normal $\bn$ to the surface at the chosen point. Consider now two perpendicular planes that each contain $\bn$. Each plane will intersect the surface following a curve which may be approximated by a circle in the vicinity of the chosen point. Of course the circle radius will differ in each plane in the general case: we will note it for example $R_1$ in the plane $\lp\be_1,\bn\rp$ and $R_2$ in the plane $\lp\be_2,\bn\rp$. The \textbf{mean} (or arithmetic) \textbf{curvature} $\kappa$ of the surface at the considered point is defined as the sum of the two circle curvatures :
@@ -196,7 +199,6 @@ To illustrate this notion, let's consider a simple sphere of radius $R$.
 \caption{A sphere.}
 \label{fig:sphere}
 \end{figure}
-
 At a given point of the surface, the normal vector is given by $\be_r$ and the two perpendicular planes intersecting the sphere will be two (exact) circles each of radius $R$. As a consequence we will have:
 \begin{equation}
 \kappa_\text{sphere} = \frac{2}{R}.
@@ -236,7 +238,7 @@ Yet another manifestation of Laplace operator!
 \caption{Left: a portion of curved interface is subjected to an effective force that depends both on surface tension and on geometry $-\gamma \kappa \, \bn \, \delta S$. Right: sketch of the forces acting on a surface slice showing that contributions along the normal add up.}
 \label{fig:curved_surface}
 \end{figure}
-Having clarified the notion of surface curvature, we can go back to the estimation of the effective surface tension force exerted on a \textit{curved} interface portion. To ddo so we consider the elementary surface portion described in figure~\ref{fig:curved_surface}. This elementary surface is subtended by two elementary arcs of curvilinear lengths $\delta \ell_1$ and $\delta \ell_2$. To first order the surface is then given by $$\delta S = \delta \ell_1 \delta \ell_2.$$ These two elementary arcs are linked to the two curvature radii $R_1$ and $R_2$ by the infinitesimal angles $\delta \theta$ and $\delta \psi$ represented on figure~\ref{fig:curved_surface} :
+Having clarified the notion of surface curvature, we can go back to the estimation of the effective surface tension force exerted on a \textit{curved} interface portion. To do so we consider the elementary surface portion described in figure~\ref{fig:curved_surface}. This elementary surface is subtended by two elementary arcs of curvilinear lengths $\delta \ell_1$ and $\delta \ell_2$. To first order the surface is then given by $$\delta S = \delta \ell_1 \delta \ell_2.$$ These two elementary arcs are linked to the two curvature radii $R_1$ and $R_2$ by the infinitesimal angles $\delta \theta$ and $\delta \psi$ represented on figure~\ref{fig:curved_surface} :
 \begin{subequations}
 \label{eq:curvature_radius}
 \begin{empheq}[left=\empheqlbrace]{alignat=2}
@@ -244,7 +246,7 @@ Having clarified the notion of surface curvature, we can go back to the estimati
 \delta \ell_2 \,&=&\, R_2 \delta \psi
 \end{empheq}
 \end{subequations}
-To quantify the action of the forces, start by considering the cut indicated on figure~\ref{fig:curved_surface} (right). The two contributions of intensité $\gamma$ are each inclined by $\delta \theta / 2$ with respect to the tangent at the considered point. As a result, the projection along the tangent  $\bt$ and the normal $\bn$ are:
+To quantify the action of the forces, start by considering the cut indicated on figure~\ref{fig:curved_surface} (right). The two contributions of intensity $\gamma$ are each inclined by $\delta \theta / 2$ with respect to the tangent at the considered point. As a result, the projection along the tangent  $\bt$ and the normal $\bn$ are:
 \begin{empheq}[left=\empheqlbrace]{alignat=2}
 \text{projection along $\bt$ :} \qquad & \gamma \cos \lp \delta \theta / 2 \rp -  \gamma \cos \lp \delta \theta / 2 \rp = 0\\
 \text{projection along $\bn$ :} \qquad & -\gamma \sin \lp \delta \theta / 2 \rp -  \gamma \sin \lp \delta \theta / 2 \rp \simeq -2 \gamma \delta \theta / 2 = - \gamma \delta \theta
@@ -265,11 +267,11 @@ In other words a small curved surface element will be accelerated towards its cu
 
 Let's stop for a moment and discuss the consequences of such a force. From the previous expression we might be tempted to conclude that each element of a water droplet is accelerated towards its centre, and that the droplet should collapse onto itself. To understand how droplets and other interfaces can withstand this force and remain at equilibrium, we have to remember that droplets are made of a liquid (e.g. water) that is hardly compressible. In practice this incompressibility constraint is guaranteed\footnote{Note: even in compressible fluids (ex: bubble) a pressure field is established to counterbalance the effect of capillary force.} with the help of a pressure field that will balance the effect of surface tension. Actually, a pressure field is present in the liquid, even at equilibrium. As seen in chapter~\ref{chap:fluid-motion} the pressure force exerted onto the small considered surface element will be: 
 $$
-\delta \boldsymbol f_\text{pressure} = \lp p_\text{int} - p_\text{ext}\rp \bn \,\delta S.
+\delta \bff_\text{pressure} = \lp p_\text{int} - p_\text{ext}\rp \bn \,\delta S.
 $$
 The interface portion equilibrium condition will then be:
 \begin{equation}
-\delta \boldsymbol f_\text{cap} + \delta \boldsymbol f_\text{pressure}  = \boldsymbol 0,
+\delta \bff_\text{cap} + \delta \bff_\text{pressure}  = \boldsymbol 0,
 \end{equation}
 so that\index{Laplace pressure jump}
 \begin{equation}
