@@ -119,5 +119,249 @@ The kinematic boundary condition describing the position of the free surface is 
 \begin{equation}
 \bn = \frac{\nabla \matS}{\|\nabla \matS\|}
 \end{equation}
+\prg{Example: free surface normal.} Let's consider the previous example again. We have:
+$$
+\nabla \matS = \lp
+\arraycolsep=1.4pt\def\arraystretch{1.5}
+\begin{array}{c}
+-\pd{\zeta}{x}\\
+-\pd{\zeta}{y}\\
+1
+\end{array}
+\rp,
+$$
+so
+\begin{equation}
+\bn = \frac{1}{\sqrt{1+\pd{\zeta}{x}^2+\pd{\zeta}{y}^2}}\lp
+\arraycolsep=1.4pt\def\arraystretch{1.5}
+\begin{array}{c}
+-\pd{\zeta}{x}\\
+-\pd{\zeta}{y}\\
+1
+\end{array}
+\rp.
+\label{eq:wave_normal}
+\end{equation}
+We note the the direction of this normal is quite arbitrary and chosen by convention (usually, the convention is that of exterior-pointing normal. However this only makes sense if the very notion of exterior makes sense!).
+
+\section{Capillarity\index{surface tension}}
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=4cm]{boys_brush.pdf} \\
+\includegraphics[height=4cm]{capillary_spool_downsampled.jpg} \quad
+\includegraphics[height=4cm]{gerris_on_water_downsampled.png}
+\end{center}
+\caption{Top: when pulled out of water, a wet brush has its bristles stuck altogether, but those are neatly separated is the brush is dry or fully immersed \citep{Boys1890}. Bottom left: a drop deposited on a sufficiently thin fibre such as the spider capture silk induces coiling and spooling within the droplet \citep{Elettro2016}. Bottom right: the Gerris, an aquatic insect, can literally walk on water although it is denser (\href{https://www.flickr.com/photos/ryoichi360/5847533955/in/photolist-9UJ97X-EU3vy-V3eJzF-8wimyD-fafpgs-HKfkdJ-22TUHgL-SWUure-dcK4vX-2baXF3n-DhVeuP-rMc5KH-253wqN-2fQ2VWT-8p2CBK-8d9rrm-VmimZt-PcW89C-283Sj59-Hvg77b-N9Ytvw-SN5EhR-cQ7gBj-s4aR9q-eDcCJz-HrEa1e-6hizYZ-Wq8cWg-FYhg7k-8874aQ-iJqVV-56yPYc-X5ffoi-pkU5Zt-p9ztvz-ZSJkzJ-ofYXjT-a9n3xT-2ekD2e9-5sAmFu-ccGJis-24KoY9K-QZW2Li-4f9Fjc-fyuZPT-Hr29p5-kLdZ8n-Tu8m9W-nQg4Lr-s85mcc}{photograph by Ryoichi on Flickr}). These examples are manifestations of surface tension exerted at liquid-gas interfaces.}
+\label{fig:surface_tension}
+\end{figure}
+Having described kinematically interfaces (i.e. how to locate them) along with the boundary conditions resulting from mass conservation and moleecular equilibria (adherence condition), we shall now get interested into the dynamical aspects of interfaces and more particularly to the phenomenon of \textit{capillarity} \citep{de-Gennes2015}.
+
+An interface between two immiscible fluids, as that between air and water is, is a material surface separating the two media. But actually such an interface is in reality way more that a simple geometric place delimiting two portions of space. An interface \textbf{bears forces} whose manifestation is visible in daily-life examples, such as the clogging of wet hairs, the spooling of spider thread within glue droplets or the sustentation of small aquatic animals such as the Gerris (Fig.~\ref{fig:surface_tension}).
+
+\subsection{Cohesion}
+The microscopic origin of surface tension is rooted in \textbf{cohesion} effects in liquids. Indeed, atoms or molecules that constitute matter interact with each other with forces of changing nature. Repulsive at very short distance, the forces become attractive for longer range. In the context of a gas, the intermolecular distances are far too large for these interactions to have any notable effect. But this is not true for dense phases such as liquids where molecules attract each other. This matter cohesion phenomenon is responsible for the rounded shape of droplets, the curvature of menisci or that of soap films. The history of the link between attractive forces and surface tension is already present in the writings of Newton, but this link was not really elucidated until Laplace in 1805 \citep{Laplace1805}. With the unique hypothesis of attractive forces between two matter particles decaying with distance, Laplace succeeded in finding with differential calculus all equilibria shapes of interfaces. He also explained the capillary rise in tubes, a phenomenon resisting understanding so far \citep{Rowlinson2005}. He further evidenced a pressure jump phenomenon (normal stress) proportional to curvature, as we shall now see.
+\subsection{Surface tension}
+In parallel to Laplace's works on cohesion and capillarity, Thomas Young also managed to find in 1805 a result on the pressure jump across interfaces identical to Laplace's finding. But he followed an entirely different route \citep{Young1805}. On the basis of experimental observations of free surface deformations similar to those of elastic membrane, Young postulated the existence of a tension force localised at the liquid surface, and analogue to membrane tension -- such as the one developing in a stretched balloon. Following this reasoning, a small, flat and rectangular surface element $\delta S = \delta \ell_1 \delta \ell_2$ such as the one illustrated figure~\ref{fig:flat_surface} would be subject to a total force:
+$$
+\lp \gamma \delta \ell_2 - \gamma \delta \ell_2 \rp \be_1 + \lp \gamma \delta \ell_1 - \gamma \delta \ell_1 \rp \be_2 = \boldsymbol 0.
+$$
+As a matter of fact, each force contribution is balanced by another because the surface is flat. But we feel here that this result may change as soon as the surface will be curved. Before proceeding in the estimation of the surface tension force for a general surface, we have to characterise the curvature of a surface.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics{flat_surface_poly.pdf} \end{center}
+\caption{A flat interface portion is subject to a tension force at its periphery.}
+\label{fig:flat_surface}
+\end{figure}
+
+\subsection{Surface geometry II. Curvature.\index{curvature}}
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=10cm]{principal_curvature.pdf} 
+\end{center}
+\caption{A curved surface potion intersected with a plane displays different radii of curvature depending on the plane orientation.}
+\label{fig:principal_curvature}
+\end{figure}
+Let's consider the portion of curved interface represented figure~\ref{fig:principal_curvature}. The curvature of the surface on a given point is a geometric quantity that can be built as follows. Start by identifying the normal $\bn$ to the surface at the chosen point. Consider now two perpendicular planes that each contain $\bn$. Each plane will intersect the surface following a curve which may be approximated by a circle in the vicinity of the chosen point. Of course the circle radius will differ in each plane in the general case: we will note it for example $R_1$ in the plane $\lp\be_1,\bn\rp$ and $R_2$ in the plane $\lp\be_2,\bn\rp$. The \textbf{mean} (or arithmetic) \textbf{curvature} $\kappa$ of the surface at the considered point is defined as the sum of the two circle curvatures :
+\begin{equation}
+\kappa \equiv \frac{1}{R_1} + \frac{1}{R_2}.
+\end{equation}
+This definition calls for two remarks. The first one regards the unicity of $\kappa$'s definition. Indeed we might envisage another set of two orthogonal planes, each of them also containing $\bn$ (obtained via a simple rotation around $\bn$). We would then get two other values for $R_1$ et $R_2$. Remarkably, it can be shown in surface geometry that if $R_1$ and $R_2$ are not defined in an univocal way, the sum $\frac{1}{R_1} + \frac{1}{R_2}$ is independent of the planes choice! The curvature $\kappa$ is a surface \textbf{invariant} (except in ill-defined cases, such as surfaces with cusps or corners -- in which case the curvature diverges). The second remark is about the curvature sign. Curvature radii are signed quantities, considered positive by convention if the curvature centre is inside the surface, and negative otherwise (to differentiate what is inside from what is outside, we still use the exterior normal convention). It is therefore possible to have surface of negative curvature.
+
+\prg{Curvature of a sphere.}
+To illustrate this notion, let's consider a simple sphere of radius $R$. 
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=4cm]{sphere_undeformed.png} 
+\end{center}
+\caption{A sphere.}
+\label{fig:sphere}
+\end{figure}
+
+At a given point of the surface, the normal vector is given by $\be_r$ and the two perpendicular planes intersecting the sphere will be two (exact) circles each of radius $R$. As a consequence we will have:
+\begin{equation}
+\kappa_\text{sphere} = \frac{2}{R}.
+\end{equation}
+
+\prg{Extension to general surfaces.}
+The previous approach, although visual and making direct contact with the meaning of curvature, suffers from some shortcomings. Indeed, beyond elementary shapes (cylinder, cone, axisymmetric surfaces etc) it appears difficult to identify the relevant curvature radii for more general surfaces, such as the wavefield described by equation~\eqref{eq:bumped_free_surface}.
+
+Fortunately there exists an alternate definition for the curvature that comes surface differential geometry. This alternate definition will allow for an easy computation of curvature in every situations:
+\begin{equation}
+\kappa \equiv \nabla_s \cdot \bn,
+\end{equation}
+where the operator $\nabla_s$ represents the surface divergence. In practice we will calculate the (full) divergence of the vector field $\bn$ defined in every point of space, and then simply consider the restriction of this field at the interface. Now an example to shed some light over this definition.
+\prg{Curvature of a sphere (again).} Let's consider again the sphere example. In order to determine $\bn$, we introduce the ``colour function'' $\matS(r) = r - R$. Its normalised gradient gives $\bn = \be_r$ in every point of space -- and in particular at the sphere' surface. The divergence of $\be_r$ reads \textit{in every point of space}:
+\begin{equation}
+\nabla \cdot \be_r = \frac{1}{r^2} \pd{}{r} \lp r^2 \times 1 \rp = \frac{2}{r}
+\end{equation}
+The restriction of this field \textit{to the sphere' surface} gives the curvature:
+\begin{equation}
+\kappa_\text{sphere} = \left.\nabla \cdot \be_r\right|_{r=R} = \left.\frac{2}{r}\right|_{r=R} = \frac{2}{R}.
+\end{equation}
+\prg{Curvature of a wavefield.} Let's go back to the wavefield equation~\eqref{eq:bumped_free_surface}. The divergence of the normal vector field~\eqref{eq:wave_normal} in each point of space is:
+\begin{equation}
+\kappa= -\frac{\Delta_\parallel \zeta}{\sqrt{1+\zeta_x^2+\zeta_y^2}} + \frac{\zeta_x\lp\zeta_x \zeta_{xx} + \zeta_y \zeta_{yx}\rp + \zeta_y\lp\zeta_x \zeta_{xy} + \zeta_y \zeta_{yy}\rp}{\lp 1+\zeta_x^2+\zeta_y^2\rp^{3/2}},
+\end{equation}
+where $\Delta_\parallel \equiv \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}$ represents the horizontal Laplace operator. We denote in the previous expression differentiation with indices, so that $ \zeta_{yy} = \frac{\partial^2\zeta}{\partial y^2}$. We see thatt it would have been difficult to establish this relation with circles tangenting the surface! We finally note that in the limit of slender slope, where $\zeta_x,\zeta_y$ are \textit{a priori} much smaller than 1, the expression simplifies significantly to become
+\begin{equation}
+\kappa \simeq - \Delta_\parallel \zeta \quad \text{in the limit of slender slopes}.
+\end{equation}
+Yet another manifestation of Laplace operator!
+\section{Young-Laplace's pressure jump}
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[valign=m,width=6cm]{curved_surface_force.pdf} 
+\includegraphics[valign=m,width=8cm]{curved_surface_cut.pdf} 
+\end{center}
+\caption{Left: a portion of curved interface is subjected to an effective force that depends both on surface tension and on geometry $-\gamma \kappa \, \bn \, \delta S$. Right: sketch of the forces acting on a surface slice showing that contributions along the normal add up.}
+\label{fig:curved_surface}
+\end{figure}
+Having clarified the notion of surface curvature, we can go back to the estimation of the effective surface tension force exerted on a \textit{curved} interface portion. To ddo so we consider the elementary surface portion described in figure~\ref{fig:curved_surface}. This elementary surface is subtended by two elementary arcs of curvilinear lengths $\delta \ell_1$ and $\delta \ell_2$. To first order the surface is then given by $$\delta S = \delta \ell_1 \delta \ell_2.$$ These two elementary arcs are linked to the two curvature radii $R_1$ and $R_2$ by the infinitesimal angles $\delta \theta$ and $\delta \psi$ represented on figure~\ref{fig:curved_surface} :
+\begin{subequations}
+\label{eq:curvature_radius}
+\begin{empheq}[left=\empheqlbrace]{alignat=2}
+\delta \ell_1 \,&=&\, R_1 \delta \theta\\
+\delta \ell_2 \,&=&\, R_2 \delta \psi
+\end{empheq}
+\end{subequations}
+To quantify the action of the forces, start by considering the cut indicated on figure~\ref{fig:curved_surface} (right). The two contributions of intensité $\gamma$ are each inclined by $\delta \theta / 2$ with respect to the tangent at the considered point. As a result, the projection along the tangent  $\bt$ and the normal $\bn$ are:
+\begin{empheq}[left=\empheqlbrace]{alignat=2}
+\text{projection along $\bt$ :} \qquad & \gamma \cos \lp \delta \theta / 2 \rp -  \gamma \cos \lp \delta \theta / 2 \rp = 0\\
+\text{projection along $\bn$ :} \qquad & -\gamma \sin \lp \delta \theta / 2 \rp -  \gamma \sin \lp \delta \theta / 2 \rp \simeq -2 \gamma \delta \theta / 2 = - \gamma \delta \theta
+\end{empheq}
+This is true for each cut along the path $\delta \ell_2$, so that the contribution of surface tension for these two opposite sides is $ -\gamma \delta \theta \delta \ell_2$ along $\bn$. We can repeat this line of reasoning for the two other sides, and we obtain the total contribution of surface tension on this small curved element:
+\begin{equation}
+\delta \boldsymbol f_\text{cap} = - \gamma \lp \delta \theta \delta \ell_2 + \delta \psi \delta \ell_1 \rp \bn.
+\end{equation}
+We can reexpress this relation with the help of the curvature radii~\eqref{eq:curvature_radius}:
+\begin{equation}
+\delta \boldsymbol f_\text{cap} = - \gamma \lp \frac{1}{R_1}\delta \ell_1 \delta \ell_2 + \frac{1}{R_2}\delta \ell_1 \delta \ell_1 \rp \bn,
+\end{equation}
+so that finally:
+\begin{equation}
+\delta \boldsymbol f_\text{cap} = - \gamma \kappa \, \bn \, \delta S.
+\end{equation}
+In other words a small curved surface element will be accelerated towards its curvature centre with a force of intensity proportional to both surface tension and curvature. The force exerted on an element therefore depends on its geometry!
+
+Let's stop for a moment and discuss the consequences of such a force. From the previous expression we might be tempted to conclude that each element of a water droplet is accelerated towards its centre, and that the droplet should collapse onto itself. To understand how droplets and other interfaces can withstand this force and remain at equilibrium, we have to remember that droplets are made of a liquid (e.g. water) that is hardly compressible. In practice this incompressibility constraint is guaranteed\footnote{Note: even in compressible fluids (ex: bubble) a pressure field is established to counterbalance the effect of capillary force.} with the help of a pressure field that will balance the effect of surface tension. Actually, a pressure field is present in the liquid, even at equilibrium. As seen in chapter~\ref{chap:fluid-motion} the pressure force exerted onto the small considered surface element will be: 
+$$
+\delta \boldsymbol f_\text{pressure} = \lp p_\text{int} - p_\text{ext}\rp \bn \,\delta S.
+$$
+The interface portion equilibrium condition will then be:
+\begin{equation}
+\delta \boldsymbol f_\text{cap} + \delta \boldsymbol f_\text{pressure}  = \boldsymbol 0,
+\end{equation}
+so that\index{Laplace pressure jump}
+\begin{equation}
+\Delta p = p_\text{int} - p_\text{ext} = \gamma \kappa.
+\label{eq:laplace_jump}
+\end{equation}
+To ensure equilibrium, a \textbf{pressure jump} will be established across an interface. This surprising result, due to Young and Laplace, implies that a millimetric rain droplet can sustain overpressure of $\gamma \kappa \simeq 7 \times 10^{-2} \times \frac{2}{10^{-3}} = 140 $ Pa with respect to the atmosphere, and a micron-sized fog droplet will endure an overpressure of $\simeq 7 \times 10^{-2} \times \frac{2}{10^{-6}} = 1.4\times 10^{5} $ Pa, thus 1.4 bars more than atmospheric pressure!
+\subsection{Surface tension?}
+We followed in the previous analysis Young's viewpoint according to which the interface would be taut by a constant surface tension $\gamma$. We also recovered Laplace's result of the pressure jump when traversing a curved interface. Laplace did not suppose a distributed surface tension but only attractive forces between molecules. But as we have seen in the previous part, it is possible to switch mathematically from a tangent force representation to an effective normal force, and the reverse. Our demonstration is in fact the expression of a generalisation of Frénet's formulae to three dimensions:
+\begin{equation}
+\oint_C \bp\,\mathrm d\ell = -\iint_A \kappa \bn\, \mathrm dS,
+\end{equation}
+where $\bp$ is a vector tangent to the interface and $C$ a closed curve over the interface \citep{Tryggvason2011}. From this, we may wonder if surface tension exists \textit{really}, or if it is not simply a convenient analogue to describe the attractive interactions between molecules.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=8cm]{marchand_andreotti.pdf} 
+\end{center}
+\caption{Dynamic molecular simulations show that in the vicinity of an interface, molecules are farther apart than in the liquid bulk. This depletion is associated with an increase of attractive force between molecules at the surface. The macroscopic consequence of this increase is the emergence of surface tension \citep{Marchand2011}.}
+\label{fig:marchand}
+\end{figure}
+It is now possible to use dynamic molecular simulations to answer this question. As shown in figure~\ref{fig:marchand}, there exists a force parallel to the interface that stems from a depletion in near surface molecules: surface tension has therefore a physical reality! \citep{Berry1971,Marchand2011}.
+ 
+%Mais contrairement à une membrane élastique, la \textbf{tension de surface} $\gamma$ d'une interface est constante, quel que soit l'étirement imposé. La valeur de cette tension de surface est très faible -- de l'ordre de quelques dizaines de milliNewtons par mètre tout au plus, mais elle est suffisante pour sculpter des interfaces liquides et conférer, par exemple, une forme sphérique à de petites gouttes d'eau. 
+
+\subsection{Stress (dis-)continuity}
+Thanks to the notion of \textit{stress}, we may easily extend the previous result to the case of moving interfaces. To do so let's consider an elementary volume in the shape of a camembert box leaning on each side of the interface, see figure~\ref{fig:impermeability}. Now we let the volume thickness tend to 0, and so will its mass -- and therefore its momentum. As a result the sum of the forces acting on this volume must be zero as well. We have already seen that the net sum of interfacial stresses is $-\gamma \kappa \, \bn \, \delta S$. The stress exerted by the exterior medium is $\mathsfbfit{\sigma}_\text{ext} \bn_\text{ext} \delta S$, and similarly for the stress exerted by the interior medium $\mathsfbfit{\sigma}_\text{int} \bn_\text{int} \delta S$, with $\bn_\text{ext} = - \bn_\text{int} = \bn$. The condition for interface equilibrium will thus be:
+\begin{equation}
+\lp\mathsfbfit{\sigma}_\text{ext} - \mathsfbfit{\sigma}_\text{int}\rp \bn = \gamma \kappa \bn.
+\end{equation}
+This is a really general relation that expresses a \textbf{normal stress jump} at the interface. So in the static case where $\sigij = -p \delij$, this relation becomes:
+\begin{equation}
+\Delta p = p_\text{int} - p_\text{ext} = \gamma \kappa,
+\end{equation}
+which is naturally the Laplace pressure jump seen in~\eqref{eq:laplace_jump}.
+
+\section{Equilibrium shape for a meniscus\index{meniscus}}
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[height=4.5cm]{wss-property-meniscus-water-mercury_0.jpg}
+\includegraphics{meniscus.pdf} 
+\end{center}
+\caption{Left: mercury or water contained in test tubes exhibit sharply different menisci (\href{https://www.usgs.gov/media/images/water-has-upward-meniscus-mercury-has-a-downward-meniscus}{Creative Commons}). Right: equilibrium profile for a meniscus, parameterised by the wetting angle at the wall.}
+\label{fig:meniscus}
+\end{figure}
+We now have all the keys to determine interface shapes under the influence of surface tension. As an illustration we will consider in this last part the equilibrium shape for a meniscus. A meniscus is the particular shape adopted by a liquid-gas interface near a wall (figure~\ref{fig:meniscus} left). Actually at the contact of a wall, an interface displays a \textit{contact angle} that depends on the chemical nature of the liquid and of the wall: water or alcohol on glass or metal will have contact angles smaller than $\frac{\pi}{2}$ (\textit{wetting} or \textit{hydrophilic} case) whereas water on wax, on a non-stick frying pan or mercury over glass will display contact anglese larger than $\frac{\pi}{2}$. The corresponding case will qualify as \textit{non-wetting} or \textit{hydrophobic}.
+\prg{Équation for the meniscus.} At the wall contact, the interface forms an angle $\theta$. Yet far from the wall the interface is back to planar undedr the influence of gravity. In between, the interface will adopt a shape of a membrane ``taut'' by the action of surface tension -- and under the influence of gravity. Over which lengthscale $\ell$ does this matching take place? We can give a first estimation with dimensional analysis. Here $\ell = f(\rho, \gamma, g)$, and as $[\gamma] = \mathsf{M}\mathsf{T}^{-2}$ a direct application of $\pi$ theorem informs us that this matching length will be proportional to:
+\begin{equation}
+\ell_\text{gc} = \sqrt{\frac{\gamma}{\rho g}}.
+\end{equation}
+This is the \textit{gravity-capillary length} (sometimes simply coined capillary length).
+
+Let's now determine the equation driving the shape for the interface. To this end, let's introduce first the $z$ coordinate whose origin will be at the interface height very far from the wall. We will monitor the interface height at each point with the function $z = h(x)$. At the interface level the pressure jump relation~\eqref{eq:laplace_jump} allows us to write:
+\begin{equation}
+p(z=h) - P_\text{atm} = \gamma \kappa,
+\end{equation}
+where $p(z=h)$ is the pressure in the liquid near the interface, and $P_\text{atm}$ is the atmospheric pressure. Before going further, let's remark that the interface curvature centre is \textit{outside} (of the liquid): the pressure jump will therefore be negative, which implies that the liquid pressure will be  \textit{lower} than atmospheric pressure. 
+
+In the liquid, hydrostatics applies, so $p(z) = P_\text{atm} - \rho g z$. We therefore have:
+\begin{equation}
+-\rho g h = \gamma \kappa,
+\end{equation}
+or
+\begin{equation}
+h = -\ell_\text{gc}^2 \kappa.
+\label{eq:meniscus}
+\end{equation}
+This is the interface equation.
+\prg{Equilibrium profile in the slender slope limit.} In general this equation is quite difficult to solve because of its nonlinearities. Indeed, the interface curvature reads:
+\begin{equation}
+\kappa(x) = -\frac{h''}{\lp 1 + h'^2\rp^{3/2}}.
+\end{equation}
+But in the slender slope limit, corresponding to contact angles close to $\frac{\pi}{2}$ -- and anyway always true sufficiently far from the wall --, $h' \ll 1$ and $\kappa \simeq -h''$. As a result~(\ref{eq:meniscus}) admits exponential solutions of the type $e^{x/\ell_\text{gc}}$ and $e^{-x/\ell_\text{gc}}$. Only the latter solution allows to recover a flat profile at infinity. In the slender slope limit, the interface is therefore desccribed with:
+\begin{equation}
+h(x) = A e^{-x/\ell_\text{gc}},
+\end{equation}
+where $A$ is a constant set by the boundary conditions. In the slender slope limit, we will have near the wall $h' = - (\frac{\pi}{2}-\theta)$, so:
+\begin{equation}
+h(x) =  \ell_\text{gc} (\frac{\pi}{2}-\theta) e^{-x/\ell_\text{gc}}.
+\end{equation}
+\prg{Meniscus weight.} If we were to suppress the wall in figure~\ref{fig:meniscus} right, the interface would naturally get back to the position $z=0$. A question is therefore: what bears the meniscus weight? (because it is not the liquid pressure far below). The only remaining candidate is the wall: the wall exerts a force of intensity $\gamma$ parallel to the interface and therefore lifts the liquid. In vertical projection, this force has a contribution $F_\text{cap}=\gamma \cos \theta$, which has to balance the meniscus weight.
+
+We can verify this fact by calculus with the help of equation~\eqref{eq:meniscus}. Let's introduce the angle $\phi$ that the interface forms locally with the horizontal ($\phi = \theta - \pi/2$). Whenever we follow an elementary interface portion $\mathrm ds$, this angle changes by an amount $\mathrm d \phi$ such that $\mathrm ds = R \mathrm d \phi = -\frac{1}{\kappa} \mathrm d \phi$. From this relation we deduce $\kappa = -\dd{\phi}{s}$. The equation for the meniscus then becomes:
+\begin{equation}
+-\rho g h(s) = - \gamma \dd{\phi}{s}.
+\end{equation}
+On remarking that $\cos\phi = \dd{x}{s}$, we see that the meniscus weight can be written as:
+\begin{equation}
+P = - \rho g \int_0^\infty h(x) \, \mathrm dx = - \rho g \int_0^\infty h(s) \cos \phi \, \mathrm ds.
+\end{equation}
+Thus, by multiplying the interface equation by $\cos \phi$ we get:
+\begin{equation}
+\underbrace{-\rho g \int_0^\infty h(s)\cos \phi\,\mathrm ds}_P = - \gamma \int_0^\infty \cos\phi \dd{\phi}{s}\, \mathrm ds = - \gamma \left[ \sin \phi \right]_0^\infty = \gamma \sin \phi_0 = \underbrace{-\gamma \cos \theta}_{-F_\text{cap}}.
+\end{equation}
 
 
