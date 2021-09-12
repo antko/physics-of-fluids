@@ -25,66 +25,67 @@ Without mixing phenomena, the fluid velocity $\bu$ already takes into account di
 \begin{equation}
 \bj_\text{fluid} = \rho \lp\bu-\bu_\text s\rp.
 \end{equation}
-\prg{The impermeable wall.\index{impermeability}} A very common case is that of an \textbf{imperméable} solid in which the fluid cannot penetrate; the fluid mass flux within the solid is therefore zero and $\bj_\text{solid} = \boldsymbol 0$. Mass conservation expressed at an impermeable boundary therefore reduces to:
+\prg{The impermeable wall.\index{boundary conditions!impermeability}} A very common case is that of an \textbf{imperméable} solid in which the fluid cannot penetrate; the fluid mass flux within the solid is therefore zero and $\bj_\text{solid} = \boldsymbol 0$. Mass conservation expressed at an impermeable boundary therefore reduces to:
 \begin{equation}
 \bu\cdot\bn = \bu_\text s \cdot\bn
 \label{eq:impermeability}
 \end{equation}
 This is the \textbf{impermeability condition} for an object (or a wall). As the name implies, it simply expresses the fact that the fluid cannot penetrate into the solid. This condition takes the form of a \textbf{continuity of normal velocities}.
-%
-%Note : dans le cas particulier (mais très courant !) d'une objet solide fixe, cette condition devient  $\bu\cdot\bn =0$.
-%\prg{Paroi perméable.} La discussion précédente s'étend naturellement au cas des parois perméables. Celles-ci peuvent correspondre à des tissus biologiques perméables à certains solutés, à des matériaux pouvant être imbibés par des solvants, des terrains trempés par la pluie ou encore des profils portants percés à des fins de contrôle de couche limite (comme la turbovoile de Cousteau et Malavard illustrée dans la séquence vidéo du cours).
-%
-%Le flux de masse au sein de la paroi n'est désormais plus nul et sa détermination requiert de connaître le type d'écoulement au sein du solide. Supposons toutefois la vitesse d'imbibition $\bu_\text{imbib}$ constante et connue (correspondant par exemple au cas d'une aspiration à débit imposé). La conservation de la masse à une paroi perméable mobile s'écrira alors :
-%\begin{equation}
-%\rho (\bu-\bu_\text s) \cdot \bn = \rho (\bu_\text{imbib}) \cdot \bn,
-%\end{equation}
-%soit 
-%\begin{equation}
-%\bu\cdot\bn = \lp\bu_\text s + \bu_\text{imbib}\rp\cdot\bn.
-%\end{equation}
-%\prg{Condition limite sur un champ de concentration à une paroi.}
-%Les conditions limites à appliquer sur l'équation de transport d'un champ de concentration~(\ref{eq:conv_diff}) peuvent être obtenues suivant le même principe. Imaginons pour cela un champ de concentration transporté par un écoulement $\bu$ au sein duquel un solide (imperméable) se meut à la vitesse $\bu_\text s$. Dans le référentiel du solide le flux de matière à travers une surface $\delA \,\bn$ quelconque est :
-%\begin{equation}
-%\bj_\text{matière} = \bj_\text{conv} + \bj_\text{diff} = c \lp \bu - \bu_s\rp - D \nabla c.
-%\end{equation}
-%La condition d'imperméabilité de la paroi au champ de concentration $c$ s'écrit donc :
-%\begin{equation}
-%c (\bu-\bu_\text s) \cdot \bn - D \nabla c \cdot \bn = 0,
-%\end{equation}
-%car le flux de matière est nul dans le solide.
-%En utilisant la condition d'imperméabilité du champ de vitesse~(\ref{eq:impermeabilite}), cette relation se réduit à :
-%\begin{equation}
-%\nabla c \cdot \bn \equiv \pd{c}{n} = 0.
-%\end{equation}
-%\prg{Transfert de masse à une interface : évaporation.} Un dernier exemple d'obtention de conditions limites à partir d'une équation de bilan est la condition de continuité du flux de masse à travers une interface liquide-gaz, dans le cas où le liquide s'évapore. 
-%
-%Effectuons un bilan de masse sur le même type d'élément de volume que celui considéré précédemment : un petit élément cylindrique de base $\delA$ et de hauteur $\delh$ à cheval sur l'interface se déplaçant à $\bu_\text i$. On fait tendre la hauteur $\delh$ de l'élément vers 0, de sorte à ce que la masse de l'élément tende vers 0 également. Le bilan de masse sur cet élément s'écrit :
-%\begin{equation}
-%\bj_\text{conv. liquide} = \bj_\text{conv. gaz} + \bj_\text{diff. gaz}
-%\end{equation}
-%soit :
-%\begin{equation}
-%\rho_\ell \lp\bu_\ell - \bu_\text i\rp \cdot \bn = \rho_v \lp\bu_g -\bu_\text i\rp\cdot \bn - D \nabla \rho_v \cdot n
-%\end{equation}
-%Si l'évaporation est très violente (e.g. front de combustion), le flux est dominé par les effets de convection et 
-%$$\bu_g \sim \underbrace{\frac{\rho_\ell}{\rho_v}}_{\gg 1} \bu_\ell$$
-%c'est-à-dire que l'écoulement (dit de Stefan) induit dans la vapeur est beaucoup plus violent que celui dans le liquide.
-%Dans l'autre limite, où l'évaporation est très lente (cas d'une goutte d'eau séchant librement), c'est plutôt le terme diffusif qui domine.
-%\section{Conditions phénoménologiques : adhérence aux parois et continuité}
-%En plus des conditions précédentes découlant de principes de conservation, les fluides sont sujets à d'autres conditions limites, établies et confirmées sur des bases expérimentales et faisant l'objet d'un consensus, mais pas d'un démonstration exacte. Ces conditions phénoménologiques sont les conditions de \textbf{continuité des champs} aux interfaces, comme la vitesse, la température etc.
-%
-%\paragraph{$\rhd$ Une brève histoire de l'adhérence.} La condition d'adhérence, $\bu = \bu_\mathrm{s}$, a une histoire étonnante et pleine de rebondissements, dont nous traçons les grandes lignes dans ce qui suit \citep{Goldstein1950}. Au \textsc{XVIII}$^e$ siècle, la description théorique des écoulements potentiels (correspondant à l'approximation d'écoulement parfait de fluide) était déjà bien place, mais les comparaisons avec les expériences étaient médiocres. Daniel Bernoulli en était bien conscient et attribuait les différences entre les écoulements (parfaits) prédits et ceux observés expérimentalement à une ``condition d'adhérence'' qui devait prévaloir aux parois. Coulomb démontra par la suite expérimentalement qu'un disque oscillant dans un liquide ne semblait pas particulièrement affecté par un changement de ses propriétés de surface (lisse, rugueuse ou recouverte de graisse), si bien qu'il lui semblait également que la vitesse de l'écoulement correspondait à celle du disque. Dans cette vision, le fluide a les mêmes propriétés en tout point de l'espace, et il satisfait simplement une condition additionnelle à la paroi.
-%
-%Mais au cours du \textsc{XIX}$^e$ siècle des théories concurrentes sont apparues. Girard proposa ainsi que la couche liquide touchant la paroi avait des propriétés physiques différentes l'amenant à adhérer au solide. La couche directement adjacente (composée de fluide ``normal'') pouvait quant à elle glisser parfaitement sur la première. Navier s'intéressa également au problème et avança une condition limite impliquant un glissement proportionnel à la contrainte de cisaillement $\beta u = \mu \pd{u}{n}$, où le ratio $\mu/\beta$ a la dimension d'une longueur : la \textit{longueur de glissement}. Il s'en suivit une période de relative confusion, où les grands théoriciens de l'époque (Poisson, Stokes) ont adopté alternativement l'une ou l'autre des conditions limites.
-%
-%Au fil du temps cependant, des expériences fines conduites notamment par Couette ou Maxwell firent définitivement pencher la balance du côté de la condition d'adhérence. Maxwell suggéra sur des considérations moléculaires que si la condition de Navier est bien à l'\oe uvre, la longueur sur laquelle s'effectue le glissement est si petite -- de l'ordre de quelques libre-parcours moyens -- qu'il est très raisonnable de la considérer nulle, i.e. de considérer adhérence à la paroi : $\bu = \bu_\text s$. Ceci est en particulier respecté dans les conditions usuelles des expériences et laboratoires, mais pas nécessairement dans des conditions de gaz raréfiés (e.g. rentrée dans l'atmosphère, vol hypersonique) ou d'écoulements de longues chaînes de polymères (écoulements en piste microfluidique), comme le confirment les expériences.
-%
-%Au \textsc{XX}$^e$ siècle, l'accord quasiment parfait entre les observations expérimentales et la prédiction utilisant la condition d'adhérence pour de nombreux écoulements, comme l'écoulement de Poiseuille, de Couette, la chute de la sphère de Stokes en fluide visqueux, le seuil d'instabilité dans l'expérience de Taylor-Couette... ont définitivement convaincu de la validité de cette condition. 
-%
-%Par ailleurs, les lois d'échelle sur la traînée d'un objet déduites de l'analyse dimensionnelle sur la base des échelles caractéristiques $\rho, U, D$ et $\mu$ capturent l'évolution des efforts aérodynamiques sur une vaste plage d'échelles. Si une autre échelle de longueur (associée au glissement à la paroi) était pertinente dans la description des écoulements, les lois d'échelles s'en trouveraient modifiées. 
-%
-%On peut comprendre cette condition d'adhérence (continuité de $\bu$ de part et d'autre de l'interface) tout comme la condition de continuité des températures comme résultant d'équilibre à l'échelle moléculaire : les transferts extrêmement rapides entre molécules adjacentes induisent l'équilibrage instantané de la quantité de mouvement moyenne (vitesse) et de la vitesse d'agitation thermique (température) \citep{Batchelor1967}. À une interface entre un milieu I et un milieu II (solide-fluide, ou fluide-fluide), on aura donc :
-%\begin{equation}
-%\bu_\text I = \bu_\text{II} \quad \text{et} \quad T_\text I = T_\text{II}
-%\end{equation}
+
+Note: in the quite particular (but still very common!) case of a fixed solid object, this condition reduces to $\bu\cdot\bn =0$.
+\prg{Permeable wall.} The previous discussion naturally extends to the case of permeable walls. Those may correspond to biological tissues permeable to given solutes, to materials swollen by solvents, to terrains soaked by rain or to lifting sails or wings made porous in order to control the boundary layer (such as Cousteau and Malavard' turbosail seen in the lecture).
+
+Now the mass flux is non-zero and its precise determination requires a knowledge of the flow \textit{inside} the solid. Suppose however that the imbibition velocity $\bu_\text{imbib}$ be constant and known (this corresponds for example to a suction with an imposed flowrate). The mass conservation at the permeable wall will then be written:
+\begin{equation}
+\rho (\bu-\bu_\text s) \cdot \bn = \rho (\bu_\text{imbib}) \cdot \bn,
+\end{equation}
+thus 
+\begin{equation}
+\bu\cdot\bn = \lp\bu_\text s + \bu_\text{imbib}\rp\cdot\bn.
+\end{equation}
+\prg{Boundary conditions on a concentration field near a wall.\index{boundary conditions!no-flux}}
+The boundary conditions to apply on the transport equation of a concentration field~(\ref{eq:conv_diff}) can be obtainedd following the same principles. Imagine a concentration field transported with a fluid flow $\bu$. Suppose also that an (impermeable) solid is moving in the fluid at velocity $\bu_\text s$. In the solid reference frame the mass flux across any surface $\delA \,\bn$ is:
+\begin{equation}
+\bj_\text{mass} = \bj_\text{conv} + \bj_\text{diff} = c \lp \bu - \bu_s\rp - D \nabla c.
+\end{equation}
+The impermeability condition at the wall for the concentration field $c$ is therefore:
+\begin{equation}
+c (\bu-\bu_\text s) \cdot \bn - D \nabla c \cdot \bn = 0,
+\end{equation}
+because the mass flux inside the solid is zero.
+On using the impermeability condition on the velocity field~(\ref{eq:impermeability}), this relation reduces to:
+\begin{equation}
+\nabla c \cdot \bn \equiv \pd{c}{n} = 0.
+\end{equation}
+This Neumann condition is also called a \textbf{no-flux boundary condition.}
+\prg{Mass transfer at an interface: evaporation.\index{boundary conditions!evaporation}} One last example of boundary conditions arising from conservation considerations is the continuity of the mass flux across a liquid-gas interface, when the liquid is evaporating.
+
+Let's write a mass balance on a fluid element analogous to the previous one: a small cylindrical element of base $\delA$ and height $\delh$ located across a moving interface with velocity $\bu_\text i$. We let the height $\delh$ of the element tend to zero, so that the element mass equally tends to zero. The mass balance over this element is:
+\begin{equation}
+\bj_\text{liquid conv.} = \bj_\text{gas conv.} + \bj_\text{gas diff.}
+\end{equation}
+so that :
+\begin{equation}
+\rho_\ell \lp\bu_\ell - \bu_\text i\rp \cdot \bn = \rho_v \lp\bu_g -\bu_\text i\rp\cdot \bn - D \nabla \rho_v \cdot n.
+\end{equation}
+In the case of a violent evaporation (e.g. combustion front), the flux is dominated by convection effects and 
+$$\bu_g \sim \underbrace{\frac{\rho_\ell}{\rho_v}}_{\gg 1} \bu_\ell$$
+so that the (so-called Stefan) flow induced in the vapour is much stronger than that in the liquid.
+In the other limit where evaporation is very slow (case of a slowly drying water drop), it is rather the diffusive term that dominates.
+\section{Phenomenological conditions: adherence and continuity}
+In addition to the previous boundary conditions arising from conservation principles, fluids are also subject to other boundary conditions as well. The latter have been established and confirmed on experimental grounds, so there is a consensus about their relevance but not an exact demonstration. These phenomenological conditions are \textbf{field continuity conditions} at interfaces and apply on velocity, temperature etc.
+
+\paragraph{$\rhd$ A short history of adherence.\index{boundary conditions!adherence}} The adherence condition $\bu = \bu_\mathrm{s}$ has an astonishing history full of twists and turns, which is accounted for in details in \citet{Goldstein1950}. At the \textsc{xviii}$^\text{th}$ century, the theoretical description of potential flows (corresponding to the idealisation of perfect flow of fluid) was already well established, but the comparisons with experimental data were mediocre. Daniel Bernoulli was well aware of this fact and attributed the discrepancies between (ideal) predicted flows and those observed to some ``adherence condition'' that would prevail at the wall. Coulomb then demonstrated experimentally that an disk oscillating in a liquid was not particularly affected by a change in surface properties (smooth, rough or covered with grease). Therefore it appeared to Coulomb that the fluid velocity matched the disk velocity in its vicinity. In this vision the fluid has the same properties in every point of space; the flow just fulfils an additional condition at the wall.
+
+But during the \textsc{xix}$^\text{th}$ century alternate theories appeared. Girard proposed that the lqiuid layer adjacent to a wall had differing physical properties, leading it to adhere the solid. The next fluid layer (composed of ``regular fluid'') could then freely slip onto the first affixed layer. Navier also got interested into this problem and suggested a boundary condition involving a slip directly proportional to the shear stress $\beta u = \mu \pd{u}{n}$. Here the ratio $\mu/\beta$ has the dimension of a length: it is the \textit{slip length}. From there a period of relative confusion ensued where famous theoreticians of the time (Poisson, Stokes) alternately adopted one or the other of the boundary conditions.
+
+With time however, delicate experiments conducted by Couette or Maxwell advocated definitely for the adherence condition. Maxwell suggested on molecular dynamics considerations that if Navier's condition was effectively valid, the length over which slip occurred was so small -- of the order of a few mean free paths -- that considering it to be zero was a really reasonable hypothesis. This amounted to consider adherence at the wall: $\bu = \bu_\text s$ \citep{Maxwell1879}. This is in particular verified in the usual conditions of laboratory experiments, but not necessarily for rarefied gas flows (e.g. atmospheric reentry, hypersonic flight) or flows involving fluids with long polymer chains (microfluidic flows), as experiments confirm.
+
+During the \textsc{xx}$^\text{th}$ century, the almost perfect agreement between experimental observations and theoretical predictions using adherence condition for a number of flows (Poiseuille flow, Couette flow, Stokes' sphere settlement in a viscous fluid, the instability threshold for the Taylor-Couette experiment etc) definitely settled the validity of this condition.
+
+Moreover, the scaling laws for the drag on an object deduced from dimensional considerations based on the characteristic scales $\rho, U, D$ and $\mu$ capture the evolution of aerodynamic forces over a wide range of scales. If another lengthscale (associated with slip) was relevant in the description of conventional flows, it would result in an alteration of the scaling laws (not observed).
+
+We can understand adherence condition (continuity of $\bu$ across an interface) but also the condition on temperature continuity as resulting from equilibrium at the molecular level. The extremely rapid transfers between neighbouring molecules induce a quasi-instantaneous equilibrium of mean momentum (velocity) and mean thermal agitation velocity (temperature) \citep{Batchelor1967}. At an interface between a medium \textsc{i} and a medium \textsc{ii} (solid-fluid, or fluid-fluid), we will therefore get:
+\begin{equation}
+\bu_\text{\textsc{i}} = \bu_\text{\textsc{ii}} \quad \text{and} \quad T_\text{\textsc{i}} = T_\text{\textsc{ii}}.
+\end{equation}
