@@ -83,7 +83,7 @@ A practical consequence of these relations is the \textbf{unicity} of the Stokes
 \label{fig:reversibility}
 \end{center}
 \end{figure}
-This counter-intuitive phenomenon is illustrated on figure~\ref{fig:reversibility}. A drop of dye mixed by differential rotation in a Taylor-Couette apparatus can be ``unmixed'' by reversing the boundary velocity. This reversal property can be mathematically understood by noting that changing the sign of the boundary velocity in \eqref{eq:stokes_green_velocity_boundary} simply changes the sign of the solution. Alternatively it can also be noted that the transformation $(\bu,p)\to(-\bu,-p)$ also yields a solution of the Stokes equation~\eqref{eq:stokes_equation} (provided that the boundary conditions are transformed as well).
+This counter-intuitive phenomenon is illustrated on figure~\ref{fig:reversibility}. A drop of dye mixed by differential rotation in a Taylor-Couette apparatus can be ``unmixed'' by reversing the boundary velocity. From a mathematical point of view, this reversal property can be understood by noting that changing the sign of the boundary velocity in \eqref{eq:stokes_green_velocity_boundary} simply changes the sign of the solution. Alternatively it can also be noted that the transformation $(\bu,p)\to(-\bu,-p)$ also yields a solution of the Stokes equation~\eqref{eq:stokes_equation} (provided that the boundary conditions are transformed as well).
 
 \prg{A paradox?} From a physical point of view, this reversibility is more troublesome: if diffusion is associated with irreversible microscopic phenomena, how can diffusion-dominated flows be reversible? Actually the reversal illustrated figure~\ref{fig:reversibility} is purely \textit{kinematic}: while the velocity fields have been reversed and the drop of dye retrieved its overall initial position, molecular diffusion has acted on the microscopic scale as evidenced by the slightly smeared aspect of the final drop, heat has been produced by viscous dissipation and the entropy of the final state is indeed higher than that of the starting state. 
 \section{Moving in a viscous world}
@@ -108,6 +108,7 @@ These expressions allow to evaluate the stresses at the sphere surface and to de
 An alternative and very useful viewpoint is to present these results in terms of the force $\mathbf f=-\bF$ exerted by the sphere on the fluid:
 \begin{equation}
 u_i \,=\, \underbrace{\frac{1}{8 \pi\mu R}f_j\lp\frac{\delta_{ij}}{r}+\frac{r_ir_j}{r^3}\rp}_\text{Stokeslet contribution} +\frac{R^2}{8\pi\mu R}f_j\lp\frac{\delta_{ij}}{3r^3}-\frac{r_ir_j}{r^5}\rp.
+\label{eq:stokes_force_sphere}
 \end{equation}
 Interestingly if we were to shrink the size of the sphere to 0 while keeping the force constant, the only remaining term in the flow field would be the first one. This so-called Stokeslet contribution is of fundamental importance in suspension dynamics, bacteria hydrodynamics and more generally in the modelling of viscous flows.
 \subsection{Point force induced flow: the Stokeslet\index{Stokeslet}}
@@ -178,8 +179,18 @@ to finally obtain the expression of the Stokeslet velocity field~\eqref{eq:stoke
 \begin{equation}
 \bu_\text{stokeslet}=\frac{1}{8\pi\mu}\tensorsym S \mathbf f.
 \end{equation}
-%Superposition
-%
+\subsection{The motion of slender objects}
+We have seen that in the limit of radius shrinking down to zero, a sphere applying a force to a viscous fluid generates a Stokeslet flow. But looking back at the full expression for the flow set into motion by a sphere of finite size~\eqref{eq:stokes_force_sphere}, it is apparent that the total contribution is actually composed of two parts: a Stokeslet and higher-order singularity -- a dipole. Without entering into the details of the derivation, \citet{Hancock1953} and \citet{Lighthill1975} proposed to describe the fluid flows around more general, and slender, objects, as integrals of Stokeslets and dipole contribution. More precisely it appears that the force exerted by a viscous fluid on a very long cylinder of radius $R$ and length $L$ depends on the orientation of the flow. If the flow is perpendicular to the filament axis, the force exerted on the cylinder per unit length is:
+\begin{subequations}
+\begin{equation}
+f_\perp \simeq c_\perp u_\perp \quad \text{with}\quad c_\perp=\frac{4\pi\mu}{\ln(L/R)}.
+\end{equation}
+And similarly, if the flow is now parallel to the fibre:
+\begin{equation}
+f_\parallel \simeq c_\parallel u_\parallel \quad \text{with}\quad c_\parallel=\frac{2\pi\mu}{\ln(L/R)}.
+\end{equation}
+\end{subequations}
+Note that there is a factor 2 between $f_\perp$ and $f_\parallel$. This drag anisotropy has consequences on the settling of slender objects that we shall not detail here, but the interested reader will find detailed and useful accounts in \citet{Duprat2016} or \citet{Lauga2020} for example. 
 %\section{Bacterial hydrodynamics}
 %
 %Waving sheet Taylor
