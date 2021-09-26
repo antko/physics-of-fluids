@@ -1,0 +1,203 @@
+% !TEX root = ./physics_of_fluids.tex
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\chapter{Viscous flows}
+\label{chap:viscous_flows}
+Whenever the viscous diffusion timescale $\rho L^2/\mu$ is short with respect to inertial $L/U$ or imposed $\omega^{-1}$ timescales, flows will be dominated by viscosity. This situation occurs of course if the viscosity of the material is high, e.g. with mud, magma or glass melt (figure~\ref{fig:viscous_flows}) but not only. Glaciers were reported to flow as early as 1873 \citep{Aitken1873}. These so-called \textit{rivers of ice} indeed flow, albeit very slowly -- typically less than a metre a day -- making inertial phenomena irrelevant (figure~\ref{fig:viscous_flows}; see also the slow motion footage taken by BBC Earth Lab \url{https://youtu.be/ghC-Ut0fW4o}). At very small scales where bacteria and algae evolve, diffusion competes and usually overcomes inertial effects. As a result, microorganisms living at such scales have evolved non-intuitive strategies to move as we will see next.
+
+In all these examples the ratio between the diffusive and inertial timescales -- the Reynolds number Re = $\rho U L/\mu$ -- is much smaller than one. Fluid motion can still be described with the Navier-Stokes equations in this context, but we will now see that the condition Re $\ll$ 1 implies that some terms have not the same order of magnitude than others. Exploiting the low-Re number hypothesis will enable us to obtain the relevant equation for viscous flow motion, the \textbf{Stokes equation}.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[height=4cm]{Briksdalsbreen.jpg}
+\includegraphics[height=4cm]{fiberglass.jpg}
+\includegraphics[height=4cm]{sorin.png}
+\includegraphics[width=15cm]{salmonella.png}
+\caption{\textbf{Flows dominated by viscosity.} Top left : the Briksdalsbreen glacier in Norway is slowly flowing into a lake (photograph by vicrogo, public domain). Top middle: glass fibre manufacturing (photograph Saint-Gobain). Top right: modern optical fibre drawing process allow to produce multilayered fibres \citep{Abouraddy2007}. Bottom: micron-sized salmonellae swim with the help of a bundle of rotating helicoidal flagellae \citep{Elgeti2015}.}
+\label{fig:viscous_flows}
+\end{center}
+\end{figure}
+
+\section{Low-Re number flows}
+Whenever fluids have a high viscosity $\mu$, or flow at small scale $L$ or with a low velocity $U$, the equations describing their motion can be greatly simplified. This can be seen by non dimensionalising the equations of motions with the natural scales of the problem $\bU=U\bu$, $\bX=L\bx$ (here we denote dimensioned quantities with capital letters). The pressure can be made dimensionless with a natural viscous scale $P=\mu\frac{U}{L}p$ and finally if there is a imposed timescale $\omega^{-1}$ (e.g. the inverse of the swimming frequency) we may write $T=\omega^{-1}t$.
+\begin{equation}
+\mathrm{Re}_\omega\pd{\bu}{t} + \mathrm{Re}\lp\bu\cdot\nabla\rp\bu=-\nabla p+\Delta \bu.
+\label{eq:pre-stokes_equation}
+\end{equation}
+Here, two Reynolds numbers appear:
+\begin{equation}
+\mathrm{Re}_\omega=\frac{\rho L^2 \omega}{\mu} \quad \text{and} \quad \mathrm{Re}=\frac{\rho U L}{\mu},
+\end{equation}
+which each may be interpreted as a ratio of timescales as seen in the introduction of this chapter. Note that for e.g. flagellae propelled microorganisms, the oscillatory Reynolds number $\mathrm{Re}_\omega$ involves the relevant velocity scale $L\omega$ for the fluid set into motion by the oscillating flagella.
+
+In equation~\eqref{eq:pre-stokes_equation} each variable has been rescaled with its expected range of variation range. Therefore each of the force terms (right hand side) is $\mathcal O(1)$ while the unsteady and convective part of momentum variation (left hand side) are respectively of order $\mathrm{Re}_\omega$ and $\mathrm{Re}$. For flows without an imposed frequency (flowing glass melts or glacier flow), these two numbers will be identical. But if the flow is produced by an oscillating object, they can significantly differ. Table~\ref{tbl:Reynolds} reports an estimation of these two Reynolds numbers for a range of organisms living in aqueous environments, where it can be seen that the double condition $\mathrm{Re}_\omega\ll 1$, $\mathrm{Re}\ll 1$ is fulfilled in the realm of microorganisms.
+\begin{table}
+\begin{center}
+\begin{tabular}{ccccccc}
+Organism & length & velocity & frequency & Re & Re$_\omega$\\
+\hline\hline
+\textbf{Bacterium} & 10 $\mu$m & 10 $\mu$m/s & 100 Hz & \textbf{10$^\text{-4}$} & \textbf{10$^\text{-2}$}\\
+\textbf{Spermatozoon} & 100 $\mu$m & 100 $\mu$m/s & 10 Hz & \textbf{10$^\text{-2}$} & \textbf{10$^\text{-1}$}\\
+\textbf{Ciliate} & 100 $\mu$m & 1 mm/s & 10 Hz & \textbf{10$^\text{-1}$} & \textbf{10$^\text{-1}$}\\
+Tadpole & 1 cm & 10 cm/s & 10 Hz & 10$^\text{3}$ & 10$^\text{3}$\\
+Small fish & 10 cm & 10 cm/s & 10 Hz & 10$^\text{4}$ & 10$^\text{5}$\\
+Penguin & 1 m & 1 m/s & 1 Hz & 10$^\text{6}$ & 10$^\text{6}$\\
+Sperm whale & 10 m & 1 m/s & 0.1 Hz & 10$^\text{7}$ & 10$^\text{7}$\\
+\hline
+\end{tabular}
+\end{center}
+\caption{\textbf{Reynolds number for different living organisms.} Bacteria, spermatozoa and ciliates are all characterised by Reynolds numbers Re and Re$_\omega$ much smaller than unity. The flowing fluid in their vicinity is therefore accurately described with the Stokes equation. Data from \citet{Lauga2020}.}
+\label{tbl:Reynolds}
+\end{table}
+
+In this limit, the Navier-Stokes equation reduces to the much simpler \textbf{Stokes equation}\index{Stokes equation}:
+\begin{equation}
+\nabla p=\Delta \bu\quad\text{or, in its dimensioned version:}\quad\nabla P=\mu\Delta \bU.
+\label{eq:stokes_equation}
+\end{equation}
+
+\prg{Cauchy equation.} The Stokes equation may also be rewritten as the following \textit{Cauchy equation}:
+\begin{equation}
+\nabla\cdot\tensorsym\sigma=\matrixsym 0.
+\end{equation} 
+With this formulation it becomes apparent that viscous flows are \textit{force free}: in absence of significant inertia, the forces balance each other.
+
+\section{Stokes flow's properties}
+\prg{Linearity.} The Stokes equation~\eqref{eq:stokes_equation} is \textbf{linear}: this means that elementary solutions can be used to construct more involved ones, either as a weighted sum of individual singular solutions or as a convolution integral between an appropriate Green's function and data boundaries. For example, the knowledge of the velocity $\bU$ at the boundary $S$ of a fluid domain allows to express the fluid velocity $\bu$ at any point $\br$ of the domain as:
+\begin{equation}
+u_i(\br)=\int_S \mathcal G_{ij}(\br|\br_0)U_j(\br_0)\,\mathrm dS(\br_0).
+\label{eq:stokes_green_velocity_boundary}
+\end{equation}
+Similarly a knowledge of the \textit{forces}\footnote{\textit{Mixed boundary conditions}, constituted of velocity data on part of the boundaries, and forces data on other, can be treated with the same procedure.} $\bF$ at the domain boundary would lead to the following formal form for the solution:
+\begin{equation}
+u_i(\br)=\int_S g_{ij}(\br|\br_0)F_j(\br_0)\,\mathrm dS(\br_0). 
+\end{equation}
+A practical consequence of these relations is the \textbf{unicity} of the Stokes flow solution: the boundary conditions uniquely determine the solution. This contrasts with the multitude of solutions that can be encountered for higher Reynolds number and originate (mathematically) from the nonlinear term of the Navier-Stokes equation.
+\prg{Reversibility.\index{Stokes reversibility}} Another quite surprising property of Stokes flow is their \textbf{reversibility}. 
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=4cm]{taylor_reversibility_1.png}
+\includegraphics[width=4cm]{taylor_reversibility_2.png}
+\includegraphics[width=4cm]{taylor_reversibility_3.png}
+\caption{\textbf{Stokes flow kinematic reversibility.} Left: a drop of dye is injected in a quiescent viscous liquid filling the space between two concentric cylinders. Middle: on rotating the inner cylinder with a handle, the dye is stretched and stirred so that it becomes barely visible. Right: reversing the cylinder motion allows to relocate the dye's drop at its initial position almost perfectly (from G.I. Taylor's \textit{Low-Reynolds-Numbers Flows} movie \copyright\ National Committee for Fluid Mechanics Films / Education Development Center).}
+\label{fig:reversibility}
+\end{center}
+\end{figure}
+This counter-intuitive phenomenon is illustrated on figure~\ref{fig:reversibility}. A drop of dye mixed by differential rotation in a Taylor-Couette apparatus can be ``unmixed'' by reversing the boundary velocity. From a mathematical point of view, this reversal property can be understood by noting that changing the sign of the boundary velocity in \eqref{eq:stokes_green_velocity_boundary} simply changes the sign of the solution. Alternatively it can also be noted that the transformation $(\bu,p)\to(-\bu,-p)$ also yields a solution of the Stokes equation~\eqref{eq:stokes_equation} (provided that the boundary conditions are transformed as well).
+
+\prg{A paradox?} From a physical point of view, this reversibility is more troublesome: if diffusion is associated with irreversible microscopic phenomena, how can diffusion-dominated flows be reversible? Actually the reversal illustrated figure~\ref{fig:reversibility} is purely \textit{kinematic}: while the velocity fields have been reversed and the drop of dye retrieved its overall initial position, molecular diffusion has acted on the microscopic scale as evidenced by the slightly smeared aspect of the final drop, heat has been produced by viscous dissipation and the entropy of the final state is indeed higher than that of the starting state. 
+\section{Moving in a viscous world}
+A paradigm for motion in viscous fluids is the settlement of a sphere, first investigated by Stokes. Arguably lengthy calculations (see tutorial) allow to obtain the expression for the velocity and pressure field around a sphere of radius $R$ settling steadily at velocity $-\bV^\infty$ in a quiescent viscous fluid in its reference frame:
+\begin{subequations}
+\label{eq:stokes_sphere}
+\begin{empheq}[left=\empheqlbrace]{alignat=2}
+u_i &\,=\,&& -\frac{3R}{4}V^\infty_j\lp\frac{\delta_{ij}}{r}+\frac{r_ir_j}{r^3}\rp -\frac{3R^3}{4}V^\infty_j\lp\frac{\delta_{ij}}{3r^3}-\frac{r_ir_j}{r^5}\rp,\\
+p-p_\infty&\,=\,&&-\frac{3\mu R}{2}\frac{V^\infty_jr_j}{r^3}.
+\end{empheq}
+\end{subequations}
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics{guazzelli_fixed_sphere.pdf}
+\includegraphics{guazzelli_moving_sphere.pdf}
+\caption{\textbf{Spheres in viscous flows}. Left: A fixed sphere deflects the surrounding flowing fluid. Right: A moving sphere in a still environment pushes the fluid in its vicinity \citep{Guazzelli2011}.}
+\label{fig:viscous_spheres}
+\end{center}
+\end{figure}
+These expressions allow to evaluate the stresses at the sphere surface and to deduce the well-known \textbf{Stokes drag}\index{Stokes drag}  $\bF = 6 \pi \mu R \bV^\infty$ exerted on the sphere.
+
+An alternative and very useful viewpoint is to present these results in terms of the force $\mathbf f=-\bF$ exerted by the sphere on the fluid:
+\begin{equation}
+u_i \,=\, \underbrace{\frac{1}{8 \pi\mu R}f_j\lp\frac{\delta_{ij}}{r}+\frac{r_ir_j}{r^3}\rp}_\text{Stokeslet contribution} +\frac{R^2}{8\pi\mu R}f_j\lp\frac{\delta_{ij}}{3r^3}-\frac{r_ir_j}{r^5}\rp.
+\label{eq:stokes_force_sphere}
+\end{equation}
+Interestingly if we were to shrink the size of the sphere to 0 while keeping the force constant, the only remaining term in the flow field would be the first one. This so-called Stokeslet contribution is of fundamental importance in suspension dynamics, bacteria hydrodynamics and more generally in the modelling of viscous flows.
+\subsection{Point force induced flow: the Stokeslet\index{Stokeslet}}
+The Stokeslet is a fundamental solution for the Stokes equation, and describes the flow that would be induced by a point force $\mathbf f\, \delta(\bx-\bx_0)$ located at $\bx = \bx_0$. The corresponding velocity and pressure fields therefore satisfy the following \textit{forced Stokes equation}:
+\begin{equation}
+-\nabla p + \mu \Delta \bu + \mathbf f \,\delta(\bx-\bx_0) = \matrixsym 0.
+\label{eq:forced_stokes_equation}
+\end{equation}
+Note that in this expression $\mathbf f$ is a constant vector. 
+
+The flow field solution is termed \textbf{Stokeslet} and is characterized by: 
+\begin{equation}
+\left.\bu_{\text{stokeslet}}\right|_i(\bx)=\frac{1}{8\mathrm\pi\mu}\mathcal S_{ij}(\bx |\bx_0) f_j,
+\label{eq:stokeslet_velocity_component}
+\end{equation}
+with $\mathcal S_{ij}$ being the \textit{Oseen-Burgers tensor} defined as:
+\begin{equation}
+\mathcal S_{ij}=\frac{\delta_{ij}}{r}+\frac{r_i r_j}{r^3}.
+\end{equation}
+Let's now see in more details how this solution is constructed. To so so it will prove useful to first introduce the Green's function for Laplace equation $g(\bx |\by)$.
+\prg{Green's function\index{Green's function} for Laplace equation.} The Green's function $g(x|y)$ for Laplace equation is the function satisfying:
+\begin{equation}
+\Delta g(\bx |\by) = \delta\lp\bx-\by\rp.
+\end{equation}
+It is an harmonic function of space except at the point $\bx=\by$ where it is singular. Symmetry considerations on this function suggest that it only depends on the radius $r = \left\|\bx-\by\right\|$. On integrating over a small ball containing the singularity we get:
+$$
+\oiint \pd{g}{r} \mathrm dS = 1,
+$$
+so that the Green's function for Laplace equation is:
+\begin{equation}
+g(\bx |\by) = -\frac{1}{4\mathrm{\pi}r}.
+\end{equation}
+\prg{Stokeslet obtention.} With the help of the Green's function for Laplace equation, the divergence of the forced Stokes equation~\eqref{eq:forced_stokes_equation} may be written as
+\begin{equation}
+\Delta\lp p-\mathbf f\cdot\nabla\lp-\frac{1}{4\pi r}\rp\rp = 0.
+\end{equation}
+The maximum principle for harmonic functions allows us to directly write the pressure as:
+\begin{equation}
+p=\mathbf f\cdot\nabla\lp-\frac{1}{4\pi r}\rp.
+\end{equation}
+Injecting this form for the pressure in equation~\eqref{eq:forced_stokes_equation} we obtain:
+\begin{equation}
+\mu \Delta u_i=\frac{1}{4\mathrm\pi}\lp\underbrace{\delta_{ij}\pd{}{x_k}\pd{}{x_k}}_{\tensorsym I \Delta}\lp\frac{1}{r}\rp-\underbrace{\pd{}{x_i}\pd{}{x_j}}_{\nabla\nabla}\lp\frac{1}{r}\rp\rp f_j.
+\label{eq:stokeslet_velocity_laplacian}
+\end{equation}
+From the structure of this relationship, the adventurous reader might tempt to look for a solution of the form:
+\begin{equation}
+ u_i=\frac{1}{4\mathrm\pi}\lp\delta_{ij}\Delta \mathcal H-\pd{^2\mathcal H}{x_ix_j}\rp f_j.
+\label{eq:stokeslet_velocity_form}
+\end{equation}
+Note that this velocity field is solenoidal, as:
+\begin{equation}
+ u_{i,i}=\frac{1}{4\mathrm\pi}\lp\Delta \mathcal H_{,j}-\Delta \mathcal H_{,j}\rp f_j \equiv 0.
+\end{equation}
+Injecting~\eqref{eq:stokeslet_velocity_form} into~\eqref{eq:stokeslet_velocity_laplacian} we get:
+\begin{equation}
+\frac{1}{4\mathrm\pi}\lp\tensorsym I\delta-\nabla\nabla\rp\lp\mu\Delta\mathcal H-\lp\frac{1}{r}\rp\rp=0.
+\end{equation}
+This reduces to the following Poisson equation for $\mathcal H$\footnote{Note that we did not consider the integration constants because they would not appear in the velocity field expression anyway.}:
+\begin{equation}
+\mu\Delta\mathcal H=\frac{1}{r} \quad\text{with solution:}\quad\mathcal H=\tfrac{1}{2\mu}r.
+\end{equation}
+Noting that $r=\lp r_kr_k\rp^{1/2}$, we deduce:
+\begin{equation}
+r_{,i}=\frac{r_{k,i}r_k}{(r_mr_m)^{1/2}}\equiv\frac{x_i}{r} \quad \text{and similarly} \quad r_{,ij}=\frac{\delta_{ij}}{r}-\frac{r_ir_j}{r^3},
+\end{equation}
+to finally obtain the expression of the Stokeslet velocity field~\eqref{eq:stokeslet_velocity_component} we were looking for:
+\begin{equation}
+\bu_\text{stokeslet}=\frac{1}{8\pi\mu}\tensorsym S \mathbf f.
+\end{equation}
+\subsection{The motion of slender objects}
+We have seen that in the limit of radius shrinking down to zero, a sphere applying a force to a viscous fluid generates a Stokeslet flow. But looking back at the full expression for the flow set into motion by a sphere of finite size~\eqref{eq:stokes_force_sphere}, it is apparent that the total contribution is actually composed of two parts: a Stokeslet and higher-order singularity -- a dipole. Without entering into the details of the derivation, \citet{Hancock1953} and \citet{Lighthill1975} proposed to describe the fluid flows around more general, and slender, objects, as integrals of Stokeslets and dipole contribution. More precisely it appears that the force exerted by a viscous fluid on a very long cylinder of radius $R$ and length $L$ depends on the orientation of the flow. If the flow is perpendicular to the filament axis, the force exerted on the cylinder per unit length is:
+\begin{subequations}
+\begin{equation}
+f_\perp \simeq c_\perp u_\perp \quad \text{with}\quad c_\perp=\frac{4\pi\mu}{\ln(L/R)}.
+\end{equation}
+And similarly, if the flow is now parallel to the fibre:
+\begin{equation}
+f_\parallel \simeq c_\parallel u_\parallel \quad \text{with}\quad c_\parallel=\frac{2\pi\mu}{\ln(L/R)}.
+\end{equation}
+\end{subequations}
+Note that there is a factor 2 between $f_\perp$ and $f_\parallel$. This drag anisotropy has consequences on the settling of slender objects that we shall not detail here, but the interested reader will find detailed and useful accounts in \citet{Duprat2016} or \citet{Lauga2020} for example. 
+%\section{Bacterial hydrodynamics}
+%
+%Waving sheet Taylor
+%
+%Scallop theorem
+%
+%Bacteria with flagellae
+%
+%\section{Flows at the nanoscale}
+%Slip length

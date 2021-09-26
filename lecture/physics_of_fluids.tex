@@ -105,9 +105,13 @@
 \newcommand{\bt}{\matrixsym t}
 \newcommand{\be}{\matrixsym e}
 \newcommand{\bu}{\matrixsym u}
+\newcommand{\bU}{\matrixsym U}
 \newcommand{\bv}{\matrixsym v}
+\newcommand{\bV}{\matrixsym V}
 \newcommand{\bw}{\matrixsym w}
 \newcommand{\bx}{\matrixsym x}
+\newcommand{\bX}{\matrixsym X}
+\newcommand{\by}{\matrixsym y}
 \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\D}[2]{\frac{D #1}{D #2}}
 \newcommand{\dd}[2]{\frac{\mathrm d #1}{\mathrm d #2}}
@@ -128,21 +132,29 @@
 \newcommand{\tensor}[1]{\smash{\uuline{#1}{}}}
 \setlength{\parindent}{0pt} % remove indent
   
+\counterwithout{footnote}{chapter}
+
 \begin{document}
 {
 \title{\textit{Physics of fluids \& nonlinear physics}}
 %\author{Arnaud Antkowiak \qquad Camille Duprat}
 \author{
-  Arnaud Antkowiak\footnote{\href{mailto:arnaud.antkowiak@upmc.fr}{arnaud.antkowiak@upmc.fr}}
+  \textsc{Arnaud Antkowiak}\footnote{\href{mailto:arnaud.antkowiak@upmc.fr}{arnaud.antkowiak@upmc.fr}}\\ \textsc{Sorbonne Université}
   \and
-  Camille Duprat\footnote{\href{mailto:camille.duprat@ladhyx.polytechnique.fr}{camille.duprat@ladhyx.polytechnique.fr}}
+  \textsc{Camille Duprat}\footnote{\href{mailto:camille.duprat@ladhyx.polytechnique.fr}{camille.duprat@ladhyx.polytechnique.fr}}\\ \textsc{École polytechnique}
 }
-\date{v0.21.09$_\text{12}$}
+%\author{Arnaud Antkowiak}
+%\affil{Sorbonne Université}
+%\author{Camille Duprat}
+%\affil{École polytechnique}
+
+\date{v0.21.09$_\text{26}$}
 \maketitle
 \tableofcontents
 }
 \input{./01_equations.tex}
 \input{./02_boundary_conditions.tex}
+\input{./03_viscous_flows.tex}
 \bibliographystyle{jfm}
 \bibliography{biblio_pof}
 \printindex
