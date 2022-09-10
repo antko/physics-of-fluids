@@ -107,7 +107,7 @@ These expressions allow to evaluate the stresses at the sphere surface and to de
 
 An alternative and very useful viewpoint is to present these results in terms of the force $\mathbf f=-\bF$ exerted by the sphere on the fluid:
 \begin{equation}
-u_i \,=\, \underbrace{\frac{1}{8 \pi\mu R}f_j\lp\frac{\delta_{ij}}{r}+\frac{r_ir_j}{r^3}\rp}_\text{Stokeslet contribution} +\frac{R^2}{8\pi\mu R}f_j\lp\frac{\delta_{ij}}{3r^3}-\frac{r_ir_j}{r^5}\rp.
+u_i \,=\, \underbrace{\frac{1}{8 \pi\mu}f_j\lp\frac{\delta_{ij}}{r}+\frac{r_ir_j}{r^3}\rp}_\text{Stokeslet contribution} +\frac{R^2}{8\pi\mu}f_j\lp\frac{\delta_{ij}}{3r^3}-\frac{r_ir_j}{r^5}\rp.
 \label{eq:stokes_force_sphere}
 \end{equation}
 Interestingly if we were to shrink the size of the sphere to 0 while keeping the force constant, the only remaining term in the flow field would be the first one. This so-called Stokeslet contribution is of fundamental importance in suspension dynamics, bacteria hydrodynamics and more generally in the modelling of viscous flows.
@@ -165,7 +165,7 @@ Note that this velocity field is solenoidal, as:
 \end{equation}
 Injecting~\eqref{eq:stokeslet_velocity_form} into~\eqref{eq:stokeslet_velocity_laplacian} we get:
 \begin{equation}
-\frac{1}{4\mathrm\pi}\lp\tensorsym I\delta-\nabla\nabla\rp\lp\mu\Delta\mathcal H-\lp\frac{1}{r}\rp\rp=0.
+\frac{1}{4\mathrm\pi}\lp\tensorsym I\Delta-\nabla\nabla\rp\lp\mu\Delta\mathcal H-\lp\frac{1}{r}\rp\rp=0.
 \end{equation}
 This reduces to the following Poisson equation for $\mathcal H$\footnote{Note that we did not consider the integration constants because they would not appear in the velocity field expression anyway.}:
 \begin{equation}
