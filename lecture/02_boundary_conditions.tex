@@ -4,6 +4,18 @@
 \chapter{Boundary conditions and interfaces}
 \label{chap:boundary_conditions}
 We have seen in the previous chapter how to express mass and momentum conservation at the fluid particle level, and we have derived the corresponding equations for fluid motion. These equations are naturally associated with \textbf{boundary conditions} that either express conservation laws (e.g. no mass flux at a boundary) or peculiar physical processes occurring at a surface (temperature or velocity continuity). In both cases these boundary conditions will be pivoting in the determination of the solution.
+
+One striking experimental demonstration of this coupling between the large and the small is provided Fig.~\ref{fig:splash_no_splash}, where two seemingly identical spheres impacting water at the same speed either enter the pool very smoothly or by creating a considerable splash. Actually the difference between the two spheres is a nanometre-thick coating making the sphere either hydrophilic or hydrophobic\index{boundary conditions!hydrophobic, hydrophilic}, thereby revealing how nanometric effects at the boundary can influence large-scale hydrodynamics \citep{Duez2007,Eggers2007}.
+\setlength{\unitlength}{1cm}
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=11cm]{duez.png}
+\caption{Left: a hydrophilic sphere impacts water without creating any significant disturbance. Right: a similar sphere with a nanometre-thick hydrophobic coating creates a significant splash on impact \citep{Duez2007}.}
+\label{fig:splash_no_splash}
+\end{center}
+\end{figure}
+
+We now review the different types of boundary conditions that fluids satisfy at boundaries.
 \section{Fluxes at boundaries: impermeability and imbibition}
 \begin{figure}[htbp]
 \begin{center}
@@ -21,7 +33,7 @@ Let's write arbitrarily $\bn = \bn_\text{fluid} = - \bn_\text{solid}$ so that:
 \begin{equation}
 -\bj_\text{fluid}\cdot \bn +  \bj_\text{solid}\cdot \bn = 0.
 \end{equation}
-Without mixing phenomena, the fluid velocity $\bu$ already takes into account diffusive effects (it is the chemical species velocity) and the mass flux reduces to the convective flux. Beware that as we are in the solid reference frame, the relative velocity of the fluid is $\bu - \bu_\text s$, so that the mass flux on the fluid side is:
+In absence of fluid mixing phenomena, the fluid velocity $\bu$ already takes into account diffusive effects (it is the chemical species velocity) and the mass flux reduces to the convective flux. Beware that as we are in the solid reference frame, the relative velocity of the fluid is $\bu - \bu_\text s$, so that the mass flux on the fluid side is:
 \begin{equation}
 \bj_\text{fluid} = \rho \lp\bu-\bu_\text s\rp.
 \end{equation}
@@ -33,7 +45,15 @@ Without mixing phenomena, the fluid velocity $\bu$ already takes into account di
 This is the \textbf{impermeability condition} for an object (or a wall). As the name implies, it simply expresses the fact that the fluid cannot penetrate into the solid. This condition takes the form of a \textbf{continuity of normal velocities}.
 
 Note: in the quite particular (but still very common!) case of a fixed solid object, this condition reduces to $\bu\cdot\bn =0$.
-\prg{Permeable wall.} The previous discussion naturally extends to the case of permeable walls. Those may correspond to biological tissues permeable to given solutes, to materials swollen by solvents, to terrains soaked by rain or to lifting sails or wings made porous in order to control the boundary layer (such as Cousteau and Malavard' turbosail seen in the lecture).
+\prg{Permeable wall.}\index{boundary conditions!imbibition} The previous discussion naturally extends to the case of permeable walls. Those may correspond to biological tissues permeable to given solutes, to materials swollen by solvents, to terrains soaked by rain or to lifting sails or wings made porous in order to control the boundary layer (such as Cousteau and Malavard' turbosail\index{turbosail} seen in the lecture, see also Fig.~\ref{fig:turbosail}).
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=4cm]{cylinder_without_suction.jpg}
+\includegraphics[width=4cm]{cylinder_with_suction.jpg}
+\caption{Left: A cylinder placed in a crossflow exhibits a wide wake, associated with an important inertial drag force. Right: with an appropriate suction on the cylinder' surface, the flow reattaches and a significant lift is now obtained. This is the underlying principle of the \textbf{turbosail}. Experiments performed in Malavard's lab at ONERA (excerpt from the movie \href{https://dai.ly/x16epb4}{Écoulements tourbillonnaires d'une maquette de turbovoile - 1984}).}
+\label{fig:turbosail}
+\end{center}
+\end{figure}
 
 Now the mass flux is non-zero and its precise determination requires a knowledge of the flow \textit{inside} the solid. Suppose however that the imbibition velocity $\bu_\text{imbib}$ be constant and known (this corresponds for example to a suction with an imposed flowrate). The mass conservation at the permeable wall will then be written:
 \begin{equation}
@@ -66,13 +86,63 @@ Let's write a mass balance on a fluid element analogous to the previous one: a s
 \end{equation}
 so that :
 \begin{equation}
-\rho_\ell \lp\bu_\ell - \bu_\text i\rp \cdot \bn = \rho_v \lp\bu_g -\bu_\text i\rp\cdot \bn - D \nabla \rho_v \cdot n.
+\underbrace{\rho_\ell \lp\bu_\ell - \bu_\text i\rp \cdot \bn}_\text{interface ablation} = \underbrace{\rho_v \lp\bu_g -\bu_\text i\rp\cdot \bn}_\text{Stefan's flow} \underbrace{- D \nabla \rho_v \cdot n}_\text{diffusive mass flux}.
+\label{eq:evaporation_BC}
 \end{equation}
-In the case of a violent evaporation (e.g. combustion front), the flux is dominated by convection effects and 
-$$\bu_g \sim \underbrace{\frac{\rho_\ell}{\rho_v}}_{\gg 1} \bu_\ell$$
-so that the (so-called Stefan) flow induced in the vapour is much stronger than that in the liquid.
-In the other limit where evaporation is very slow (case of a slowly drying water drop), it is rather the diffusive term that dominates.
-%fixme: add reference on Stefan flow
+From this balance it is apparent that the interface evaporation is driven by two contributions: a convective mass flux and a diffusive one. The convective, so-called Stefan flow from the the expansion of liquid solvent into vapour solvent. 
+In the context of a violent evaporation (e.g. boiling, combustion front), this is the dominating contribution and from the balance relation we that in this context:
+$$\bu_g \sim \underbrace{\frac{\rho_\ell}{\rho_v}}_{\gg 1} \bu_\ell.$$
+However in the other limit where evaporation is very slow, which corresponds to everyday life situations, such as the slow drying of a water drop in plain air, this is the reverse. The diffusive mass flux largely overrides the convective (Stefan) flux, so that it can safely be disregarded\footnote{It can be shown that the ratio between Stefan over diffusive flow is simply the mass fraction of solvent in the gas near the interface \citep{Magdelaine2019}. When a liquid is boiling, the air surrounding the interface is pure solvent vapour, so this mass fraction is of order 1 and Stefan's flow contribution becomes important. Conversely, the saturation vapour pressure of water at ambient temperature is 2.3 kPa -- corresponding to a mass fraction of water vapour in air of 1.5 \%. In this limit, the contribution of Stefan's flow is negligible to describe evaporation.}.
+\prg{Application: drop evaporation and D$^2$-law.}\index{drop!evaporation} We can build up on the previous considerations to provide with an estimate of the time it takes for an isolated and still water drop to evaporate in plain air. At first sight, we might be tempted to scale the overall mass loss rate of the drop with its surface $\propto R^2$, and conclude that the radius of the drop decreases linearly with time. However this is not so, because the diffusive transport of water away from the drop sets a bound on how fast the drop evaporates: drop evaporation is an example of a \textbf{diffusion-limited} problem. Drop evaporation in still air was first investigated by \citet{Maxwell1890} who was interested in developing a theory of the wet bulb thermomether -- a curious and ingenious device aimed at measuring air humidity. \citet{Langmuir1918} obtained the very same result years later, without apparent knowledge of Maxwell's former investigations.
+
+Considering a still drop with no motion at constant temperature\footnote{This is arguably a fragile hypothesis, as the latent heat of evaporation is responsible for an overall cooling down of the drop. While D$^2$'s law is found to hold, the prefactor of the law becomes non-trivial when taking all effects into account, see \citet{Cazabat2010} for a discussion.}, we can rewrite the boundary condition~\eqref{eq:evaporation_BC} at the surface of the drop as:
+\begin{equation}
+\rho_\ell \dd{R}{t} = D \left.\pd{c}{r}\right|_{r=R}.
+\label{eq:drop_recoil}
+\end{equation}
+Here we neglected Stefan's flow contribution, and benefited from the spherical symmetry of the problem to project it along~$\be_r$. The velocity of the interface has been replaced with the rate of variation of $R$, and we have denoted $c$ the water vapour concentration, and $D$ its diffusion coefficient in air. It is apparent from this expression that $R$ is directly driven by the vapour density profile in air, which itself is set by diffusion. 
+Introducing air's humidity $\mathcal H$ such that $c = c_\text{sat} \mathcal H$, we may also rewrite this boundary condition as:
+\begin{equation}
+\dd{R}{t} = D \frac{c_\text{sat}}{\rho_\ell} \left.\pd{\mathcal H}{r}\right|_{r=R}.
+\label{eq:drop_recoil_humidity}
+\end{equation}
+Humidity is a dimensionless quantity equal to 1 at the drop' surface, and 0 in dry air (typically this is the value at infinity).
+To make progress, it is therefore necessary to look at the diffusion equation for the water vapour:
+\begin{equation}
+\pd{\mathcal H}{t} = D\frac{1}{r}\frac{\partial^2}{\partial r^2}\left(r \mathcal H\right).
+\label{eq:water_vapour_diffusion}
+\end{equation}
+A quick order of magnitude estimate for the diffusion profile build-up reads:
+$$
+\tau_\text{diff} \sim R^2/D,
+$$
+as pure dimensional analysis could have revealed immediately. This characteristic timescale may conveniently be compared to the drop evaporation timescale, estimated with an order of magnitude analysis from~\eqref{eq:drop_recoil_humidity}:
+\begin{equation}
+\frac{R}{\tau_\text{evap}} \sim D \frac{c_\text{sat}}{\rho_\ell} \frac{\Delta \mathcal H}{R}.
+\label{eq:evaporation_quick_estimate}
+\end{equation}
+Here $\Delta \mathcal H$ is typically of order 1. Rearranging we have:
+$$
+\frac{\tau_\text{diff}}{\tau_\text{evap}} \sim\frac{c_\text{sat}}{\rho_\ell}.
+$$
+For water in air at ambient temperature, $c_\text{sat} = 1.7 \times 10^{-2}$ kg/m$^3$, whereas $\rho_\ell = 1000~$kg/m$^3$. This indicates that evaporation is very slow with regards to diffusion build-up: the water vapour profile adjusts almost instantaneously as the drop shrinks. This justifies the search of a steady-state water vapour profile for \eqref{eq:water_vapour_diffusion}:
+\begin{equation}
+\mathcal H(r) = \frac{R}{r} \Delta \mathcal H + \mathcal H_\infty,
+\end{equation}
+with $\Delta \mathcal H = 1 - \mathcal H_\infty$.
+This humidity field allows to rewrite~\eqref{eq:drop_recoil_humidity} as:
+\begin{equation}
+\dd{R}{t} = - D \frac{c_\text{sat}}{\rho_\ell} \frac{\Delta \mathcal H}{R},
+\end{equation}
+from which we obtain the radius evolution:
+\begin{equation}
+R(t) = \left(R_0^2 - 2 D \frac{c_\text{sat}}{\rho_\ell}\Delta \mathcal H t\right)^{1/2},
+\end{equation}
+a result known as \textit{D$^2$-law of evaporation} (so called because the diameter squared of the drop decreases linearly with time). The timescale of an isolated, evaporating droplet follows:
+\begin{equation}
+\tau_\text{evap} = \frac{1}{2}\frac{R_0^2}{D} \frac{\rho_\ell}{c_\text{sat}} \frac{1}{\Delta \mathcal H},
+\end{equation}
+a result consistent with our quick order of analysis estimate~ \eqref{eq:evaporation_quick_estimate}.
 %fixme: add d2 law for evaporating droplets (e.g. Cazabat et al.) -> tutorial?
 \section{Phenomenological conditions: adherence and continuity}
 In addition to the previous boundary conditions arising from conservation principles, fluids are also subject to other boundary conditions as well. The latter have been established and confirmed on experimental grounds, so there is a consensus about their relevance but not an exact demonstration. These phenomenological conditions are \textbf{field continuity conditions} at interfaces and apply on velocity, temperature etc.
@@ -99,7 +169,7 @@ A wide range of flows are associated with interfaces: avalanches, rivers, oceans
 But before precising the nature of these forces acting on the interface, we first need to be able to know where the interface is! Indeed, an interface is constantly moving by definition and we have to start tracking the interface through time and space. This is the purpose of the \textit{kinematic boundary condition} which will allow us to follow the interface in its motion.
 \subsection{Kinematic boundary condition.\index{boundary conditions!kinematic}} In order to describe the motion of any given interface, as a free surface for example, let's introduce an arbitrary function $\mathcal S(\bx,t)$ that vanishes on the interface at all times: for each point $\bx_\text{interf}$ of the interface,~$\mathcal S(\bx_\text{interf},t)~=~0$. Between two successive instants, an interface point is displaced with a distance $\delbx = \bu_\text i \delt$ and:
 \begin{equation}
-\mathcal S(\bx_\text{interf} + \bu_\text i \delt, t + \delt) \approx \underbrace{\vphantom{\lp\pd{\mathcal S}{t}\rp}\mathcal S(\bx_\text{interf},t)}_0 + \delt\underbrace{\lp\pd{\mathcal S}{t} + \lp\bu_\text  i \cdot \nabla\rp\mathcal S\rp}_{\D{_\text i\mathcal S}{t}} = 0.
+\mathcal S(\bx_\text{interf} + \bu_\text i \delt, t + \delt) \approx \underbrace{\vphantom{\lp\pd{\mathcal S}{t}\rp}\mathcal S(\bx_\text{interf},t)}_0 + \delt\underbrace{\lp\pd{\mathcal S}{t} + \lp\bu_\text  i \cdot \nabla\rp\mathcal S\rp}_{\dd{_\text i\mathcal S}{t}} = 0.
 \end{equation}
 To get the interface velocity $\bu_\text i$\footnote{We note that in the expression of $\mathcal S$, only the normal component $\bu_\text i \cdot \bn$ of $\bu_\text i$ at the interface is involved.} we just need to express the mass flux boundary condition at the interface. If there is no mass transfer at the interface (such as e.g. evaporation), the latter reads:
 \begin{equation}
@@ -107,7 +177,7 @@ To get the interface velocity $\bu_\text i$\footnote{We note that in the express
 \end{equation}
 so that the kinematic boundary condition describing the motion of a free surface simply reads:
 \begin{equation}
-\D{\mathcal S}{t} = 0
+\dd{\mathcal S}{t} = 0
 \end{equation}
 \prg{Example: description of a free surface.} Consider a free surface such as the ocean's, characterised\footnote{We here suppose that the interface is single valued (no wave breaking!).} with $z = \zeta(x,y,t)$. The surface is described at each instant by the vanishing of the function\footnote{We could imagine other functions as well, e.g. $\mathcal S(\bx,t) = \tanh\lp z - \zeta\lp x,y,t\rp\rp$ \ldots} :
 \begin{equation}
@@ -116,7 +186,7 @@ so that the kinematic boundary condition describing the motion of a free surface
 \end{equation}
 The kinematic boundary condition describing the position of the free surface is therefore:
 \begin{equation}
-\D{\mathcal S}{t} = 0 \quad \text{hence}\quad \pd{\zeta}{t} = u_z - u_x \pd{\zeta}{x} - u_y \pd{\zeta}{y}
+\dd{\mathcal S}{t} = 0 \quad \text{hence}\quad \pd{\zeta}{t} = u_z - u_x \pd{\zeta}{x} - u_y \pd{\zeta}{y}
 \end{equation}
 \subsection{Surface geometry I. Normals.\index{normal vector}} In a number of problems involving free surfaces, deformable and/or complex boundaries, the expression for the normal vector has to be provided. A systematic procedure to obtain the expression for this vector stems in remarking that the free surface coincides with a $\mathcal S$-isosurface. As a result the normal vector is necessarily parallel with the \textbf{gradient} of $\mathcal S$ :
 \begin{equation}
@@ -150,7 +220,7 @@ We note the the direction of this normal is quite arbitrary and chosen by conven
 \section{Capillarity\index{surface tension}}
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=4cm]{boys_brush.pdf} \\
+\includegraphics[width=4cm]{boys_brush.pdf}\\
 \includegraphics[height=4cm]{capillary_spool_downsampled.jpg} \quad
 \includegraphics[height=4cm]{gerris_on_water_downsampled.png}
 \end{center}

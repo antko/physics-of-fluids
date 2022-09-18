@@ -4,6 +4,20 @@
 \newpage
 \section*{Modelling fluids}
 %fixme: add intro with the birth and death of a bubble
+\prg{The birth and death of a bubble.} Take a simple bubble grown and swollen by carbon dioxide diffusion in a fizzy drink. When the bubble detaches from its nucleation point, it first starts by vibrating. This is the characteristic noise of bubbling beverages, and it is actually rooted in a competition between bubble compressibility and liquid inertia \citep{Minnaert1933}. After these first few instants (lasting a few milliseconds) where inertia and compressibility matter, the bubble is taken upwards as a result of its buoyancy. During this stage, a complex wake develops behind the bubble where vortices entangle, leading to a nice zigzag and then spiralling ascending motion \citep{Mougin2001}. In this phase lasting few tenths of a second, the bubble motion is no more influenced by compressibility but now by gravity, fluid inertia and viscosity. The bubble now reaches the top of the glass, and squeezes a thin liquid film that will ultimately form the bubble cap. This bubble cap then slowly drains under the sole influence of gravity and capillarity for times that can extend to several tens of a second, depending on the nature of the liquid. At some point, the cap will be so thin that van der Waals effects will kick in and promote a destabilisation of the liquid film in a few microseconds. The punctured film will then be unbalanced and pulled away. In this opening regime of a few milliseconds duration, the dominating effects are now the liquid film inertia and the pulling action of capillarity. At this point, what is left of the bubble is really a hole of the liquid surface. Interestingly, rather than to be simply filled in, the interface will shed capillary ripples trains that will quickly converge to the cavity bottom \citep{Ghabache2014a}. These waves result from a balance between liquid inertia and capillarity. The cavity will then start to violently collapse in a singular event where pressure and velocity will tend to diverge. What happens near the singularity is still a matter of debate today. Right after the collapse we observe a cavity reversal and a thin liquid jet forms, and breaks under the combined action of jet inertia and capillarity. The newly formed droplets will then oscillate and possibly evaporate during their free flight.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[height=4cm]{./pics/bubble_wake.png}
+\includegraphics[height=4cm]{./pics/bubble_burst.pdf}
+\caption{Left: ascending bubble influenced by its spiralling vortex wake (taken from \href{http://basilisk.fr/}{Basilisk}'s website). Right: rapid sequence of events following the bursting of the bubble \citep{Ghabache2014a}.}
+\label{fig:bubble_life}
+\end{center}
+\end{figure}
+
+In this example taken from everyday life, we see that fluid motions, even for a single setup, can be influenced by various effects (phase change, acoustic waves, capillary instability, electrostatic interactions\dots) that over a wide variety of length- and timescales. Most importantly we see that the dominant effects change over time and space. 
+
+In this lecture we aim to give clues for describing such problems, making use of a palette of approaches, starting with dimensional analysis, quick order of magnitudes estimates or more refined asymptotic analyses.
 \chapter{Fluid motion}
 \label{chap:fluid-motion}
 
@@ -206,7 +220,7 @@ As other continuum media, fluids carry force fields that determine their equilib
 \label{eq:pressure_stress}
 \end{equation}
 The minus sign translate the state of compression in which fluids generally are (so that pressure is a positive quantity, unless in very specific cases of tensile solicitations of fluids).
-\prg{Pressure as a body force.} On figure~\ref{fig:pressure_gradient} we illustrate the action of pressure forces exerted on a small cylindrical fluid portion. The portion has a base $S$ and a height $\mathrm dn$ leaning on two isobars $p$ and $p+\mathrm dp$. The action of pressure forces on the side of the cylinder is zero by symmetry, so that the net pressure force is simply the sum of the contributions exerted on each bounding face : $S\,p$ and $-S\,\lp p+\mathrm dp\rp$ (let's count positively -- and arbitrarily -- the forces oriented along the pressure gradient), which is $-S \,\mathrm dp$. If we divide this force by the volume of the small element, $S \, \mathrm dn$, it appears that pressure forcescan be perceived as a body force of intensity $-\pd{p}{n}$ acting along $\nabla p$. In other words pressure forces may be understood as body forces of intensity $-\nabla p$; this is the meaning of this term appearing in both Euler and the Navier--Stokes equations.
+\prg{Pressure as a body force.} On figure~\ref{fig:pressure_gradient} we illustrate the action of pressure forces exerted on a small cylindrical fluid portion. The portion has a base $S$ and a height $\mathrm dn$ leaning on two isobars $p$ and $p+\mathrm dp$. The action of pressure forces on the side of the cylinder is zero by symmetry, so that the net pressure force is simply the sum of the contributions exerted on each bounding face : $S\,p$ and $-S\,\lp p+\mathrm dp\rp$ (let's count positively -- and arbitrarily -- the forces oriented along the pressure gradient), which is $-S \,\mathrm dp$. If we divide this force by the volume of the small element, $S \, \mathrm dn$, it appears that pressure forces can be perceived as a body force of intensity $-\pd{p}{n}$ acting along $\nabla p$. In other words pressure forces may be understood as body forces of intensity $-\nabla p$; this is the meaning of this term appearing in both Euler and the Navier--Stokes equations.
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[page=1,width=5cm]{./pics/pressure_gradient.pdf}
