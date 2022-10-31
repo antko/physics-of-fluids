@@ -53,6 +53,12 @@
 \usepackage{url}
 \usepackage[export]{adjustbox}
 
+\usepackage{xcolor} % see https://tex.stackexchange.com/questions/383753/coloring-the-cancellation-line-with-cancel
+\usepackage[thicklines]{cancel}
+\renewcommand{\CancelColor}{\color{SandyBrown}}
+
+\usepackage[norndcorners,customcolors]{hf-tikz}
+
 \hypersetup{
   colorlinks,
   citecolor=bleuSU,
@@ -150,14 +156,14 @@
 %\author{Camille Duprat}
 %\affil{École polytechnique}
 
-\date{v0.22.10$_\text{06}$}
+\date{v0.22.10$_\text{31}$}
 \maketitle
 \tableofcontents
 }
 \input{./01_equations.tex}
 \input{./02_boundary_conditions.tex}
 \input{./03_viscous_flows.tex}
-%\input{./04_thin_viscous_films.tex}
+\input{./04_thin_viscous_films.tex}
 \bibliographystyle{jfm}
 \bibliography{biblio_pof}
 \printindex
