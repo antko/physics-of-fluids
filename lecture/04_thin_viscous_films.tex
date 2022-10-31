@@ -3,3 +3,284 @@
 % !TEX encoding = UTF-8 Unicode
 \chapter{Thin viscous films}
 \label{chap:thin_viscous_films}
+
+Just as slender solid structures (threads, wires, shells or plates) can be described with a set of simple equations rather than relying on full 3D elasticity, fluid flows with high aspect ratios (lacrymal film on the eye, paint coat, ink jet, atmosphere) may be depicted with equations much more simple than the Navier-Stokes equations. In this chapter, we set out to investigate the dynamics of a thin liquid film dominated by viscous effects and derive the so-called \textbf{lubrication equations} for the film.
+\section{A rippled paint coat}
+To contextualise and motivate our study, let's aim to depict and predict the relaxation time taken for a rippled paint coat to return to its flat equilibrium. The (aqueous) paint is to first order considered a viscous liquid ($\mu$ = 0.1 Pa$\cdot$s) of density $\rho$~=~1000~kg$\cdot$m$^{-\text 3}$ and presenting a surface tension $\gamma$ = 50 mN$\cdot$m$^{-\text 1}$ with air.
+The paint coat of typical height $H$ = 10~$\mu$m presents a characteristic rippling of wavelength $\lambda$ = 500 $\mu$m.
+Preliminary experiments furthermore point out to a relaxation time of the order of 1 s (maybe a bit less). We now wish to understand both qualitatively and quantitatively this timescale, as well as to identify the scaling laws behind it.
+\section{Power \& limits of dimensional analysis}
+We have witnessed so far that dimensional analysis is a powerful tool to obtain rapid estimates on quantities of interest. Let's conduct such an analysis here. The relaxation timescale $\tau$ is a priori a function of the aforementioned parameters, and, possibly, gravity:
+\begin{equation}
+\tau = f(\gamma, \mu, \rho, H, \lambda, g).
+\end{equation}
+In this expression there are $k$ = 3 independent dimensions, so taking $\rho$, $\gamma$ and $H$ as characteristic scales we get:
+\begin{equation}
+\tau = \sqrt{\frac{\rho H^3}{\gamma}} F\lp \varepsilon, \text{Oh}, \text{Bo}\rp,
+\label{eq:relaxation_time_dimensional_analysis}
+\end{equation}
+with $\varepsilon = H/\lambda$ is the aspect ratio of the liquid film (transverse lengthscale over horizontal lengthscale), Oh = $\mu/\sqrt{\rho \gamma H}$ is the Ohnesorge number\index{Ohnesorge number} (or nondimensional viscosity) and Bo = $\rho g H^2 / \gamma$ is the Bond number\index{Bond number} (or nondimensional gravity). We could have started differently, supposing for example that gravity is not relevant in this problem, but in either case, dimensional analysis will always feature a unknown dependency to $\varepsilon$, the nondimensional ratio between lengthscales, making it difficult to conclude on pure dimensional grounds. It is a fundamental limitation of dimensional analysis for slender flows, which calls for a deeper look at the physics at play in this problem.
+\section{Quick physical analysis and order of magnitude estimate}
+A rippled liquid film displays alternate peaks and troughs. This geometric alternance of positive and negative curvatures reflects into a dynamic alternance of higher and lower pressure zones. Let's remark that the pressure force in the fluid $-\nabla P$ will be directed from the peaks to the throughs, hence providing a driving physical mechanism for relaxation. We can estimate rapidly the magnitude of these pressure shifts by looking at the characteristic curvature scale. The slope of the interface is (at worst) of order $H/\lambda$ (if the amplitude of the disturbance $a$ is significantly lower than $H$, it would rather be $a/\lambda$ but let's consider the worst case where $a \sim H$). The characteristic scale for curvature is then $H/\lambda^2$ and the magnitude of the pressure difference between the ambient atmosphere and the liquid film follows:
+\begin{equation}
+p_\text{cap} = \gamma \kappa \sim \gamma \frac{H}{\lambda^2}.
+\end{equation}
+The pressure gradient corresponding to this pressure distribution ensues:
+\begin{equation}
+-\nabla p_\text{cap} \sim -\gamma \frac{H}{\lambda^3}.
+\end{equation}
+\prg{What about gravity?} We could have as well estimated the pressure in the liquid film considering hydrostatic pressure. Here again the peak region of the liquid film corresponds to a higher pressure area than the through region, leading to relaxation. A quick estimate of the film pressure now yields: 
+\begin{equation}
+p_\text{grav} \sim \rho g H.
+\end{equation}
+The gravity pressure gradient is therefore:
+\begin{equation}
+-\nabla p_\text{grav} \sim -\rho g \frac{H}{\lambda}.
+\end{equation}
+In the experiment we are considering, which of capillary and gravity effects is dominant? To answer this question, let's look at the ratio between the pressure gradients:
+\begin{equation}
+\frac{\gamma H / \lambda^3}{\rho g H / \lambda} \quad \lp= \frac{\varepsilon^2}{\text{Bo}}\rp.
+\end{equation}
+With the characteristic scales given in introduction for the paint coat, this ratio is about 20, indicating that at least in this configuration gravity can safely be disregarded to first approximation.
+
+From momentum balance analysis, the capillary driving force will either be resisted by fluid inertia, or viscous stresses, or both. Here the (thin) film is made of a viscous fluid; this suggests that pressure forces are balanced by viscosity. Let's start with this hypothesis: the capillary pressure gradient induces a flow within the film which is resisted by viscous stresses, i.e. \textbf{the flow within the liquid film is of capillary-viscous nature}:
+\begin{equation}
+\frac{\gamma H}{\lambda^3} \sim \mu \frac{U}{H^2} \quad\text{ so that }\quad\underbrace{\frac{\mu U}{\gamma}}_\text{Ca} \sim \underbrace{\lp \frac{H}{\lambda}\rp^3}_{\varepsilon^3}.
+\end{equation}
+From this last expression we see that requiring a balance between capillary and viscous effects imposes that the \textbf{capillary number}\index{Capillary number} Ca = $\mu U/\gamma$ (measuring the relative importance of the velocity with respect to the natural capillary-viscous velocity scale $\gamma/\mu$) should scale as the aspect ratio $\varepsilon$ to the third power.
+
+This balance allows us to estimate the (horizontal) velocity scale at which the fluid goes from the peaks to the troughs:
+\begin{equation}
+U\sim\frac{\gamma}{\mu}\lp\frac{H}{\lambda}\rp^3.
+\end{equation}
+
+The rushing fluid from the neighbouring liquid crests will fill up the troughs. From (incompressible\footnote{Using this type of quick physical analysis makes it easy to discuss the relevance of the incompressibility condition\index{compressibility effects!for thin viscous films}. Considering an incompressible evolution is justified as long as $\delta \rho/\rho \ll 1$. The density fluctuation $\delta \rho$ is connected to the pressure fluctuation $\delta P$ via $\delta \rho = \delta P \lp\partial p/\partial \rho\rp^{-1}$, with $\lp\partial p/\partial \rho\rp~\equiv~c^2$, i.e. the speed of sound squared. For lubrication films, the pressure scale $\delta P$ follows from horizontal momentum balance: $\delta P \sim \varepsilon^{-1} \mu U / H$. This means that compressible effects are not relevant as long as $U \ll \varepsilon \rho c^2 H / \mu$ or, equivalently, Ma $\ll \lp\varepsilon \text{Re}\rp^{1/2}$ (here Ma stands for the Mach number). Micronic liquid films made of very viscous fluids -- say one million times more viscous than water -- will therefore see significant compressible effects arise as soon as the imposed velocity is of $O$(cm/s)! Conversely, the liquid films freely evolving under surface tension alone under investigation here can safely be viewed as incompressible as long as $\varepsilon^2 \gamma / \rho c^2 H \ll 1$. Using the parameters given for the liquid film, $\varepsilon^2 \gamma / \rho c^2 H \sim 10^{-9}$, indeed totally justifying the incompressibility assumption.}) mass conservation we can estimate the vertical component of velocity $V$ there:
+\begin{equation}
+\frac{U}{\lambda} \sim \frac{V}{H} \quad\text{ and }\quad V \sim \frac{\gamma}{\mu}\lp\frac{H}{\lambda}\rp^4.
+\end{equation}
+This vertical velocity component is associated with a levelling up of the interface at the rate:
+\begin{equation}
+\frac{H}{\tau} \sim V,
+\end{equation}
+where $\tau$ is the healing time for the interface, which is therefore of order:
+\begin{equation}
+\tau \sim \frac{\mu \lambda^4}{\gamma H^3}.
+\label{eq:quick_prediction_tau}
+\end{equation}
+This results calls for several remarks. First we notice that more viscous liquids take longer to relax, consistently with the balance written earlier between the capillary driving force and the viscous braking. Second, this relaxation time is indeed of the form \eqref{eq:relaxation_time_dimensional_analysis}, with:
+\begin{equation}
+F(x,y,z) = \alpha \frac{y}{x^4},
+\end{equation}
+with $\alpha$ being a nondimensional prefactor. This particular scaling is impossible to find on dimensional grounds alone. Finally, we may now estimate the relaxation time taking a prefactor $\alpha \sim O$(1), and we get $\tau \sim$ 100 s, which is about two orders of magnitude higher than what is observed in experiments\dots
+
+Either the physical analysis is missing a key ingredient, either the prefactor is not of order 1. To shed further light, we set out to derive the value of the prefactor by conducting a detailed asymptotic analysis of the rippled film relaxation.
+
+\section{Detailed asymptotic analysis: thin film flow}
+
+The physical picture just derived will guide us as a beacon to derive a more in-depth analysis of the problem. To make progress we start by nondimensionalising the problem making use of the known $H$ and $\lambda$ and the unknown $U$, $V$ and $\delta P$ characteristic scales:
+\begin{subequations}
+\label{eq:lubrication_nondimensionalizing}
+\begin{empheq}[left=\empheqlbrace]{alignat=2}
+h \,&=&&\, H \,\bar h,\\
+x \,&=&&\, \lambda \,\bar x,\\
+y \,&=&&\, H \,\bar y,\\
+u \,&=&&\, U \,\bar u,\\
+v \,&=&&\, V \,\bar v,\\
+p \,&=&&\, P_\text{atm} + \delta P \,\bar p.
+\end{empheq}
+\end{subequations}
+It is important to stress that the used characteristic scales are expected \textbf{scales of variation}, meaning that all the barred quantities have no dimension and are further of order 1. The identification of the unknown scales will proceed from the expression of the first principles.
+\subsection{Preliminary: mass conservation}
+Before entering into the asymptotic analysis of the fluid motion, it is worth remarking that the two components of velocity are linked kinematically by mass conservation, which reads for this incompressible evolution:
+\begin{equation}
+\frac{U}{\lambda} \bar u_{\bar x} + \frac{V}{H} \bar v_{\bar y} = 0.
+\end{equation}
+A distinguished scaling\index{distinguished scaling} immediately reveals that $U/\lambda \sim V/H$ so that we can set
+\begin{equation}
+V = \varepsilon U,
+\end{equation}
+and mass conservation is written:
+\begin{equation}
+\bar u_{\bar x} + \bar v_{\bar y} = 0.
+\end{equation}
+\subsection{Stress condition at the interface}
+\prg{Normal stress jump.} The starting point of the analysis is to identify the scale of pressure, as it is the driver of the flow. Pressure is set via the dynamic boundary condition~\eqref{eq:dynamic_BC} projected along the normal:
+\begin{equation}
+\bn\cdot\lp\mathsfbfit{\sigma}_\text{ext} - \mathsfbfit{\sigma}_\text{int}\rp \cdot\bn = \gamma \kappa \quad\text{ at }\quad y = h.
+\label{eq:normal_dynamic_BC_film}
+\end{equation}
+This equation features geometric quantities such as the normal vector and the interface curvature $\kappa$. These can be obtained taking the following color function $\mathcal S(x,y,t) = y - h(x,t)$ to describe the interface:
+\begin{equation}
+\bn = \frac{1}{\sqrt{1+h_x^2}}
+\lp
+\begin{array}{c}
+-h_x\\
+1
+\end{array}
+\rp
+\quad
+;
+\quad
+\bt = \frac{1}{\sqrt{1+h_x^2}}
+\lp
+\begin{array}{c}
+1\\
+h_x
+\end{array}
+\rp
+\quad
+;
+\quad
+\kappa = - \frac{h_{xx}}{\lp 1+h_x^2 \rp^{3/2}}.
+\end{equation}
+Here subscripts denote differentiation, and $\bt$ refers to as the tangent vector to the interface. Considering the liquid in the film to be Newtonian and the evolution incompressible, we can rewrite~\eqref{eq:normal_dynamic_BC_film} as:
+\begin{equation}
+-\frac{1}{\sqrt{1+h_x^2}}\lp -(p-P_\text{atm})\lp1+h_x^2\rp+2\mu u_x h_x^2 -2\mu\lp u_y+v_x\rp h_x + \underbrace{2\mu v_y}_{-2\mu u_x}\rp=-\gamma\frac{h_{xx}}{\lp1+h_x^2\rp^{3/2}}.
+\end{equation}
+This equation can be rewritten with the help of the previously introduced nondimensional quantities. Noting that $h_x = \varepsilon \bar h_{\bar x}$ we have:
+\begin{equation}
+-\delta P \bar p \lp 1+ \cancel{\varepsilon^2 \bar h_{\bar x}^2} \rp - 2\mu\lp 1 - \cancel{\varepsilon^2 \bar h_{\bar x}^2}\rp \frac{U}{\lambda} \bar u_{\bar x} - 2 \mu \varepsilon h_{\bar x} \lp \frac{U}{H} \bar u_{\bar y} + \cancel{\frac{V}{\lambda} \bar v_{\bar x}} \rp = \gamma \frac{H}{\lambda^2} \frac{\bar h_{\bar x \bar x}}{\lp 1 + \cancel{\varepsilon^2 \bar h_{\bar x}^2} \rp^{1/2}}.
+\end{equation}
+Here we have crossed out quantities negligible at leading order. Rearranging, we get:
+\begin{equation}
+-\tikzmarkin[set fill color=CornflowerBlue!50!white!70,set border color=CornflowerBlue]{a}(0.05,-0.4)(-0.05,0.6)\delta P\tikzmarkend{a} \,\,\bar p - 2\mu \frac{U}{\lambda} \bar u_{\bar x} - 2 \mu \frac{U}{\lambda} h_{\bar x} \bar u_{\bar y} = \tikzmarkin[set fill color=LimeGreen!50!white!70,set border color=LimeGreen]{b}(0.,-0.4)(-0.05,0.6)\gamma \frac{H}{\lambda^2}\tikzmarkend{b} \,\bar h_{\bar x \bar x} \quad \text{ at } \quad \bar y = \bar h.
+\end{equation}
+It is important to remark that in this expression, the pressure contribution is of order $\delta P$, the viscous normal stress is $O(\mu U / \lambda)$ and the capillary term $O(\gamma H / \lambda^2)$. To be consistent with our initial picture, we \textbf{want} to balance the highlighted pressure and capillary terms, so we \textbf{set} the pressure scale as:
+\begin{equation}
+\delta P = \gamma \frac{H}{\lambda^2}.
+\end{equation}
+As a result the normal projection of the stress jump condition reads:
+\begin{equation}
+\bar p + 2 \text{Ca} \,\varepsilon^{-1} \lp\bar u_{\bar x} + h_{\bar x} \bar u_{\bar y}\rp = -\bar h_{\bar x \bar x}\quad \text{ at } \quad \bar y = \bar h.
+\label{eq:normal_stress_jump_asymptotic}
+\end{equation}
+Pressure and capillarity being the dominant terms of order 1 in this expression, there remains two possibilities for the viscous terms: either Ca$/\varepsilon \ll$ 1, either Ca$/\varepsilon$ = 1. In the latter case, this would set the horizontal velocity scale $U$ (thereby using a argument differing from our quick physical picture). With the current state of our asymptotic analysis, we have not enough elements to choose one scenario or the other\footnote{although we do know, from our previous analysis, that eventually we will find $Ca \sim \varepsilon^3$!}.
+\prg{Tangential stress continuity.} In absence of space-varying surface tension, the tangential stress continuity reads:
+\begin{equation}
+\bn\cdot\lp\mathsfbfit{\sigma}_\text{ext} - \mathsfbfit{\sigma}_\text{int}\rp \cdot\bt = 0 \quad\text{ at the interface } y = h.
+\label{eq:tangential_dynamic_BC_film}
+\end{equation}
+This equation can be explicited as:
+\begin{equation}
+\cancel{(p-P_\text{atm})h_x}-2\mu u_x h_x + \mu\lp u_y + v_x \rp\lp 1-h_x^2\rp-\cancel{(p-P_\text{atm})h_x}+2\mu v_y h_x= 0.
+\end{equation}
+To see more clearly the magnitude hierarchy between the different terms, we nondimensionalise this condition:
+\begin{equation}
+\mu \frac{U}{H} \lp -\cancel{2\varepsilon^2 \bar u_{\bar x} \bar h_{\bar x}} + \lp \bar u_{\bar y} + \cancel{\varepsilon^2 \bar v_{\bar x}}\rp\lp 1 - \cancel{\varepsilon^2 \bar h_{\bar x}^2}\rp + \cancel{2 \varepsilon^2 \bar v_{\bar y} \bar h_{\bar x}}\rp = 0.
+\end{equation}
+And finally, the expression for this tangential stress-free condition reads to first order:
+\begin{equation}
+\bar u_{\bar y} = 0 \quad\text{ at }\quad \bar y = \bar h.
+\label{eq:stress_free_leading_order}
+\end{equation}
+\subsection{Flow motion: analysis of the momentum equation}
+We continue to develop our asymptotic analysis by following the canvas of our quick physical analysis. We now set out to analyse the momentum equation taken along the \textbf{principal direction of motion}, that is, the horizontal direction. 
+\prg{Horizontal momentum balance equation.} Writing the Navier-Stokes equation along the $x$-direction we have:
+\begin{equation}
+\underbrace{\rho \frac{U}{T}\bar u_{\bar t} + \rho \frac{U^2}{\lambda} \bar u \bar u_{\bar x} + \rho \frac{U^2}{\lambda} \bar v \bar u_{\bar y}}_\text{consequence} = -\underbrace{\tikzmarkin[set fill color=CornflowerBlue!50!white!70,set border color=CornflowerBlue]{pressure}(0.02,-0.35)(-0.05,0.6)\gamma \frac{H}{\lambda^3}\tikzmarkend{pressure} \,\,\bar p_{\bar x}}_\text{driving force}+\underbrace{\tikzmarkin[set fill color=orange!50!white!70,set border color=orange]{viscosity}(0.02,-0.35)(-0.05,0.6)\mu\frac{U}{H^2}\tikzmarkend{viscosity}\lp \cancel{\varepsilon^2 \bar u_{\bar x \bar x}} + \bar u_{\bar y \bar y}\rp}_\text{viscous braking}.
+\label{eq:horizontal_momentum_asymptotic}
+\end{equation}
+In this equation we have introduced the new variable $\bar t$ defined as $t = T \bar t$. $T$ is a natural timescale of the problem, which could be for example the period of an external forcing. Without such a forcing, we can take the inertial timescale\footnote{We could have chosen a different timescale. For example, if we use the diffusive timescale $T_\text{diff} = \rho H^2 / \mu$, we would retain $\bar u_{\bar t}$ in the final asymptotic form, but then our analysis would be focused on very short times $O(T_\text{diff})$ where momentum diffuses across the film. This timescale being very short in front of the convective timescale $T_\text{conv} = \lambda / U$, the film can be seen as ``frozen'' with this choice: indeed the ratio between these timescales $T_\text{diff}/T_\text{conv}~=~\varepsilon\text{Re}$ will be found to be of order $\sim$ 10$^\text{-8}$ at the end of the study.} $T = \lambda/U$, so that the entire left hand side scales as $\rho U^2 / \lambda$.
+
+Guided by our initial picture, we here want to take pressure (the driving force) and viscosity (braking) as the dominant factors. This leads us to \textbf{set} the velocity scale $U$ so that:
+\begin{equation}
+\text{Ca} = \varepsilon^3,
+\label{eq:ca=epscube}
+\end{equation}
+which can be rewritten as:
+\begin{equation}
+U = \frac{\gamma}{\mu}\lp\frac{H}{\lambda}\rp^3.
+\end{equation}
+We can then rewrite~\eqref{eq:horizontal_momentum_asymptotic} under the following nondimensional form:
+\begin{equation}
+\underbrace{\frac{\rho \gamma H^5}{\mu^2 \lambda^4}}_{\equiv\,\varepsilon\text{Re}}\lp\bar u_{\bar t} + \bar u \bar u_{\bar x} + \bar v \bar u_{\bar y}\rp = -\bar p_{\bar x} + \bar u_{\bar y \bar y}.
+\label{eq:horizontal_momentum_asymptotic_nondimensional}
+\end{equation}
+For our analysis to be consistent, the left hand side should be much less than -- or at worse of the same order of -- the right hand side (of order 1). Evaluating\, ${\rho \gamma H^5}/{\mu^2 \lambda^4}$ (which can be rewritten as $\varepsilon$ Re, with Re = $\rho U H/\mu$) with the parameters of the problem yields a value O(10$^\text{-8}$). The left hand side being eight orders of magnitude less than the right hand side, we conclude that to first order the $x$-momentum equation simply reads:
+\begin{equation}
+\bar u_{\bar y \bar y} = \bar p_{\bar x}.
+\label{eq:horizontal_momentum_asymptotic_nondimensional_leading_order}
+\end{equation}
+A second consequence of the scaling law for the velocity~\eqref{eq:ca=epscube} is that the normal viscous stress of magnitude Ca$/\varepsilon$ in the normal stress jump equation~\eqref{eq:normal_stress_jump_asymptotic} is indeed negligible in front of the other terms. The final form of the leading order normal stress jump condition is therefore:
+\begin{equation}
+\bar p = -\bar h_{\bar x \bar x}\quad \text{ at } \quad \bar y = \bar h.
+\label{eq:interface_pressure_lubrication}
+\end{equation}
+\prg{Vertical momentum balance.} We can perform the same analysis on the vertical component of the momentum equation. The difference now is that every characteristic scale has been set, so there is no degree of freedom left. Conducting the same reasoning as before and nondimensionalising we get:
+\begin{equation}
+\cancel{\varepsilon^3 \text{Re}\lp\bar v_{\bar t} + \bar u \bar v_{\bar x} + \bar v \bar v_{\bar y}\rp} = -\bar p_{\bar y} + \cancel{\varepsilon^2 \lp \varepsilon^2 \bar v_{\bar x \bar x} + \bar v_{\bar y \bar y}\rp} - \underbrace{\frac{\rho g \lambda^2}{\gamma}}_{\text{Bo}/\varepsilon^2}.
+\label{eq:vertical_momentum_asymptotic_nondimensional}
+\end{equation}
+We see that once again the equation simplifies drastically into the hydrostatics equation. The last nondimensional gravity term evaluates to $\tfrac{\text{1}}{\text{20}}$ for the configuration we are interested in, so it could safely be neglected. For the sake of completeness we will however keep it in the remaining and note $\overline{\text{Bo}} = \text{Bo}/\varepsilon^2$.
+\subsection{Structure of the flow within the film}
+We now have all the elements to determine the liquid flow in the film. 
+\prg{Pressure.} At the interface level, the pressure is set by the normal pressure jump condition~\eqref{eq:interface_pressure_lubrication}. Solving the hydrostatics equation~\eqref{eq:vertical_momentum_asymptotic_nondimensional} we get the pressure field in the bulk of the fluid:
+\begin{equation}
+\bar p = -\bar h_{\bar x \bar x} + \overline{\text{Bo}} \lp\bar h - \bar y\rp.
+\end{equation}
+Interestingly we see that the isobars are here vertical, and possibly slightly (linearly) distorted by gravity. This ``transparency to pressure'' feature is a trademark of thin films and boundary layers.
+
+If pressure depends on the depth, this is not the case of the pressure gradient $\bar p_{\bar x}$:
+\begin{equation}
+\bar p_{\bar x} = -\bar h_{\bar x \bar x \bar x} + \overline{\text{Bo}} \, \bar h_{\bar x}.
+\end{equation}
+This property will be helpful in designing a generic expression for the velocity field.
+\prg{Velocity field.} Knowing that $\bar p_{\bar x}$ does not depend on $\bar y$, we can integrate the equation of motion~\eqref{eq:horizontal_momentum_asymptotic_nondimensional_leading_order} vertically from the free surface (because the shear stress is known there) to a point $\bar y$:
+\begin{equation}
+\int_{\bar h}^{\bar y} \bar u_{\bar y \bar y}\, \mathrm d\bar y = \bar u_{\bar y}(\bar y) - \underbrace{\cancel{\bar u_{\bar y}(\bar h)}}_{\text{ with }~\eqref{eq:stress_free_leading_order}} = \bar p_{\bar x}\lp\bar y - \bar h\rp.
+\end{equation}
+A second integration from the bottom (because the velocity is known from the no-slip condition) to a point $\bar y$ gives the velocity field:
+\begin{equation}
+\int_{0}^{\bar y} \bar u_{\bar y}\, \mathrm d\bar y = \bar u(\bar y) = \bar p_{\bar x}\lp\frac{1}{2}\bar y^2 - \bar h\bar y\rp.
+\label{eq:velocity_field_film}
+\end{equation}
+The flow is therefore a half-Poiseuille parabolic profile directed along $-\bar p_{\bar x}$, i.e. from the high pressure regions to the low pressure regions set by capillarity, consistently with our initial picture.
+\subsection{Connecting the free surface deformation with the flow}
+The connection between the surface deformation rate and the underlying flow is made possible with the help of the kinematic boundary condition. Using $\mathcal S(x,y,t) = y - h(x,t)$ it reads:
+\begin{equation}
+\dd{\mathcal S}{t} = -\frac{UH}{\lambda}\bar h_{\bar t} - \frac{UH}{\lambda}\bar u \bar h_{\bar x} + \frac{UH}{\lambda} \bar v = 0 \quad \text{ at } \bar y = \bar h.
+\label{eq:kinematic_BC_film}
+\end{equation}
+All the terms in this equation have equal magnitude: no simplification can be performed. This equation can however be put into a simpler form thanks to Leibniz' rule of integral derivation:
+\begin{equation}
+\dd{}{x}\int_{a(x)}^{b(x)}f(x,y)\,\mathrm dy = \int_{a(x)}^{b(x)}\pd{f(x,y)}{x}\,\mathrm dy - a'(x) f(x,a(x)) + b'(x) f(x,b(x)).
+\end{equation}
+In particular we have:
+\begin{equation}
+\pd{}{\bar x}\int_{0}^{\bar h}\bar u \,\mathrm d\bar y = \underbrace{\int_{0}^{\bar h}\pd{\bar u}{\bar x}\,\mathrm d\bar y}_{-\bar v(\bar h)} + \bar h_{\bar x} \bar u,
+\end{equation}
+allowing us to rewrite the kinematic boundary condition~\eqref{eq:kinematic_BC_film} as:
+\begin{equation}
+\pd{\bar h}{\bar t} + \pd{}{\bar x}\int_{0}^{\bar h}\bar u \,\mathrm d\bar y = 0.
+\label{eq:mass_conservation_film}
+\end{equation}
+This equation actually corresponds to a global mass balance for the liquid film.
+\subsection{Thin film equation}
+Inserting in the just derived mass conservation equation~\eqref{eq:mass_conservation_film} the structure of the velocity field~\eqref{eq:velocity_field_film} we find:
+\begin{equation}
+\bar h_{\bar t} - \frac{1}{3}\lp\bar p_{\bar x} \bar h^3\rp_{\bar x} = 0.
+\end{equation}
+Using the pressure gradient calculated earlier, we find the final form of the \textbf{thin film equation}\index{thin film equation}:
+\begin{equation}
+\bar h_{\bar t} + \frac{1}{3}\lp \bar h_{\bar x \bar x \bar x} \bar h^3\rp_{\bar x} - \frac{\overline{\text{Bo}}}{3}\lp \bar h_{\bar x} \bar h^3\rp_{\bar x} = 0,
+\end{equation}
+or, in dimensioned form:
+\begin{equation}
+h_{t} + \frac{\gamma}{3\mu}\lp h_{xxx} h^3\rp_{x} - \frac{\rho g}{3\mu}\lp h_{x} h^3\rp_{x} = 0.
+\label{eq:thin_film_equation}
+\end{equation}
+Remarkably, this single equation encodes all the physics at play in the liquid film evolution, starting from the first principles (mass and momentum conservation) to all the boundary conditions (dynamic, kinematic). It was first obtained by \citet{Landau1942} in order to determine the thickness of the liquid film dragged by a solid plate withdrawn from a liquid bath.
+\section{Epilogue: relaxation time for a rippled liquid film}
+We are now in a position to conclude the question of the relaxation time of a ripple printed over a thin viscous liquid film. Consider a film profile with a slight disturbance $h(x,t) = H\lp 1 + \delta e^{ikx-t/\tau}\rp$, where $\delta\ll 1$ is the amplitude of the disturbance, $k = 2 \pi / \lambda$ the perturbation wavenumber, and where an exponential relaxation of time constant $\tau$ has been considered. Injecting this ansatz in the film evolution equation~\eqref{eq:thin_film_equation} we get to first order in $\delta$:
+\begin{equation}
+-\frac{H}{\tau} + \frac{\gamma}{3\mu}k^4H^4 + \frac{\rho g}{3\mu} k^2 H^4 = 0,
+\end{equation}
+so that the relaxation time is:
+\begin{equation}
+\tau = \frac{3 \mu}{\lp\gamma k^4 + \rho g k^2\rp H^3}.
+\end{equation}
+In the limit of surface tension dominated evolution considered in the first analysis, the relaxation time reduces to:
+\begin{equation}
+\tau = \frac{3}{\lp 2 \pi\rp^4}\frac{\mu\lambda^4}{\gamma H^3}.
+\end{equation}
+Note that we recover our quick order of magnitude estimate~\eqref{eq:quick_prediction_tau}! This was expected, as we just followed the same steps. But we now have access to the prefactor $3/\lp 2 \pi\rp^4\simeq 2\times 10^{-3}$ which is indeed much less than 1. The knowledge of this prefactor allows us to refine our prediction to estimate the relaxation time of our film to be $\simeq 0.25$ s, consistent with the experimental observation.

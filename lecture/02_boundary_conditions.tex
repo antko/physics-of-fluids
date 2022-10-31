@@ -402,6 +402,7 @@ It is now possible to use dynamic molecular simulations to answer this question.
 With the notion of \textit{stress}, the previous result may easily be extended to the case of moving interfaces. To do so let's consider an elementary volume in the shape of a camembert box leaning on each side of the interface, see figure~\ref{fig:impermeability}. Now we let the volume thickness tend to 0, so that both the mass and the momentum of the element tend to zero as well. As a result the sum of the forces acting on this volume must be zero as well. We have already seen with~\eqref{eq:capillaryforce_marangoni} that the net sum of interfacial stresses is $\nabla \gamma \, \delta S -\gamma \kappa \, \bn \, \delta S$. The stress exerted by the exterior medium is $\mathsfbfit{\sigma}_\text{ext} \bn_\text{ext} \delta S$, and similarly for the stress exerted by the interior medium $\mathsfbfit{\sigma}_\text{int} \bn_\text{int} \delta S$, with $\bn_\text{ext} = - \bn_\text{int} = \bn$. The condition for interface equilibrium will thus be:
 \begin{equation}
 \lp\mathsfbfit{\sigma}_\text{ext} - \mathsfbfit{\sigma}_\text{int}\rp \bn = - \nabla_s \gamma + \gamma \kappa \bn.
+\label{eq:dynamic_BC}
 \end{equation}
 This is a really general relation that expresses a \textbf{stress jump} at the interface. Note that in  the particular static case where $\sigij = -p \delij$ with constant surface tension, this relation becomes:
 \begin{equation}
