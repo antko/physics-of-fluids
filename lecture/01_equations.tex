@@ -18,11 +18,18 @@
 In this example taken from everyday life, we see that fluid motions, even for a single setup, can be influenced by various effects (phase change, acoustic waves, capillary instability, electrostatic interactions\dots) that over a wide variety of length- and timescales. Most importantly we see that the dominant effects change over time and space. 
 
 In this lecture we aim to give clues for describing such problems, making use of a palette of approaches, starting with dimensional analysis, quick order of magnitudes estimates or more refined asymptotic analyses.
-\chapter{Fluid motion}
+\chapter[Fluid Motion]{Fluid {\bfseries motion}}
 \label{chap:fluid-motion}
 
-The governing equations for fluid motion express truly simple physical principles, namely \textbf{mass conservation} (the mass $m(t)$ of a fluid particle is constant), \textbf{momentum conservation} (a fluid particle's momentum obeys Newton's second law $m \matrixsym \gamma = \Sigma \bF$) and \textbf{energy conservation} (the energy of a fluid particle follows the first and second principle of thermodynamics).  In this introduction we will review the derivation of the fluid mechanics equations by expressing these fundamental conservation principles. It will be seen in particular that the derivation of the equations follows invariably the following scheme:
-\begin{enumerate}
+The governing equations for fluid motion express truly simple physical principles, namely: \begin{itemize}[nosep]
+\item \textbf{mass} conservation (the mass $m(t)$ of a fluid particle is constant), 
+\item \textbf{momentum} conservation (a fluid particle's momentum obeys Newton's second law $m \symbf \gamma = \Sigma \bF$), and 
+\item \textbf{energy} conservation (the energy of a fluid particle follows the first principle of thermodynamics).
+\end{itemize}
+\vskip 1mm
+
+\noindent In this introduction we will review the derivation of the fluid mechanics equations by expressing these fundamental conservation principles. It will be seen in particular that the derivation of the equations follows invariably the following scheme:
+\begin{enumerate}[noitemsep]
 \item Identify the conservation law for the quantity under interest,
 \item Establish a balance equation for the quantity over a finite volume of fluid,
 \item Write the limiting form of this balance at the local (\textit{fluid particle}) level,
@@ -30,8 +37,8 @@ The governing equations for fluid motion express truly simple physical principle
 \end{enumerate}
 In this chapter we will obtain the mass and momentum conservation equations governing the flowing of fluids.
 
-\section{Balance equation for an integrated quantity\index{conservation law}: variation, fluxes and production}
-To start with let's write the most general form of the balance of a quantity $c$ integrated over a given volume $V$:
+\section[Balance equation: variation, fluxes and production]{Balance equation for an integrated quantity\index{conservation law}: variation, fluxes and production}
+To start with, let's write the most general form of the balance of a quantity $c$ integrated over a given volume~$V$:
 \begin{equation}
 \underbrace{\vphantom{\oiint_{\partial V}}\dd{}{t}\iiint_{V}c\, \dV}_\text{Variation} = -\underbrace{\oiint_{\partial V} \bj\!\cdot\!\bn\,\dS}_\text{Exchange} + \underbrace{\vphantom{\oiint_{\partial V}}\iiint_{V} \varphi\,\dV}_\text{Production}.
 \label{eq:conservation_law}
@@ -44,11 +51,11 @@ The left hand side of the equation characterises the variation of the quantity w
 \subsection{Differentiation along motion}
 One technical issue with the simple conservation laws mentioned at the beginning of the chapter is that they are expressed at the fluid particle level (e.g. the mass of a fluid particle is preserved, the momentum of a fluid particle is conserved or affected by surrounding forces). This seems quite natural, but it conflicts with our usual representation of space. Let's clarify what we mean by this by considering a typical fluid flow, for example the one around an airplane wing. Typically we are interested in estimating the forces exerted by the flowing fluid on a the plane, and this requires to build a knowledge of the stresses exerted on the wing. The pressure applied at one given point of the wing is ultimately a consequence of conservation laws, but we clearly do not want to track the life and trajectory of every fluid particle\footnote{There is actually an alternate form of the fluid mechanics equations called \textit{Lagrangian fluid mechanics} that exploit this viewpoint, but it gets quickly untractable and only a few specific flows can be described with this approach \citep{Bennett2006}.} that will ever very shortly pass in the neighbourhood of the airplane to get this prediction! Rather we seek to make sure that the conservation laws are satisfied while looking at a fixed point of space (and therefore see quite a number of fluid particles passing there). In order to express the conservation laws governing the motion, we thus need to describe the variation of any quantity attached to a fluid particle, such as a concentration or its momentum.
 
-Let's take the example of a concentration field $c(\bx,t)$. Following a fluid particle in its motion, we can write down how the concentration attached to it varies with time:
+Let's take the example of a concentration field $c(\symbfit{x},t)$. Following a fluid particle in its motion, we can write down how the concentration attached to it varies with time:
 \begin{equation}
-c(\bx+\bu\, \delt,t+\delt) - c(\bx,t) = \delt\underbrace{\lp\pd{c}{t} + \lp \bu \!\cdot\! \nabla \rp c\rp}_{\dd{c}{t}} + \mathcal O\lp\delt^2\rp,
+c(\bx+\bu\, \delt,t+\delt) - c(\bx,t) = \delt\underbrace{\lp\pd{c}{t} + \lp \bu \!\cdot\! \nabla \rp c\rp}_{\dd{c}{t}} + \, \symcal O\lp\delt^2\rp,
 \end{equation}
-where we made the rate of concentration change $\dd{c}{t}$ appear. Note that this quantity differs from $\pd{c}{t}$ which would rather measure the variation of  $c$ at a fixed (\textit{eulerian}) position of space, without following the fluid particle. The operator $\dd{}{t}$ is called \textbf{particle derivative} (or material, or convective, or Lagrangian derivative) :
+where we made the rate of concentration change $\dd{c}{t}$ appear. Note that this quantity differs from $\pd{c}{t}$ which would rather measure the variation of  $c$ at a fixed (\textit{eulerian}) position of space, without following the fluid particle. The operator $\dd{}{t}$ is called \textbf{particle derivative} (or material, or convective, or Lagrangian derivative):
 \begin{equation}
 \dd{c}{t} \equiv \pd{c}{t} + \lp \bu \!\cdot\! \nabla \rp c.
 \end{equation}
@@ -66,7 +73,7 @@ We will now give a meaning to the derivation of an integral performed over a def
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics{./pics/volume_change.pdf}
-\caption{A material volume is transported by a velocity field $\bu$. Each portion $\delA$ of the domain boundaries is advected with $\bu$ and this yields a volume change $\lp\bu\!\cdot\!\bn\rp\delA\delt$ during $\delt$. The resulting total volume change rate $\dd{V}{t}$ is given by $\iint \lp\bu\!\cdot\!\bn\rp \dA$.}
+\caption{A material volume is transported by a velocity field $\bu$. Each portion $\delA$ of the domain boundaries is advected with $\bu$ and this yields a volume change $\lp\bu\!\cdot\!\bn\rp\delA \,\delt$ during $\delt$. The resulting total volume change rate $\dd{V}{t}$ is given by $\iint \lp\bu\!\cdot\!\bn\rp \dA$.}
 \label{fig:volume_change}
 \end{center}
 \end{figure}
@@ -101,7 +108,7 @@ The vectorial flux $\bj$ characterises the transfer of a quantity across an orie
 \subsection{Advection\index{flux!advective}}
 \label{sec:advection}
 The first transport mode for mass, momentum or energy is advection.
-Let's suppose that a given field, for example concentration $c$ again, is \textbf{transported} with the fluid at velocity\index{velocity (definition)}\footnote{The velocity $\bu$ is understood as the average velocity of molecules in the vicinity of the considered point. With this definition we see that the velocity already incorporates  diffusion effects. In mixtures chemical species usually have different velocities that need a careful treatment \citep[][\S17.7]{Bird2002}.} $\bu$, i.e. each fluid particle conserves its concentration. Consider now the \textbf{fixed} surface element $\delA$ represented figure~\ref{fig:slanted_cylinder}. The matter quantity $c$ flowing across the surface\footnote{We here make use of the fact that a slanted cylinder of length $\|\bu\| \mathrm dt$ is the same as a right cylinder of same height $\lp\bu\!\cdot\!\bn\rp$. This is Cavalieri's principle -- which can also be demonstrated with a simple integration.} during a short moment~$\delt$ is $\lp c \,\bu \!\cdot\! \bn\rp \delA \,\delt$. 
+Let's suppose that a given field, for example concentration $c$ again, is \textbf{transported} with the fluid at velocity\index{velocity (definition)}\footnote{The velocity $\bu$ is understood as the average velocity of molecules in the vicinity of the considered point. With this definition we see that the velocity already incorporates  diffusion effects. In mixtures chemical species usually have different velocities that need a careful treatment \citep[][\S17.7]{Bird2002}.} $\bu$, i.e. each fluid particle conserves its concentration. Consider now the \textbf{fixed} surface element $\delA$ represented figure~\ref{fig:slanted_cylinder}. The matter quantity $c$ flowing across the surface\footnote{We here make use of the fact that a slanted cylinder of length $\|\bu\| \mathrm dt$ is the same as a right cylinder of same height $\lp\bu\!\cdot\!\bn\rp \mathrm dt$. This is Cavalieri's principle -- which can also be demonstrated with a simple integration.} during a short moment~$\delt$ is $\lp c \,\bu \!\cdot\! \bn\rp \delA \,\delt$. 
 As a result the matter quantity transported across $\delA$ per unit surface and per unit time is $\bj_\text{adv} \!\cdot\! \bn$ where 
 \begin{equation}
 \bj_\text{adv} = c\, \bu
@@ -114,13 +121,13 @@ is the matter \textbf{flux} associated with advection.
 \label{fig:slanted_cylinder}
 \end{center}
 \end{figure}
-Now if the surface element is \textbf{mobile} and moves at velocity $\bw$, the advection flux generalises to: 
+Now if the surface element is \textbf{mobile} and moves at velocity~$\bw$, the advection flux generalises to: 
  \begin{equation}
 \bj_\text{adv} = c\, (\bu-\bw)
 \end{equation}
 We note that in the context of a \textbf{material domain}, i.e. moving with the same velocity as the fluid, we get $\bw = \bu$ and the advection flux cancels out by construction.
 \subsection{Diffusion\index{flux!diffusive}}
-Now, even without any underlying flow, simple matter (species concentration), energy or momentum inhomogeneities will give rise to transfer spontaneously. These \textbf{diffusive} exchanges are quantified per unit surface and time with the \textbf{diffusive flux}~$\bj_\text{diff}$. 
+Now, even without any underlying net flow, simple matter (species concentration), energy or momentum inhomogeneities will give rise to transfer spontaneously. This phenomenon is a manifestation of random molecular motions which yield effective macroscopic exchanges \citep{Leal2007}. These \textbf{diffusive} exchanges are quantified per unit surface and time with the \textbf{diffusive flux}~$\bj_\text{diff}$. 
 Even if a detailed modelling of these exchanges is a complex feat, they can nonetheless be described with phenomenological relations (constrained with thermodynamical arguments) such as Fick's law for mass transport for example (see \S\ref{sec:constitutive_laws}).
 
 \subsection{Conservation of a quantity. Application to mass conservation}
@@ -167,7 +174,7 @@ A recurring case of great practical value is that of an \textbf{incompressible e
 \dd{\rho}{t} = 0 \quad\text{and therefore}\quad \nabla\!\cdot\!\bu=0.
 \end{equation}
 A velocity field  $\bu$ satisfying the zero divergence property qualifies as a \textit{solenoidal} field.
-\subsection{Conservation of a possibly diffusing passive scalar. Convection-diffusion equation}
+\subsection{Conservation of a diffusing passive scalar. Convection-diffusion equation}
 Let's consider again a concentration field $c$ advected in a fluid domain with the velocity field $\bu$. Due to molecular thermal agitation, this field is also subject to diffusion phenomena characterised by the flux $\bj_\text{diff}$. Here again we can obtain the evolution equation for the concentration by following two different routes:
 \begin{enumerate}
 \item By considering a \textbf{fixed domain} $V_\text{fixed}$. In this case, and in absence of any source/sink for the concentration, we will simply write that the total variation is given by the sum of the fluxes:
@@ -214,7 +221,7 @@ As other continuum media, fluids carry force fields that determine their equilib
 \subsection{Pressure}
 \prg{Archimedes\index{Archimedes principle} principle without equation.} Consider a fluid at equilibrium in the gravity field (Fig.~\ref{fig:archimedes}). Let's isolate now mentally a fluid portion. It experiences from the gravity field a force corresponding to its \textit{weight}  $\bP$ pointing downwards. It also bears \textit{pressure forces} from the surrounding fluid. Since the fluid portion is at equilibrium, the net pressure force has to balance the weight (equal in intensity but opposite in direction). Now if in our mind experiment we were to replace the fluid portion by a solid object, the resulting action of the external forces would not change: the net force exerted by pressure forces is still equal in intensity to the weight of the fluid ``displaced'' by the solid. The resultant of pressure forces corresponds to the \textit{buoyancy} \citep{Lighthill1986}. Of course if the solid is denser (or less dense) than the surrounding fluid, the equilibrium would be lost and fluid/body motion would set in.
 
-\noindent Pressure is a force per unit surface which is \textbf{normal} to the considered surface\footnote{We may see this feature as the \textit{definition} of a fluid, i.e. a medium unable to resist shear \citep{Prandtl1957}. A shear stress would therefore unvariably set the fluid into motion. Actually \citet[][\S1.3]{Batchelor1967} argue that if the pressure force would not be aligned with the normal vector, equilibrium could not be achieved.}. This type of distributed force in a fluid is a specificity of continuum media, and is referred to as \textbf{stress}. Here the corresponding stress expression is therefore:
+\noindent Pressure is a force per unit surface which is \textbf{normal} to the considered surface\footnote{We may see this feature as the \textit{definition} of a fluid, i.e. a medium unable to resist shear \citep[][\S1.3]{Prandtl1957,Batchelor1967}. A shear stress would therefore unvariably set the fluid into motion.}. This type of distributed force in a fluid is a specificity of continuum media, and is referred to as \textbf{stress}. Here the corresponding stress expression is therefore:
 \begin{equation}
 \mathrm d \bff = -p \,\bn \,\dS.
 \label{eq:pressure_stress}
@@ -247,41 +254,41 @@ In the general context of a flowing fluid, stress has no particular reason to be
 \end{equation}
 We have here to remember that this object is only a mean to obtain $\mathrm d \bff$ not necessarily aligned with $\bn$.
 
-\noindent Of course it is possible to obtain the simple case of a stress aligned with $\bn$ using this formalism. As an example, the stress tensor of a fluid at rest (éq.~\ref{eq:pressure_stress}) is:
+\noindent Of course it is possible to obtain the simple case of a stress aligned with $\bn$ using this formalism. As an example, the stress tensor of a fluid at rest (eq.~\ref{eq:pressure_stress}) is:
 \begin{equation}
 \sigij = -p\, \delij.
 \label{eq:static_stress_tensor}
 \end{equation}
 
-\noindent It is possible to show that this stress tensor $\mathsfbfit \sigma$ is necessarily a symmetric tensor, i.e. $\sigij = \sigji$ \citep{Batchelor1967}. The demonstration's main idea is to write an angular momentum balance at the fluid particle level; the only dominant term in this equation involves the antisymmetric part of $\mathsfbfit{\sigma}$. As it is not balanced by any term, it necessarily vanishes. There is one exception however: in the very particular case of a \textit{moment density}, as in active matter or certain magnetic colloids, this term can be balanced and the tensor be non-symmetric \citep[see for example the study of][]{Soni2019}. 
+\noindent It is possible to show that this stress tensor $\symbfsfit \sigma$ is necessarily a symmetric tensor, i.e. $\sigij = \sigji$ \citep[][\S 1.3]{Batchelor1967}. The demonstration's main idea is to write an angular momentum balance at the fluid particle level; the only dominant term in this equation involves the antisymmetric part of $\symbfsfit{\sigma}$. As it is not balanced by any term, it necessarily vanishes. There is one exception however: in the very particular case of a \textit{moment density}, as in active matter or certain magnetic colloids, this term can be balanced and the tensor be non-symmetric \citep[see for example the study of][]{Soni2019}. 
 \subsection{Body forces}
-\noindent Fluids are also subject to more conventional body forces, which can be magnetic, electrostatic, gravity or result from non-inertial effects (think of centrifuge or Coriolis pseudo-forces). On noting $\bF$ the body force \textbf{per unit mass} acting on the fluid particle level, we can write the net body force exerted on a fluid portion $V$ as:
+\noindent Fluids are also subject to more conventional body forces, which can be magnetic, electrostatic, gravity or result from non-inertial effects (think of centrifuge or Coriolis pseudo-forces). On noting $\bff$ the body force \textbf{per unit mass} acting on the fluid particle level, we can write the net body force exerted on a fluid portion $V$ as:
 \begin{equation}
-\iiint_V \rho \bF \,\dV.
+\iiint_V \rho \bff \,\dV.
 \end{equation}
 \prg{To summarize.} The net force acting on a fluid portion $V$ is the sum of surface and body forces:
 \begin{equation}
-\oiint_{\partial V} \mathsfbfit \sigma \!\cdot\! \bn\,\dS + \iiint_V \rho \bF \,\dV.
+\oiint_{\partial V} \symbfsfit \sigma \!\cdot\! \bn\,\dS + \iiint_V \rho \bff \,\dV.
 \end{equation}
 \section{Fluid equilibrium}
 \noindent At equilibrium, pressure and body force exerted on any part $V$ of a fluid balance each other:
 $$
-\iiint_V \rho \bF \,\dV -\iint_{\partial V} p \, \bn \, \dS = \boldsymbol 0,
+\iiint_V \rho \bff \,\dV -\iint_{\partial V} p \, \bn \, \dS = \boldsymbol 0,
 $$
 or, on using the divergence theorem:
 \begin{equation}
-\iiint_V \lp \,\rho \bF -\nabla p \rp\,\dV = \boldsymbol 0.
+\iiint_V \lp \,\rho \bff -\nabla p \rp\,\dV = \boldsymbol 0.
 \end{equation}
 This relation being verified for \textit{any} fluid domain, we necessarily get at the local level:
 \begin{equation}
-\rho \bF =\nabla p.
+\rho \bff =\nabla p.
 \end{equation}
 And we recover here the pressure force expressed as a body force $-\nabla p$.
 
-\textbf{Remark}: Only those density and force fields such that $\rho \bF$ can be expressed as a gradient allow to reach hydrostatic equilibrium (counter-example: the baroclinic instability developing when iso-$p$ differ from iso-$\rho$, or in other words as soons as pressure is not a simple function of $\rho$).
+\textbf{Remark}: Only those density and force fields such that $\rho \bff$ can be expressed as a gradient allow to reach hydrostatic equilibrium (counter-example: the baroclinic instability developing when iso-$p$ differ from iso-$\rho$, or in other words as soons as pressure is not a simple function of $\rho$).
 \prg{The case of conservative forces.} Conservative forces derive from the potential $\Psi$:
 \begin{equation}
-\bF = - \nabla \Psi,
+\bff = - \nabla \Psi,
 \end{equation}
 so that
 \begin{equation}
@@ -294,13 +301,13 @@ and therefore
 The iso-$\rho$ (isopycnals) are then superimposed to equipotentials, themselved superimposed with isobars. \\
 \textbf{Consequence}:~in~such~a~system, a free surface corresponding to  $p = 0$ for example will also be an equipotential $\Psi = \text{const}$.
 
-\prg{Example: the equilibrium of a rotating fluid.} Let's consider a rotating container filled with liquid. The container rotates at angular velocity $\Omega$ in the gravity field (the axis of rotation is vertical, i.e. directed along  $\matrixsym e_{z}$). In the rotating frame, each fluid particle experiences gravity but also the centrifuge pseudo-force:
+\prg{Example: the equilibrium of a rotating fluid.} Let's consider a rotating container filled with liquid. The container rotates at angular velocity $\Omega$ in the gravity field (the axis of rotation is vertical, i.e. directed along  $\be_{z}$). In the rotating frame, each fluid particle experiences gravity but also the centrifuge pseudo-force:
 \begin{equation}
-\rho\bF_\text{cent} = -\rho \,\matrixsym \Omega \times \lp \matrixsym  \Omega \times \matrixsym r\rp.
+\rho\bff_\text{cent} = -\rho \,\symbf \Omega \times \lp \symbf  \Omega \times \br\rp.
 \end{equation}
-Here $\matrixsym \Omega = \Omega \,\matrixsym e_{z}$. We can then write:
+Here $\symbf \Omega = \Omega \,\symbf e_{z}$. We can then write:
 \begin{equation}
-\rho\bF_\text{cent} = \rho \Omega^2 r \,\matrixsym e_{r} = -\rho \nabla \Psi_\text{cent},
+\rho\bff_\text{cent} = \rho \Omega^2 r \,\be_{r} = -\rho \nabla \Psi_\text{cent},
 \end{equation}
 where
 \begin{equation}
@@ -314,9 +321,9 @@ We here remark that the equipotentials are paraboloids. As a result the free sur
 \begin{equation}
 z_\text{surf} = \frac{1}{2} \frac{\Omega^2}{g} r^2 + \text{const}.
 \end{equation}
-\prg{Exercise: fluid planet equilibrium.} Consider a self-gravitating fluid sphere. The gravity force per unit masse $\bF$ exerted on each fluid particle derives from the gravity potential $\Psi$ such that:
+\prg{Exercise: fluid planet equilibrium.} Consider a self-gravitating fluid sphere. The gravity force per unit mass $\bff$ exerted on each fluid particle derives from the gravity potential $\Psi$ such that:
 \begin{equation}
-\nabla^2 \Psi = 4 \mathrm \pi \mathcal G \rho,
+\nabla^2 \Psi = 4 \mathrm \pi \symcal G \rho,
 \end{equation}
 where $\mathcal G$ is the universal gravitational constant. With the help of the hydrostatic equation, and supposing that the fluid has a constant density\footnote{This is a really crude approximation on the density profile, which better describes incompressible (!) planets rather than gaseous ones or stars. The hydrostatics of stars can however be rationalised by taking into account the state law of polytropes, and possibly the radiation pressure adding up to the kinetic pressure. The reader interested in stellar hydrostatics may look at the \textit{Lane-Emden equation} described e.g. in \citet[][chap. IV]{Chandrasekhar1957}.} $\rho_0$, show that the radial pressure profile satisfies:
 \begin{equation}
@@ -327,21 +334,87 @@ with $R$ the planet radius.
 Now that we have described the forces at play in a fluid and the conditions for equilibrium, let's focus on fluid motion. 
 
 \subsection{Equation for momentum conservation\index{conservation law!momentum conservation}}
-Momentum conservation for a fluid domain simply follows from Newton' second law $m \matrixsym \gamma = \Sigma \matrixsym F$, never forget this!
-Let's write this law for a material domain $V(t)$ :
+Momentum conservation for a fluid domain simply follows from Newton' second law $m \symbf \gamma = \Sigma \bF$, never forget this!
+Let's write this law for a material domain $V(t)$, using index notation:
 \begin{equation}
-\dd{}{t} \iiint_{V_\text{mat}} \rho u_i\,\dV = \oiint_{\partial V_\text{mat}} \sigij n_j\,\dS + \iiint _{V_\text{mat}}\rho F_i \,\dV
+\dd{}{t} \iiint_{V_\text{mat}} \rho u_i\,\dV = \oiint_{\partial V_\text{mat}} \sigij n_j\,\dS + \iiint _{V_\text{mat}}\rho f_i \,\dV
 \end{equation}
 or, going to the local level:
 \begin{equation}
-\rho \dd{u_i}{t} = \pd{\sigij}{x_j} + \rho F_i 
+\rho \dd{u_i}{t} = \pd{\sigij}{x_j} + \rho f_i 
 \label{eq:momentum_conservation}
 \end{equation}
-That was quite simple. However there is a loophole in the previous expression as the stress tensor $\mathsfbfit \sigma$ is here unknown (except in the case of limited interest of a static fluid, see equation \eqref{eq:static_stress_tensor}). Even if equation~\eqref{eq:momentum_conservation} holds true whatever the nature of the fluid (even for say exotic viscoelastic fluids), it is of limited use as long as this stress tensor is not clarified. We therefore have to make a connection between the stresses and the motion of the fluid, for we expect that the stresses will change as soon as the fluid starts to flow. This connection will me be made thanks to \textit{constitutive laws} that will really characterise the fluid we are looking at.
+That was quite simple. However there is a loophole in the previous expression as the stress tensor $\symbfsfit \sigma$ is here unknown (except in the case of limited interest of a static fluid, see equation \eqref{eq:static_stress_tensor}). Even if equation~\eqref{eq:momentum_conservation} holds true whatever the nature of the fluid (even for say exotic viscoelastic fluids), it is of limited use as long as this stress tensor is not clarified. We therefore have to make a connection between the stresses and the motion of the fluid, for we expect that the stresses will change as soon as the fluid starts to flow. This connection will me be made thanks to \textit{constitutive laws} that will really characterise the fluid we are looking at.
+
+\subsection{Energy conservation\index{conservation law!energy conservation}}
+The energy of a fluid particle is composed of a macroscopic kinetic energy $\tfrac{1}{2}\rho \bu^2$ and a remainder, that encompasses in particular the microscopic (or \textit{thermal}) kinetic energy of molecules, in the form of the \textit{internal energy} $e$. The first principle of thermodynamics states that this energy varies when external forces exert a work, and when there in an input or output of internal energy (i.e. \textit{heat}) through the boundaries:
+\begin{equation}
+\dd{}{t} \iiint_{V_\text{mat}} \!\!\!\lp \frac{1}{2}\rho u^2 + \rho e\rp \,\dV = \oiint_{\partial V_\text{mat}} \!\!\!\!\!\!\lp\symbfit\sigma \cdot \bn\rp\!\cdot\!\bu \,\dS + \iiint _{V_\text{mat}}\rho \bff \!\cdot\! \bu \,\dV - \oiint_{\partial V_\text{mat}}\!\!\!\!\!\!\bq\!\cdot\!\bn\,\dS.
+\end{equation}
+This equation can be be rewritten at the fluid particle scale:
+\begin{equation}
+\rho\dd{}{t} \lp \frac{1}{2}u^2 + e\rp = \nabla\!\cdot\!\lp\symbfit\sigma\! \cdot\! \bu\rp + \rho \bff \!\cdot\! \bu  - \nabla\!\cdot\!\bq.
+\end{equation}
+As written, this balance mixes macroscopic and microscopic energies. It is however possible to disentangle these two contributions by multiplying Cauchy's equation~\eqref{eq:momentum_conservation} with $\bu$ to get:
+\begin{equation}
+\rho\dd{}{t} \lp \frac{1}{2} u^2 \rp = \lp\nabla\!\cdot\!\symbfit\sigma\rp\! \cdot\! \bu + \rho \bff \!\cdot\! \bu.
+\end{equation}
+On subtracting these last two equations, we obtain an equation for the evolution of the internal energy $e$ alone:
+\begin{equation}
+\rho\dd{e}{t}  = \symbfit\sigma \!:\! \symbfsfit D  - \nabla\!\cdot\!\bq.
+\label{eq:internal_energy}
+\end{equation}
+Here, $\symbfsfit D$ is the symmetric part of the velocity gradient:
+\begin{equation}
+D_{i,j} = \frac{1}{2}\lp\pd{\vphantom{u_j}u_i}{x_j}+\pd{u_j}{x_i}\rp .
+\end{equation}
+
+We can express energy conservation in a more convenient form, let's first remark that fluid particles are exposed to neighbouring fluid (i.e. are not encased in rigid boxes). For such systems exposed to the open world, thermodynamicists have developed a clever way to account for energy variations without having to worry about the work done during expansion or contraction, by introducing the concept of \textit{enthalpy} \citep{Atkins2010}, defined\footnote{Note that we here use the \textit{specific} enthalpy, that is the enthalpy per unit mass.} as $h = e + p/\rho$.
+Reexpressing equation~\eqref{eq:internal_energy} with enthalpy we get:
+\begin{equation}
+\rho\dd{h}{t}  = \symbfit\sigma \!:\! \symbfsfit D  - \nabla\!\cdot\!\bq + \dd{p}{t} + p \lp\nabla\!\cdot\!\bu\rp.
+\label{eq:enthalpy}
+\end{equation}
+A connection between enthalpy (or internal energy) and the state variables $p$ and $T$ (the temperature) can be obtained if we suppose that, locally, the fluid particle reaches thermodynamical equilibrium:
+\begin{equation}
+\mathrm dh = c_p\, \mathrm dT + \frac{1}{\rho}\lp 1 - \alpha T\rp \mathrm dp,
+\end{equation}
+where $c_p$ denotes the specific heat capacity at constant pressure and $\alpha = \rho \lp \partial \lp 1/\rho\rp / \partial T\rp_p$ the thermal expansion coefficient\footnote{
+To obtain this relation we may start from the enthalpy differential:
+$$
+\mathrm dH = \underbrace{\mathrm dU + p\,\mathrm dV}_{T\,\mathrm dS} + V\, \mathrm dp,
+$$
+where we have used $T\,\mathrm dS = \mathrm dU + p\,\mathrm dV$ as a defining relation for entropy. Expressing the total differential of entropy as a function the state variables differentials $\mathrm dp$ and $\mathrm dT$ we get:
+$$
+\mathrm dH = T\lp \lp\pd{S}{T}\rp_p\!\!\!\mathrm dT + \lp\pd{S}{p}\rp_T\!\!\!\mathrm dp\rp + V\, \mathrm dp.
+$$
+To make further progress we note that the definition of the heat of capacity at constant pressure is $C_p\equiv\lp\partial H/\partial T\rp_p$ and make use of Maxwell relations to express the entropy derivative as a derivative of the volume. To do so, we write the total differential of Gibbs energy:
+$$
+\mathrm dG = -S\mathrm dT + V \mathrm dp,
+$$
+and deduce the following Maxwell relation:
+$$
+-\lp\pd{S}{p}\rp_T = \lp\pd{V}{T}\rp_p \equiv V\alpha.
+$$
+With the help of this last relation we may rewrite the enthalpy differential as:
+$$
+\mathrm dH = C_p\,\mathrm dT + V\lp 1 - \alpha T\rp \mathrm dp.
+$$
+If $V$ denotes the volume of a fluid particle, we can divide this last relation by its mass to obtain the desired result.
+}. Following the fluid particle in its motion, we get the following expression for the rate of variation of specific enthalpy:
+\begin{equation}
+\rho\dd{h}{t} = \rho c_p \dd{T}{t} + \lp 1 + \frac{T}{\rho} \lp \pd{\rho}{T}\rp_p\rp \dd{p}{t}.
+\end{equation}
+This expression allows us to get the following form for energy conservation at the local level:
+\begin{equation}
+\rho c_p \dd{T}{t} = \underbrace{\symbfit\sigma \!:\! \symbfsfit D + p \lp\nabla\!\cdot\!\bu\rp}_\text{viscous dissipation} - \nabla\!\cdot\!\bq - \frac{T}{\rho} \lp \pd{\rho}{T}\rp_p \dd{p}{t}.
+\label{eq:energy_equation_general_form}
+\end{equation}
+In equation~\eqref{eq:internal_energy}, $\symbfit\sigma \!:\! \symbfsfit D + p \lp\nabla\!\cdot\!\bu\rp$ corresponds to a macroscopic energy transfer into internal energy, and can be shown to be a strictly positive quantity \citep[e.g.][]{Leal2007}. From a macroscopic perspective, this means that kinetic energy has been lost into ``heat'', and for this reason this term is referred to as \textbf{viscous dissipation}\index{dissipation}. 
 
 \section{Constitutive laws\index{constitutive laws}}
 \label{sec:constitutive_laws}
-The conservation laws expressed for a flowing fluid are expressed with fluxes and stresses whose precise form still remains to be determined. In order to make some progress in this determination, let's consider the following situation: without any macroscopic motion, a liquid contains a colourant with concentration $c$ distributed inhomogeneously, with area more or less concentrated. Even in absence of a mean motion, the collisions between molecules will lead the colourant molecules to migrate randomly in the liquid. As a result, due to the inhomogeneous colourant distribution, there will be an excess of particles traversing $\delA$ that originate from a more concentrated area than the reverse. The consequence is a net transport of colourant molecules from more concentrated area to less concentrated ones, that will be active as long as the non-equilibrium situation persists: this is the \textbf{diffusion process}. It seems difficult to track the motion of each colourant particles from a statistical viewpoint. But from a \textit{phenomenological} viewpoint, it is quite clear that diffusion will remain active only if a concentration gradient $\nabla c$ exists. The idea of \textbf{gradient-type laws} is to suppose that the components of the flux $\bj_\text{diff}$\ depend linearly on $\nabla c$, i.e. :
+The conservation laws expressed for a flowing fluid are expressed with fluxes and stresses whose precise form still remains to be determined. In order to make some progress in this determination, let's consider the following situation: without any macroscopic motion, a liquid contains a colourant with concentration~$c$ distributed inhomogeneously, with area more or less concentrated. Even in absence of a mean motion, the collisions between molecules will lead the colourant molecules to migrate randomly in the liquid. As a result, due to the inhomogeneous colourant distribution, there will be an excess of particles traversing~$\delA$ that originate from a more concentrated area than the reverse. The consequence is a net transport of colourant molecules from more concentrated area to less concentrated ones, that will be active as long as the non-equilibrium situation persists: this is the \textbf{diffusion process}. It seems difficult to track the motion of each colourant particles from a statistical viewpoint. But from a \textit{phenomenological} viewpoint, it is quite clear that diffusion will remain active only if a concentration gradient $\nabla c$ exists. The idea of \textbf{gradient-type laws} is to suppose that the components of the flux $\bj_\text{diff}$\ depend linearly on $\nabla c$, i.e. :
 \begin{equation}
 \lp \bj_\text{diff}\rp_i = \kij \pd{c}{x_j}.
 \end{equation}
@@ -373,30 +446,31 @@ or $[\mathsf{ML^{-1}T^{-2}}]$, the same dimension of a stress. This dimensional 
 \label{eq:momentum_flux_stress}
 \end{equation}
 which is the horizontal stress exerted on a surface with a vertical normal\footnote{the reader will note the sign difference between the expressions~\eqref{eq:momentum_flux} and~\eqref{eq:momentum_flux_stress} that originate from the notation convention for stresses.}. The proportionality coefficient $\mu$ characterising the efficiency of momentum transport is the \textit{dynamic viscosity\index{viscosity}}.
-\prg{General expression for the stress tensor of a Newtonian fluid.} In the context of a general flow, we can foresee that the stress tensor will depend on each component of the velocity gradient\footnote{This is this linear dependence to shear that qualifies a fluid as Newtonian. But we can imagine (and actually there exists) more complex relations, of nonlinar nature, between stress and shear. \textbf{Rheology} is the discipline that studies these particular non-newtonian behaviours.}, so that:
+\prg{General expression for the stress tensor of a Newtonian fluid.} In the context of a general flow, we can foresee that the stress tensor will depend on each component of the velocity gradient\footnote{This is this linear dependence to shear that qualifies a fluid as Newtonian. But we can imagine (and actually there exists) more complex relations, of nonlinear nature, between stress and shear. \textbf{Rheology} is the discipline that studies these particular non-newtonian behaviours.}, so that:
 \begin{equation}
 \sigij = -p \,\delij + \alphaijkl \pd{u_k}{x_l}.
 \end{equation}
-This form of the stress tensor is compatible with the static fluid stress tensor presented earlier: as soon as the velocity vanishes, the stress tensor adopts its static limit~\eqref{eq:static_stress_tensor}. But we can go further. If we decompose the velocity gradient tensor into a symmetric part \textbf{\textsf{\textit{e}}} (associated with a deformation) and an antisymmetric part $\mathsfbfit \omega$ (associated with solid body rotation) :
+This form of the stress tensor is compatible with the static fluid stress tensor presented earlier: as soon as the velocity vanishes, the stress tensor adopts its static limit~\eqref{eq:static_stress_tensor}. But we can go further. If we decompose the velocity gradient tensor into a symmetric part $\symbfsfit{D}$ (associated with a deformation) and an antisymmetric part $\symbfsfit \omega$ (associated with solid body rotation) :
 $$
-u_{i,j} = e_{i,j} + \omega_{i,j} \quad \text{with}\quad 
-e_{i,j} = \frac{1}{2}\lp\pd{\vphantom{u_j}u_i}{x_j}+\pd{u_j}{x_i}\rp \quad\text{et}\quad
+u_{i,j} = D_{i,j} + \omega_{i,j} \quad \text{with}\quad 
+D_{i,j} = \frac{1}{2}\lp\pd{\vphantom{u_j}u_i}{x_j}+\pd{u_j}{x_i}\rp \quad\text{et}\quad
 \omega_{i,j}= \frac{1}{2}\lp\pd{\vphantom{u_j}u_i}{x_j}-\pd{u_j}{x_i}\rp,
 $$
-Actually momentum diffusion (i.e. viscous stress) can only occur when the flow deviates from solid-body motion (translation or rotation): as a result $\mathsfbfit \sigma$ cannot depend on $\mathsfbfit \omega$ and:
+Actually momentum diffusion (i.e. viscous stress) can only occur when the flow deviates from solid-body motion (translation or rotation): as a result $\symbfsfit \sigma$ cannot depend on $\symbfsfit \omega$ and:
 \begin{equation}
-\sigij = -p\, \delij + \Aijkl e_{kl}.
+\sigij = -p\, \delij + \Aijkl D_{kl}.
 \end{equation}
 Additional considerations on the fluid isotropy that we will not develop here allow for a drastic reduction in the number of coefficients to finally get:
 \begin{equation}
-\sigij = -p \,\delij + 2 \mu e_{ij} + \lambda \lp\nabla\!\cdot\!\bu\rp \delij.
+\sigij = -p \,\delij + 2 \mu D_{ij} + \lambda \lp\nabla\!\cdot\!\bu\rp \delij.
 \label{eq:newtonian_stress_tensor}
 \end{equation}
 
-\section{Navier-Stokes equation}
+\section{Wrapping up: The Navier-Stokes and energy equations}
+\subsection{The Navier-Stokes equation}
 Having elucidated the structure of the stress tensor~\eqref{eq:newtonian_stress_tensor} we can rewrite the equation for momentum conservation~\eqref{eq:momentum_conservation} :
 \begin{equation}
-\rho \dd{u_i}{t} =  \rho f_i  - \pd{p}{x_i} + \pd{}{x_j} \lp 2 \mu e_{ij} + \lambda \lp\nabla\!\cdot\!\bu\rp \delij \rp
+\rho \dd{u_i}{t} =  \rho f_i  - \pd{p}{x_i} + \pd{}{x_j} \lp 2 \mu D_{ij} + \lambda \lp\nabla\!\cdot\!\bu\rp \delij \rp
 \end{equation}
 This equation is the \textit{Navier-Stokes equation}.
 
@@ -406,8 +480,15 @@ In the particular case (but of great practical interest) of an incompressible ev
 \end{equation}
 or, in vectorial form:
 \begin{equation}
-\underbrace{\rho \lp\pd{\bu}{t} + \lp\bu\!\cdot\!\nabla\rp\bu\rp}_{m\matrixsym\gamma} = \underbrace{\vphantom{\lp\pd{\bu}{t}\rp}-\nabla p + \mu \nabla^2 \bu + \rho \bff}_{\Sigma \bF}.
+\underbrace{\rho \lp\pd{\bu}{t} + \lp\bu\!\cdot\!\nabla\rp\bu\rp}_{m\symbf\gamma} = \underbrace{\vphantom{\lp\pd{\bu}{t}\rp}-\nabla p + \mu \nabla^2 \bu + \rho \bff}_{\Sigma \bF}.
 \end{equation}
 
+\subsection{The energy equation}
+Similarly, rewriting the general form for energy conservation~\eqref{eq:energy_equation_general_form} for a Newtonian fluid we get:
+\begin{equation}
+\rho c_p \dd{T}{t} = \underbrace{2\mu\symbfsfit D \!:\! \symbfsfit D}_\text{dissipation} + \nabla\!\cdot\!\lp k\nabla T\rp - \frac{T}{\rho} \lp \pd{\rho}{T}\rp_p \dd{p}{t}.
+\label{eq:energy_equation}
+\end{equation}
+It can be noted here that the viscous dissipation term takes the very simple form $2\mu\symbfsfit D \!:\! \symbfsfit D$. Finally, we remark that the last term in the right hand side is usually neglected in practical applications; even in configurations where $\mathrm dp/\mathrm dt$ is not strictly zero, the weak variation of the density with temperature $\lp\partial\rho / \partial T\rp_p$ for usual fluids makes this term negligible in front of the other contributions.
 %\section{Mini-projet : sur l'intérêt de l'adimensionnement}
 %Manip parachute

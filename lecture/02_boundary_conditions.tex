@@ -1,9 +1,9 @@
 % !TEX root = ./physics_of_fluids.tex
 % !TEX TS-program = xelatex
 % !TEX encoding = UTF-8 Unicode
-\chapter{Boundary conditions and interfaces}
+\chapter[Boundary conditions and interfaces]{{\bfseries Boundary} conditions and {\bfseries interfaces}}
 \label{chap:boundary_conditions}
-We have seen in the previous chapter how to express mass and momentum conservation at the fluid particle level, and we have derived the corresponding equations for fluid motion. These equations are naturally associated with \textbf{boundary conditions} that either express conservation laws (e.g. no mass flux at a boundary) or peculiar physical processes occurring at a surface (temperature or velocity continuity). In both cases these boundary conditions will be pivoting in the determination of the solution.
+We have seen in the previous chapter how to express mass, momentum and energy conservation at the fluid particle level, and we have derived the corresponding equations for fluid motion. These equations are naturally associated with \textbf{boundary conditions} that either express conservation laws (e.g. no mass flux at a boundary) or peculiar physical processes occurring at a surface (temperature or velocity continuity). In both cases these boundary conditions will be pivoting in the determination of the solution.
 
 One striking experimental demonstration of this coupling between the large and the small is provided Fig.~\ref{fig:splash_no_splash}, where two seemingly identical spheres impacting water at the same speed either enter the pool very smoothly or by creating a considerable splash. Actually the difference between the two spheres is a nanometre-thick coating making the sphere either hydrophilic or hydrophobic\index{boundary conditions!hydrophobic, hydrophilic}, thereby revealing how nanometric effects at the boundary can influence large-scale hydrodynamics \citep{Duez2007,Eggers2007}.
 \setlength{\unitlength}{1cm}
@@ -86,16 +86,16 @@ Let's write a mass balance on a fluid element analogous to the previous one: a s
 \end{equation}
 so that :
 \begin{equation}
-\underbrace{\rho_\ell \lp\bu_\ell - \bu_\text i\rp \cdot \bn}_\text{interface ablation} = \underbrace{\rho_v \lp\bu_g -\bu_\text i\rp\cdot \bn}_\text{Stefan's flow} \underbrace{- D \nabla \rho_v \cdot n}_\text{diffusive mass flux}.
+\underbrace{\vphantom{\bu_g}\rho_\ell \lp\bu_\ell - \bu_\text i\rp \cdot \bn}_\text{interface ablation} = \underbrace{\rho_v \lp\bu_g -\bu_\text i\rp\cdot \bn}_\text{Stefan's flow} \underbrace{\vphantom{\bu_g}- D \nabla \rho_v \cdot n}_\text{diffusive mass flux}.
 \label{eq:evaporation_BC}
 \end{equation}
-From this balance it is apparent that the interface evaporation is driven by two contributions: a convective mass flux and a diffusive one. The convective, so-called Stefan flow from the the expansion of liquid solvent into vapour solvent. 
+From this balance it is apparent that the interface evaporation is driven by two contributions: a convective mass flux and a diffusive one. The convective (so-called \textit{Stefan}) flow results from the expansion of liquid solvent into vapour solvent. 
 In the context of a violent evaporation (e.g. boiling, combustion front), this is the dominating contribution and from the balance relation we that in this context:
-$$\bu_g \sim \underbrace{\frac{\rho_\ell}{\rho_v}}_{\gg 1} \bu_\ell.$$
+$$\left\|\bu_g\right\| \sim \underbrace{\frac{\rho_\ell}{\rho_v}}_{\gg 1} \left\|\bu_{\mathrm i}\right\|.$$
 However in the other limit where evaporation is very slow, which corresponds to everyday life situations, such as the slow drying of a water drop in plain air, this is the reverse. The diffusive mass flux largely overrides the convective (Stefan) flux, so that it can safely be disregarded\footnote{It can be shown that the ratio between Stefan over diffusive flow is simply the mass fraction of solvent in the gas near the interface \citep{Magdelaine2019}. When a liquid is boiling, the air surrounding the interface is pure solvent vapour, so this mass fraction is of order 1 and Stefan's flow contribution becomes important. Conversely, the saturation vapour pressure of water at ambient temperature is 2.3 kPa -- corresponding to a mass fraction of water vapour in air of 1.5 \%. In this limit, the contribution of Stefan's flow is negligible to describe evaporation.}.
 \prg{Application: drop evaporation and D$^2$-law.}\index{drop!evaporation} We can build up on the previous considerations to provide with an estimate of the time it takes for an isolated and still water drop to evaporate in plain air. At first sight, we might be tempted to scale the overall mass loss rate of the drop with its surface $\propto R^2$, and conclude that the radius of the drop decreases linearly with time. However this is not so, because the diffusive transport of water away from the drop sets a bound on how fast the drop evaporates: drop evaporation is an example of a \textbf{diffusion-limited} problem. Drop evaporation in still air was first investigated by \citet{Maxwell1890} who was interested in developing a theory of the wet bulb thermomether -- a curious and ingenious device aimed at measuring air humidity. \citet{Langmuir1918} obtained the very same result years later, without apparent knowledge of Maxwell's former investigations.
 
-Considering a still drop with no motion at constant temperature\footnote{This is arguably a fragile hypothesis, as the latent heat of evaporation is responsible for an overall cooling down of the drop. While D$^2$'s law is found to hold, the prefactor of the law becomes non-trivial when taking all effects into account, see \citet{Cazabat2010} for a discussion.}, we can rewrite the boundary condition~\eqref{eq:evaporation_BC} at the surface of the drop as:
+Considering a still drop with no motion at constant temperature\footnote{This is arguably a fragile hypothesis, as the enthalpy of evaporation is responsible for an overall cooling down of the drop. While $D^2$'s law is found to hold, the prefactor of the law becomes non-trivial when taking all effects into account, see \citet{Cazabat2010} for a discussion.}, we can rewrite the boundary condition~\eqref{eq:evaporation_BC} at the surface of the drop as:
 \begin{equation}
 \rho_\ell \dd{R}{t} = D \left.\pd{c}{r}\right|_{r=R}.
 \label{eq:drop_recoil}
@@ -329,22 +329,22 @@ We can reexpress this relation with the help of the curvature radii~\eqref{eq:cu
 \begin{equation}
 \delta \boldsymbol f_\text{cap} = - \gamma \lp \frac{1}{R_1}\delta \ell_1 \delta \ell_2 + \frac{1}{R_2}\delta \ell_1 \delta \ell_2 \rp \bn,
 \end{equation}
-so that finally:\footnote{This result could have been obtained directly by application of the \textbf{surface divergence theorem}\index{divergence!surface} which can be stated as:
+so that finally:
+\footnote{This result could have been obtained directly by application of the \textbf{surface divergence theorem}\index{divergence!surface} which can be stated as:
 \begin{equation}
-\oint_{\mathcal C} \phi \bp \,\mathrm d\ell = \iint_\mathcal S \nabla_s \phi \,\mathrm dS - \iint_\mathcal S \phi \bn \kappa\,\mathrm dS,
+\oint_{\mathcal C} \phi \bp \,\mathrm d\ell = \iint_{\mathcal S} \nabla_s \phi \,\mathrm dS - \iint_{\mathcal S} \phi \bn \kappa\,\mathrm dS,
 \label{eq:surfdiv}
 \end{equation}
 where $\mathcal S$ is a portion of a (curved) surface bounded by the contour $\mathcal C$. In this expression $\nabla_s\equiv\nabla-\bn\lp\bn\cdot\nabla\rp$ is the \textit{surface gradient}, and $\bp$ is a vector tangent to the surface but normal to the contour such that $\bp = \bt \times \bn$. This formula is reminiscent of its 3D version $\oiint f \bn \, \mathrm dS = \iiint \nabla f \, \mathrm dV$ except for an extra term involving the curvature of the surface. Actually this extra term may be seen as rooted in a 2D extension of the Frenet-Serret formulae linking curvature, normal and rate of variation of the tangent, see also~\eqref{eq:2Dfrenet}.
-
 \noindent The surface divergence theorem can be demonstrated simply with Stokes' theorem as follows. Let's start by considering a vector field $\bb$ defined on the surface (and not necessarily tangent to the surface -- $\bb$ can really be any vector field). Integrating $\bb\cdot\bp$ on $\mathcal C$ yields:
 \begin{alignat*}{1}
-\oint_\mathcal C \bb\cdot\bp\,\mathrm d\ell &= \oint_\mathcal C \bb\cdot(\bt\times\bn)\,\mathrm d\ell = \oint_\mathcal C (\bn\times\bb)\cdot\bt\,\mathrm d\ell\\
-&= \iint_\mathcal S \nabla\times\lp\bn\times\bb\rp\cdot\bn\,\mathrm dS\\
-&=\iint_\mathcal S\lp\bn\lp\nabla\cdot\bb\rp - \bb\lp\nabla\cdot\bn\rp-\lp\bn\cdot\nabla\rp\bb+\lp\bb\cdot\nabla\rp\bn\rp\cdot\bn\,\mathrm dS
+\oint_{\mathcal C} \bb\cdot\bp\,\mathrm d\ell &= \oint_{\mathcal C} \bb\cdot(\bt\times\bn)\,\mathrm d\ell = \oint_{\mathcal C} (\bn\times\bb)\cdot\bt\,\mathrm d\ell\\
+&= \iint_{\mathcal S} \nabla\times\lp\bn\times\bb\rp\cdot\bn\,\mathrm dS\\
+&=\iint_{\mathcal S}\lp\bn\lp\nabla\cdot\bb\rp - \bb\lp\nabla\cdot\bn\rp-\lp\bn\cdot\nabla\rp\bb+\lp\bb\cdot\nabla\rp\bn\rp\cdot\bn\,\mathrm dS
 \end{alignat*}
 The last term here vanishes: this is best seen by writing it using Einstein convention $b_j n_i n_{i,j}$, and remarking that $n_i n_{i,j} = \tfrac{1}{2} \lp n_i n_i \rp_{,j} = 0$ because $n_i n_i = 1$. Now if we take $\bb = \phi \bc$ with $\bc$ an arbitrary \textit{constant} vector, we get:
 \begin{equation}
-\bc\cdot\left[\oint_\mathcal C \phi \bp\,\mathrm d\ell\right] = \bc\cdot\left[\iint_\mathcal S \lp\nabla \phi -\phi\bn\lp\nabla\cdot\bn\rp-\bn\lp\bn\cdot\nabla\phi\rp\rp\,\mathrm dS \right].
+\bc\cdot\left[\oint_{\mathcal C} \phi \bp\,\mathrm d\ell\right] = \bc\cdot\left[\iint_{\mathcal S} \lp\nabla \phi -\phi\bn\lp\nabla\cdot\bn\rp-\bn\lp\bn\cdot\nabla\phi\rp\rp\,\mathrm dS \right].
 \end{equation}
 Upon remarking that for this equation to hold for any $\bc$, the bracket terms have to coincide, and further noting that $\nabla\cdot\bn\equiv\kappa$, we recover~\eqref{eq:surfdiv}.
 
@@ -399,9 +399,9 @@ It is now possible to use dynamic molecular simulations to answer this question.
 %Mais contrairement à une membrane élastique, la \textbf{tension de surface} $\gamma$ d'une interface est constante, quel que soit l'étirement imposé. La valeur de cette tension de surface est très faible -- de l'ordre de quelques dizaines de milliNewtons par mètre tout au plus, mais elle est suffisante pour sculpter des interfaces liquides et conférer, par exemple, une forme sphérique à de petites gouttes d'eau. 
 
 \subsection{Stress (dis-)continuity}
-With the notion of \textit{stress}, the previous result may easily be extended to the case of moving interfaces. To do so let's consider an elementary volume in the shape of a camembert box leaning on each side of the interface, see figure~\ref{fig:impermeability}. Now we let the volume thickness tend to 0, so that both the mass and the momentum of the element tend to zero as well. As a result the sum of the forces acting on this volume must be zero as well. We have already seen with~\eqref{eq:capillaryforce_marangoni} that the net sum of interfacial stresses is $\nabla \gamma \, \delta S -\gamma \kappa \, \bn \, \delta S$. The stress exerted by the exterior medium is $\mathsfbfit{\sigma}_\text{ext} \bn_\text{ext} \delta S$, and similarly for the stress exerted by the interior medium $\mathsfbfit{\sigma}_\text{int} \bn_\text{int} \delta S$, with $\bn_\text{ext} = - \bn_\text{int} = \bn$. The condition for interface equilibrium will thus be:
+With the notion of \textit{stress}, the previous result may easily be extended to the case of moving interfaces. To do so let's consider an elementary volume in the shape of a camembert box leaning on each side of the interface, see figure~\ref{fig:impermeability}. Now we let the volume thickness tend to 0, so that both the mass and the momentum of the element tend to zero as well. As a result the sum of the forces acting on this volume must be zero as well. We have already seen with~\eqref{eq:capillaryforce_marangoni} that the net sum of interfacial stresses is $\nabla \gamma \, \delta S -\gamma \kappa \, \bn \, \delta S$. The stress exerted by the exterior medium is $\symbfsfit{\sigma}_\text{ext} \bn_\text{ext} \delta S$, and similarly for the stress exerted by the interior medium $\symbfsfit{\sigma}_\text{int} \bn_\text{int} \delta S$, with $\bn_\text{ext} = - \bn_\text{int} = \bn$. The condition for interface equilibrium will thus be:
 \begin{equation}
-\lp\mathsfbfit{\sigma}_\text{ext} - \mathsfbfit{\sigma}_\text{int}\rp \bn = - \nabla_s \gamma + \gamma \kappa \bn.
+\lp\symbfsfit{\sigma}_\text{ext} - \symbfsfit{\sigma}_\text{int}\rp \bn = - \nabla_s \gamma + \gamma \kappa \bn.
 \label{eq:dynamic_BC}
 \end{equation}
 This is a really general relation that expresses a \textbf{stress jump} at the interface. Note that in  the particular static case where $\sigij = -p \delij$ with constant surface tension, this relation becomes:

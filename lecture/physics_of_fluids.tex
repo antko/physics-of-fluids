@@ -3,33 +3,17 @@
 \documentclass[11pt,a4paper,twoside]{book}
 \usepackage{amsmath,amssymb}
 \usepackage{empheq}
-\usepackage[semibold]{ebgaramond}
-\usepackage[cmintegrals,cmbraces]{newtxmath}
-\usepackage{ebgaramond-maths}
-\usepackage{bm}
-\usepackage[OMLmathrm, OMLmathsfit, rmdefault=mdugm]{isomath}
+%\usepackage[semibold]{ebgaramond}
+%\usepackage[cmintegrals,cmbraces]{newtxmath}
+%\usepackage{ebgaramond-maths}
+%\usepackage{bm}
+%\usepackage[OMLmathrm, OMLmathsfit, rmdefault=mdugm]{isomath}
+\usepackage{unicode-math}
+\usepackage{enumitem}
+
 \usepackage{tocbibind}
 \usepackage{makeidx}
 \makeindex
-
-\makeatletter
-  \DeclareSymbolFont{ntxletters}{OML}{ntxmi}{m}{it}
-  \SetSymbolFont{ntxletters}{bold}{OML}{ntxmi}{b}{it}
-  \re@DeclareMathSymbol{\leftharpoonup}{\mathrel}{ntxletters}{"28}
-  \re@DeclareMathSymbol{\leftharpoondown}{\mathrel}{ntxletters}{"29}
-  \re@DeclareMathSymbol{\rightharpoonup}{\mathrel}{ntxletters}{"2A}
-  \re@DeclareMathSymbol{\rightharpoondown}{\mathrel}{ntxletters}{"2B}
-  \re@DeclareMathSymbol{\triangleleft}{\mathbin}{ntxletters}{"2F}
-  \re@DeclareMathSymbol{\triangleright}{\mathbin}{ntxletters}{"2E}
-  \re@DeclareMathSymbol{\partial}{\mathord}{ntxletters}{"40}
-  \re@DeclareMathSymbol{\flat}{\mathord}{ntxletters}{"5B}
-  \re@DeclareMathSymbol{\natural}{\mathord}{ntxletters}{"5C}
-  \re@DeclareMathSymbol{\star}{\mathbin}{ntxletters}{"3F}
-  \re@DeclareMathSymbol{\smile}{\mathrel}{ntxletters}{"5E}
-  \re@DeclareMathSymbol{\frown}{\mathrel}{ntxletters}{"5F}
-  \re@DeclareMathSymbol{\sharp}{\mathord}{ntxletters}{"5D}
-  \re@DeclareMathAccent{\vec}{\mathord}{ntxletters}{"7E}
-\makeatother
 
 \usepackage{array}
 % to produce a comma between multiple footnotes / https://tex.stackexchange.com/questions/40072/incompatibility-between-footmisc-option-multiple-and-hyperref/62091#62091
@@ -92,34 +76,35 @@
 \newcommand{\delh}{\delta h}
 \newcommand{\delt}{\delta t}
 \newcommand{\delz}{\delta z}
-\newcommand{\delbx}{\delta \matrixsym x}
+\newcommand{\delbx}{\delta \symbfit x}
 \newcommand{\lp}{\left(}
 \newcommand{\rp}{\right)}
 \newcommand{\itA}{\textit A}
 \newcommand{\itB}{\textit B}
 \newcommand{\dAB}{\mathcal D_{AB}}
-\newcommand{\bA}{\matrixsym A}
-\newcommand{\bb}{\matrixsym{b}}
-\newcommand{\bc}{\matrixsym{c}}
-\newcommand{\bff}{\matrixsym{f}}
-\newcommand{\bF}{\matrixsym{F}}
-\newcommand{\bj}{\matrixsym{j}}
-\newcommand{\bJ}{\matrixsym J}
-\newcommand{\bn}{\matrixsym{n}}
-\newcommand{\bN}{\matrixsym N}
-\newcommand{\bp}{\matrixsym{p}}
-\newcommand{\bP}{\matrixsym{P}}
-\newcommand{\br}{\matrixsym r}
-\newcommand{\bt}{\matrixsym t}
-\newcommand{\be}{\matrixsym e}
-\newcommand{\bu}{\matrixsym u}
-\newcommand{\bU}{\matrixsym U}
-\newcommand{\bv}{\matrixsym v}
-\newcommand{\bV}{\matrixsym V}
-\newcommand{\bw}{\matrixsym w}
-\newcommand{\bx}{\matrixsym x}
-\newcommand{\bX}{\matrixsym X}
-\newcommand{\by}{\matrixsym y}
+\newcommand{\bA}{\symbfit A}
+\newcommand{\bb}{\symbfit{b}}
+\newcommand{\bc}{\symbfit{c}}
+\newcommand{\bff}{\symbfit{f}}
+\newcommand{\bF}{\symbfit{F}}
+\newcommand{\bj}{\symbfit{j}}
+\newcommand{\bJ}{\symbfit J}
+\newcommand{\bn}{\symbfit{n}}
+\newcommand{\bN}{\symbfit N}
+\newcommand{\bp}{\symbfit{p}}
+\newcommand{\bP}{\symbfit{P}}
+\newcommand{\bq}{\symbfit{q}}
+\newcommand{\br}{\symbfit r}
+\newcommand{\bt}{\symbfit t}
+\newcommand{\be}{\symbfit e}
+\newcommand{\bu}{\symbfit u}
+\newcommand{\bU}{\symbfit U}
+\newcommand{\bv}{\symbfit v}
+\newcommand{\bV}{\symbfit V}
+\newcommand{\bw}{\symbfit w}
+\newcommand{\bx}{\symbfit x}
+\newcommand{\bX}{\symbfit X}
+\newcommand{\by}{\symbfit y}
 \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\D}[2]{\frac{D #1}{D #2}}
 \newcommand{\dd}[2]{\frac{\mathrm d #1}{\mathrm d #2}}
@@ -142,28 +127,31 @@
   
 \counterwithout{footnote}{chapter}
 
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\huge}
+  {{\bfseries \chaptertitlename\ \thechapter}}{20pt}{\Huge}
+\titleformat{name=\chapter, numberless}
+ {\normalfont\sffamily\Huge\bfseries}
+ {}
+ {0pt}
+ {}
+ 
 \begin{document}
 {
 \title{\textit{Physics of fluids \& nonlinear physics}}
-%\author{Arnaud Antkowiak \qquad Camille Duprat}
 \author{
-  \textsc{Arnaud Antkowiak}\footnote{\href{mailto:arnaud.antkowiak@upmc.fr}{arnaud.antkowiak@upmc.fr}}\\ \textsc{Sorbonne Université}
-  \and
-  \textsc{Camille Duprat}\footnote{\href{mailto:camille.duprat@ladhyx.polytechnique.fr}{camille.duprat@ladhyx.polytechnique.fr}}\\ \textsc{École polytechnique}
+  \textsc{Arnaud Antkowiak}\footnote{\href{mailto:arnaud.antkowiak@upmc.fr}{\texttt{arnaud.antkowiak@upmc.fr}}}\\ \textsc{Sorbonne Université}
 }
-%\author{Arnaud Antkowiak}
-%\affil{Sorbonne Université}
-%\author{Camille Duprat}
-%\affil{École polytechnique}
 
-\date{v0.22.10$_\text{31}$}
+\date{\today}
 \maketitle
 \tableofcontents
 }
 \input{./01_equations.tex}
 \input{./02_boundary_conditions.tex}
-\input{./03_viscous_flows.tex}
-\input{./04_thin_viscous_films.tex}
+%\input{./03_viscous_flows.tex}
+%\input{./04_thin_viscous_films.tex}
 \bibliographystyle{jfm}
 \bibliography{biblio_pof}
 \printindex
