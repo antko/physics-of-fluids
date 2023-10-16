@@ -1,7 +1,7 @@
 % !TEX root = ./physics_of_fluids.tex
 % !TEX TS-program = xelatex
 % !TEX encoding = UTF-8 Unicode
-\chapter{Thin viscous films}
+\chapter[Thin viscous films]{{\bfseries Thin} viscous {\bfseries films}}
 \label{chap:thin_viscous_films}
 
 Just as slender solid structures (threads, wires, shells or plates) can be described with a set of simple equations rather than relying on full 3D elasticity, fluid flows with high aspect ratios (lacrymal film on the eye, paint coat, ink jet, atmosphere) may be depicted with equations much more simple than the Navier-Stokes equations. In this chapter, we set out to investigate the dynamics of a thin liquid film dominated by viscous effects and derive the so-called \textbf{lubrication equations} for the film.
@@ -106,7 +106,7 @@ and mass conservation is written:
 \subsection{Stress condition at the interface}
 \prg{Normal stress jump.} The starting point of the analysis is to identify the scale of pressure, as it is the driver of the flow. Pressure is set via the dynamic boundary condition~\eqref{eq:dynamic_BC} projected along the normal:
 \begin{equation}
-\bn\cdot\lp\mathsfbfit{\sigma}_\text{ext} - \mathsfbfit{\sigma}_\text{int}\rp \cdot\bn = \gamma \kappa \quad\text{ at }\quad y = h.
+\bn\cdot\lp\mathbfsfit{\sigma}_\text{ext} - \mathbfsfit{\sigma}_\text{int}\rp \cdot\bn = \gamma \kappa \quad\text{ at }\quad y = h.
 \label{eq:normal_dynamic_BC_film}
 \end{equation}
 This equation features geometric quantities such as the normal vector and the interface curvature $\kappa$. These can be obtained taking the following color function $\mathcal S(x,y,t) = y - h(x,t)$ to describe the interface:
@@ -157,7 +157,7 @@ As a result the normal projection of the stress jump condition reads:
 Pressure and capillarity being the dominant terms of order 1 in this expression, there remains two possibilities for the viscous terms: either Ca$/\varepsilon \ll$ 1, either Ca$/\varepsilon$ = 1. In the latter case, this would set the horizontal velocity scale $U$ (thereby using a argument differing from our quick physical picture). With the current state of our asymptotic analysis, we have not enough elements to choose one scenario or the other\footnote{although we do know, from our previous analysis, that eventually we will find $Ca \sim \varepsilon^3$!}.
 \prg{Tangential stress continuity.} In absence of space-varying surface tension, the tangential stress continuity reads:
 \begin{equation}
-\bn\cdot\lp\mathsfbfit{\sigma}_\text{ext} - \mathsfbfit{\sigma}_\text{int}\rp \cdot\bt = 0 \quad\text{ at the interface } y = h.
+\bn\cdot\lp\mathbfsfit{\sigma}_\text{ext} - \mathbfsfit{\sigma}_\text{int}\rp \cdot\bt = 0 \quad\text{ at the interface } y = h.
 \label{eq:tangential_dynamic_BC_film}
 \end{equation}
 This equation can be explicited as:
@@ -196,7 +196,7 @@ We can then rewrite~\eqref{eq:horizontal_momentum_asymptotic} under the followin
 \underbrace{\frac{\rho \gamma H^5}{\mu^2 \lambda^4}}_{\equiv\,\varepsilon\text{Re}}\lp\bar u_{\bar t} + \bar u \bar u_{\bar x} + \bar v \bar u_{\bar y}\rp = -\bar p_{\bar x} + \bar u_{\bar y \bar y}.
 \label{eq:horizontal_momentum_asymptotic_nondimensional}
 \end{equation}
-For our analysis to be consistent, the left hand side should be much less than -- or at worse of the same order of -- the right hand side (of order 1). Evaluating\, ${\rho \gamma H^5}/{\mu^2 \lambda^4}$ (which can be rewritten as $\varepsilon$ Re, with Re = $\rho U H/\mu$) with the parameters of the problem yields a value O(10$^\text{-8}$). The left hand side being eight orders of magnitude less than the right hand side, we conclude that to first order the $x$-momentum equation simply reads:
+For our analysis to be consistent, the left hand side should be much less than -- or at worse of the same order of -- the right hand side (of order 1). Evaluating\, ${\rho \gamma H^5}/{\mu^2 \lambda^4}$ (which can be rewritten as $\varepsilon$ Re, with Re = $\rho U H/\mu$) with the parameters of the problem yields a value O(10$^{-4}$). The left hand side being four orders of magnitude less than the right hand side, we conclude that to first order the $x$-momentum equation simply reads:
 \begin{equation}
 \bar u_{\bar y \bar y} = \bar p_{\bar x}.
 \label{eq:horizontal_momentum_asymptotic_nondimensional_leading_order}

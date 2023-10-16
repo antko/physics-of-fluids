@@ -93,7 +93,7 @@ $$
 \dd{}{t} \iiint_{V(t)} \theta \,\dV.
 $$
 To shed some light over this quantity, let's divide mentally the domain in a multitude of tiny cubes or fluid particles.
-As the fluid domain moves, the value of $\theta$ will change for all fluid particles at the rate $\dd{\theta}{t}$. Moreover the integration element $\mathrm dV$ will change as well with the rate $\lp\nabla\!\cdot\!\bu\rp\mathrm dV$. In other words\footnote{This relation is obtained on \textbf{mathematical} grounds.}\footnote{We note that this relation can directly be generalised to the case where the domain moves with a velocity differing from that of the fluid (fictitious velocity, flame propagation, balance over a domain moving with a wave). In this case, it suffices to replace $\bu$ with the domain velocity $\bw$.}  :
+As the fluid domain moves, the value of $\theta$ will change for all fluid particles at the rate $\dd{\theta}{t}$. Moreover the integration element $\dV$ will change as well with the rate $\lp\nabla\!\cdot\!\bu\rp\mathrm dV$. In other words\footnote{This relation is obtained on \textbf{mathematical} grounds.}\footnote{We note that this relation can directly be generalised to the case where the domain moves with a velocity differing from that of the fluid (fictitious velocity, flame propagation, balance over a domain moving with a wave). In this case, it suffices to replace $\bu$ with the domain velocity $\bw$.}  :
 \begin{equation}
 \dd{}{t} \iiint_{V(t)} \theta \,\dV = \iiint_{V(t)} \dd{\theta}{t} \,\dV + \iiint_{V(t)} \theta \underbrace{\dd{(\dV)}{t}}_{\lp\nabla \cdot \bu\rp\dV}
 \end{equation}
@@ -323,11 +323,11 @@ z_\text{surf} = \frac{1}{2} \frac{\Omega^2}{g} r^2 + \text{const}.
 \end{equation}
 \prg{Exercise: fluid planet equilibrium.} Consider a self-gravitating fluid sphere. The gravity force per unit mass $\bff$ exerted on each fluid particle derives from the gravity potential $\Psi$ such that:
 \begin{equation}
-\nabla^2 \Psi = 4 \mathrm \pi \symcal G \rho,
+\nabla^2 \Psi = 4 \pi \symcal G \rho,
 \end{equation}
 where $\mathcal G$ is the universal gravitational constant. With the help of the hydrostatic equation, and supposing that the fluid has a constant density\footnote{This is a really crude approximation on the density profile, which better describes incompressible (!) planets rather than gaseous ones or stars. The hydrostatics of stars can however be rationalised by taking into account the state law of polytropes, and possibly the radiation pressure adding up to the kinetic pressure. The reader interested in stellar hydrostatics may look at the \textit{Lane-Emden equation} described e.g. in \citet[][chap. IV]{Chandrasekhar1957}.} $\rho_0$, show that the radial pressure profile satisfies:
 \begin{equation}
-p(r) = \tfrac{2}{3} \mathrm \pi \mathcal G \rho_0^2 \lp R^2 - r^2\rp,
+p(r) = \tfrac{2}{3}  \pi \mathcal G \rho_0^2 \lp R^2 - r^2\rp,
 \end{equation}
 with $R$ the planet radius.
 \section{Fluid motion}

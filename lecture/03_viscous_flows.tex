@@ -1,7 +1,7 @@
 % !TEX root = ./physics_of_fluids.tex
 % !TEX TS-program = xelatex
 % !TEX encoding = UTF-8 Unicode
-\chapter{Viscous flows}
+\chapter[Viscous flows]{{\bfseries Viscous} flows}
 \label{chap:viscous_flows}
 Whenever the viscous diffusion timescale $\rho L^2/\mu$ is short with respect to inertial $L/U$ or imposed $\omega^{-1}$ timescales, flows will be dominated by viscosity. This situation occurs of course if the viscosity of the material is high, e.g. with mud, magma or glass melt (figure~\ref{fig:viscous_flows}) but not only. Glaciers were reported to flow as early as 1873 \citep{Aitken1873}. These so-called \textit{rivers of ice} indeed flow, albeit very slowly -- typically less than a metre a day -- making inertial phenomena irrelevant (figure~\ref{fig:viscous_flows}; see also the slow motion footage taken by BBC Earth Lab \url{https://youtu.be/ghC-Ut0fW4o}). At very small scales where bacteria and algae evolve, diffusion competes and usually overcomes inertial effects. As a result, microorganisms living at such scales have evolved non-intuitive strategies to move as we will see next.
 
@@ -58,7 +58,7 @@ In this limit, the Navier-Stokes equation reduces to the much simpler \textbf{St
 
 \prg{Cauchy equation.} The Stokes equation may also be rewritten as the following \textit{Cauchy equation}:
 \begin{equation}
-\nabla\cdot\tensorsym\sigma=\matrixsym 0.
+\nabla\cdot\symbfsfit\sigma=\symbfsfit 0.
 \end{equation} 
 With this formulation it becomes apparent that viscous flows are \textit{force free}: in absence of significant inertia, the forces balance each other.
 
@@ -114,14 +114,14 @@ Interestingly if we were to shrink the size of the sphere to 0 while keeping the
 \subsection{Point force induced flow: the Stokeslet\index{Stokeslet}}
 The Stokeslet is a fundamental solution for the Stokes equation, and describes the flow that would be induced by a point force $\mathbf f\, \delta(\bx-\bx_0)$ located at $\bx = \bx_0$. The corresponding velocity and pressure fields therefore satisfy the following \textit{forced Stokes equation}:
 \begin{equation}
--\nabla p + \mu \Delta \bu + \mathbf f \,\delta(\bx-\bx_0) = \matrixsym 0.
+-\nabla p + \mu \Delta \bu + \mathbf f \,\delta(\bx-\bx_0) = \symbfsfit 0.
 \label{eq:forced_stokes_equation}
 \end{equation}
 Note that in this expression $\mathbf f$ is a constant vector. 
 
 The flow field solution is termed \textbf{Stokeslet} and is characterized by: 
 \begin{equation}
-\left.\bu_{\text{stokeslet}}\right|_i(\bx)=\frac{1}{8\mathrm\pi\mu}\mathcal S_{ij}(\bx |\bx_0) f_j,
+\left.\bu_{\text{stokeslet}}\right|_i(\bx)=\frac{1}{8\pi\mu}\mathcal S_{ij}(\bx |\bx_0) f_j,
 \label{eq:stokeslet_velocity_component}
 \end{equation}
 with $\mathcal S_{ij}$ being the \textit{Oseen-Burgers tensor} defined as:
@@ -139,7 +139,7 @@ $$
 $$
 so that the Green's function for Laplace equation is:
 \begin{equation}
-g(\bx |\by) = -\frac{1}{4\mathrm{\pi}r}.
+g(\bx |\by) = -\frac{1}{4\pi r}.
 \end{equation}
 \prg{Stokeslet obtention.} With the help of the Green's function for Laplace equation, the divergence of the forced Stokes equation~\eqref{eq:forced_stokes_equation} may be written as
 \begin{equation}
@@ -151,21 +151,21 @@ p=\mathbf f\cdot\nabla\lp-\frac{1}{4\pi r}\rp.
 \end{equation}
 Injecting this form for the pressure in equation~\eqref{eq:forced_stokes_equation} we obtain:
 \begin{equation}
-\mu \Delta u_i=\frac{1}{4\mathrm\pi}\lp\underbrace{\delta_{ij}\pd{}{x_k}\pd{}{x_k}}_{\tensorsym I \Delta}\lp\frac{1}{r}\rp-\underbrace{\pd{}{x_i}\pd{}{x_j}}_{\nabla\nabla}\lp\frac{1}{r}\rp\rp f_j.
+\mu \Delta u_i=\frac{1}{4\pi}\lp\underbrace{\delta_{ij}\pd{}{x_k}\pd{}{x_k}}_{\symbfsfit I \Delta}\lp\frac{1}{r}\rp-\underbrace{\pd{}{x_i}\pd{}{x_j}}_{\nabla\nabla}\lp\frac{1}{r}\rp\rp f_j.
 \label{eq:stokeslet_velocity_laplacian}
 \end{equation}
 From the structure of this relationship, the adventurous reader might tempt to look for a solution of the form:
 \begin{equation}
- u_i=\frac{1}{4\mathrm\pi}\lp\delta_{ij}\Delta \mathcal H-\pd{^2\mathcal H}{x_ix_j}\rp f_j.
+ u_i=\frac{1}{4\pi}\lp\delta_{ij}\Delta \mathcal H-\pd{^2\mathcal H}{x_ix_j}\rp f_j.
 \label{eq:stokeslet_velocity_form}
 \end{equation}
 Note that this velocity field is solenoidal, as:
 \begin{equation}
- u_{i,i}=\frac{1}{4\mathrm\pi}\lp\Delta \mathcal H_{,j}-\Delta \mathcal H_{,j}\rp f_j \equiv 0.
+ u_{i,i}=\frac{1}{4\pi}\lp\Delta \mathcal H_{,j}-\Delta \mathcal H_{,j}\rp f_j \equiv 0.
 \end{equation}
 Injecting~\eqref{eq:stokeslet_velocity_form} into~\eqref{eq:stokeslet_velocity_laplacian} we get:
 \begin{equation}
-\frac{1}{4\mathrm\pi}\lp\tensorsym I\Delta-\nabla\nabla\rp\lp\mu\Delta\mathcal H-\lp\frac{1}{r}\rp\rp=0.
+\frac{1}{4\pi}\lp\symbfsfit I\Delta-\nabla\nabla\rp\lp\mu\Delta\mathcal H-\lp\frac{1}{r}\rp\rp=0.
 \end{equation}
 This reduces to the following Poisson equation for $\mathcal H$\footnote{Note that we did not consider the integration constants because they would not appear in the velocity field expression anyway.}:
 \begin{equation}
@@ -177,7 +177,7 @@ r_{,i}=\frac{r_{k,i}r_k}{(r_mr_m)^{1/2}}\equiv\frac{x_i}{r} \quad \text{and simi
 \end{equation}
 to finally obtain the expression of the Stokeslet velocity field~\eqref{eq:stokeslet_velocity_component} we were looking for:
 \begin{equation}
-\bu_\text{stokeslet}=\frac{1}{8\pi\mu}\tensorsym S \mathbf f.
+\bu_\text{stokeslet}=\frac{1}{8\pi\mu}\symbfsfit S \mathbf f.
 \end{equation}
 \subsection{The motion of slender objects}
 We have seen that in the limit of radius shrinking down to zero, a sphere applying a force to a viscous fluid generates a Stokeslet flow. But looking back at the full expression for the flow set into motion by a sphere of finite size~\eqref{eq:stokes_force_sphere}, it is apparent that the total contribution is actually composed of two parts: a Stokeslet and higher-order singularity -- a dipole. Without entering into the details of the derivation, \citet{Hancock1953} and \citet{Lighthill1975} proposed to describe the fluid flows around more general, and slender, objects, as integrals of Stokeslets and dipole contribution. More precisely it appears that the force exerted by a viscous fluid on a very long cylinder of radius $R$ and length $L$ depends on the orientation of the flow. If the flow is perpendicular to the filament axis, the force exerted on the cylinder per unit length is:
