@@ -1,0 +1,248 @@
+% !TEX root = ./physics_of_fluids.tex
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\chapter[Planetary flows and the effect of rotation]{{\bfseries Planetary} flows and the effect of {\bfseries rotation}} \label{chap:planetary_flows}
+
+Flows at the Earth scale are characterized by considerable horizontal
+lengthscales (scaling with the radius of the Earth $\sim$ 6000 km) and
+relatively small vertical lengthscales -- atmosphere is typically 10 km-thick
+and oceans 4 km-deep. The ratio between these lengthscales is $O(1000)$ (which
+remarkably is similar to the ratio between the radius of a soap bubble and the
+thickness of the liquid film!). This contrast between lengthscales implies that
+flows at the Earth-scale will be well captured by thin-film equations.
+
+Another key aspect of planetary flows is \textbf{rotation}, which gives rise to
+particular dynamics, of which cyclones are probably the most impressive
+illustration. Cyclones owe their existence to the Coriolis force, which
+imprints its mark on motion over large scales on Earth.
+
+\section{Rotating fluids}
+\label{sec:rotating_fluids}
+The equations for motion in a rotating frame are best obtained using the Lagrangian formalism. At the fluid particle level, Newton's equation for motion is written:
+\begin{equation}
+  \label{eq:newton}
+  \rho \dd{^2\br}{t^2} = \bff
+\end{equation}
+in an inertial frame. This equation can be rewritten in a rotating frame as:
+\begin{equation}
+  \label{eq:newton_rot}
+  \rho \lp\dd{^2\br}{t^2} + 2 \bOmega \times \dd{\br}{t} + \bOmega \times \lp\bOmega \times \br\rp\rp = \bff,
+\end{equation}
+or:
+\begin{equation}
+  \label{eq:newton_rot_euler}
+  \rho \lp\dd{\bu}{t} + 2 \bOmega \times \bu + \bOmega \times \lp\bOmega \times \br\rp\rp = \bff.
+\end{equation}
+Expressing the forces, we obtain:
+\begin{equation}
+  \label{eq:newton_rot_euler_forces}
+  \rho \lp\dd{\bu}{t} + 2 \bOmega \times \bu + \bOmega \times \lp\bOmega \times \br\rp\rp = -\nabla p + \mu \Delta \bu + \rho \bg_\text{grav}.
+\end{equation}
+The centrifuge force part can be absorbed in a potential called the \textbf{geopotential} $\phi$:
+\begin{equation}
+  \label{eq:geopotential}
+  \phi = g_\text{grav}z + \frac{1}{2} \lp\bOmega \times \br\rp^2.
+\end{equation}
+Introducing the effective gravity $\bg_\text{eff} = -\nabla \phi = \bg_\text{grav} - \bOmega \times \lp\bOmega \times \br\rp$, we can rewrite the equation of motion as:
+\begin{equation}
+  \label{eq:newton_rot_euler_forces_eff}
+  \rho \lp\dd{\bu}{t} + 2 \bOmega \times \bu\rp = -\nabla p + \mu \Delta \bu - \rho \nabla \phi.
+\end{equation}
+
+We can non-dimensionalize this equation:
+\begin{equation}
+  \label{eq:newton_rot_euler_forces_eff_nondim}
+  \frac{\rho U}{T} \pd{\bar{\bu}}{\bar t} + \frac{\rho U^2}{L} \lp \bar{\bu} \cdot \bar \nabla\rp \bar{\bu} + 2 \Omega \rho U \be_z \times \bar{\bu} = -\frac{P}{L} \bar\nabla \bar p + \frac{\mu U}{L^2} \bar\Delta \bar{\bu} - \frac{\rho \Phi}{L} \bar\nabla \bar\phi.
+\end{equation}
+In this expression, we will take for the natural time scale of the problem $T = \lp 2 \Omega\rp^{-1}$ which is the Coriolis pulsation. Further posing $P = \rho U \lp 2 \Omega \rp L$ and $\Phi = 2 \Omega U$ to keep the corresponding terms in the equation, we obtain:
+\begin{equation}
+  \label{eq:newton_rot_euler_forces_eff_nondim2}
+  \pd{\bar{\bu}}{\bar t} + \text{Ro} \lp \bar{\bu} \cdot \bar \nabla\rp \bar{\bu} + \be_z \times \bar{\bu} = -\bar\nabla \bar p + E \bar\Delta \bar{\bu} - \bar\nabla \bar\phi.
+\end{equation}
+Two non-dimensional parameters appear in this equation:
+\begin{itemize}
+  \item the \textbf{Rossby number} $\text{Ro} = \frac{U}{2 \Omega L}$, which quantifies
+        the relative importance of inertial terms with respect to the Coriolis force,
+        and
+  \item the \textbf{Ekman number} $E = \frac{\mu}{2 \rho \Omega L^2}$, which measures
+        viscous friction relative to Coriolis action.
+\end{itemize}
+With a rotation rate of $\Omega = 7.3 \times 10^{-5} \text{s}^{-1}$,
+we see that atmospheric winds of $\sim$100 km/h (28 m/s) will be dominated by rotation if $L \gtrsim 200$ km.
+Oceanic flows are much slower; the Gulf Stream, which flows at $U \sim 1 \text{ m/s}$ sees this scale fall down to $7$ km. For the same oceanic flows, the Ekman number is $E \sim 10^{-10}$, showing that viscous friction is negligible compared to Coriolis action.
+
+Flows at the planetary scale are therefore strongly influenced by rotation, and
+to first approximation these flows result from a balance between pressure
+gradient and Coriolis force. This is the \textbf{geostrophic balance}.
+
+\section{Fluid flows on a rotating sphere}
+\label{sec:flows_rotating_sphere}
+The flows developing on the planet are complex but, depending on their scales,
+simplifications may be made. Let's investigate these different regimes,
+starting by writing the equations of motion on a rotating sphere.
+
+\subsection{Governing equations in spherical coordinates}
+We have for mass conservation:
+\begin{equation}
+  \label{eq:mass conservation_sphere}
+  \frac{\mathrm d\rho}{\mathrm dt} + \rho \left(\pd{w}{r} + \frac{2w}{r} + \frac{1}{r \cos \theta} \pd{\lp v \cos \theta \rp}{\theta} + \frac{1}{r \cos \theta} \pd{u}{\phi}\right) = 0,
+\end{equation}
+where $(u, v, w)$ are the velocity components in the $(\phi, \theta, r)$
+directions respectively (i.e. longitude, latitude, radius). $\dd{}{t}$ stands for the particle derivative operator\index{derivative!particle}, which reads in spherical coordinates:
+\begin{equation}
+  \label{eq:particle_derivative_spherical}
+  \dd{}{t} = \pd{}{t} + \frac{u}{r \cos \theta} \pd{}{\phi} + \frac{v}{r} \pd{}{\theta} + w \pd{}{r}.
+\end{equation}
+The momentum equations take the following form:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    \rho \lp \dd{u}{t} + \frac{uw}{r} - \frac{uv}{r} \tan \theta - 2 \Omega \sin \theta v + 2 \Omega \cos \theta w\rp \,&=\ -\frac{1}{r \cos \theta} \pd{p}{\phi} + \matF_\phi,\\
+    \rho \lp \dd{v}{t} + \frac{vw}{r} + \frac{u^2}{r} \tan \theta + 2 \Omega \sin \theta u \rp \,&=\ -\frac{1}{r} \pd{p}{\theta} + \matF_\theta,\\
+    \rho \lp \dd{w}{t} - \frac{u^2+v^2}{r} - 2 \Omega \cos \theta u \rp \,&=\ -\pd{p}{r} - \rho g + \matF_r.
+  \end{empheq}
+\end{subequations}
+Finally the energy equation reads:
+\begin{equation}
+  \label{eq:energy_sphere}
+  \rho c_p \dd{T}{t} = k \Delta T + Q.
+\end{equation}
+Here $Q$ represents a possible volumetric heating (e.g. radiative heating from the Sun).
+
+Not all the terms in these equations are equally important. In order to
+identify the leading terms in the previous equations we \textbf{choose}
+relevant scales for the problem and non-dimensionalize the equations.
+
+\subsection{A local cartesian coordinate system}
+\label{sec:local_cartesian}
+In order to simplify the previous system of equations, we define the following variables:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    x \,&=\ R \phi \cos \theta_0,\\
+    y \,&=\ R (\theta - \theta_0),\\
+    z \,&=\ r - R,
+  \end{empheq}
+\end{subequations}
+and relate the derivatives in the two coordinate systems:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    \pd{}{\phi} \,&=\ R \cos \theta_0 \pd{}{x},\\
+    \pd{}{\theta} \,&=\ R \pd{}{y},\\
+    \pd{}{r} \,&=\ \pd{}{z}.
+  \end{empheq}
+\end{subequations}
+\subsection{Scaling the equations}
+We now introduce characteristic scales and non-dimensional variables:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    x, y \,&=\ L \bar{x}, L \bar{y},\\
+    z \,&=\ H \bar{z},\\
+    u, v \,&=\ U \bar{u}, U \bar{v},\\
+    w \,&=\ \epsilon \bar{w},\\
+    t \,&=\ \frac{L}{U} \bar{t},
+  \end{empheq}
+\end{subequations}
+with $\epsilon = H/L \ll 1$ the aspect ratio of the flow.
+
+In order to scale pressure and density, we will consider the the
+atmospheric/oceanic flows to be fluctuations around the hydrostatic equilibrium
+given by
+\begin{equation}
+  \pd{p_0}{z} = -\rho_0 g,
+\end{equation}
+i.e. we write:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    p \,&=\ p_0(z) + \tilde{p},\\
+    \rho \,&=\ \rho_0(z) + \tilde{\rho}.
+  \end{empheq}
+\end{subequations}
+If we are located mid-latitude, we expect the pressure to be balanced by the Coriolis acceleration:
+\begin{equation}
+  \rho_0 2 \Omega \sin \theta_0 U \sim \frac{\tilde p}{L}.
+\end{equation}
+Noting $f_0 = 2 \Omega \sin \theta_0$ the Coriolis parameter at latitude $\theta_0$, we can therefore scale pressure fluctuations as:
+\begin{equation}
+  \tilde p \sim \rho_0 f_0 U L.
+\end{equation}
+From the vertical momentum equation at leading order, we also have:
+\begin{equation}
+  \pd{\tilde p}{z} \sim g \tilde \rho,
+\end{equation}
+which gives the density fluctuation scale:
+\begin{equation}
+  \tilde \rho \sim \frac{\rho_0 f_0 U L}{g H}.
+\end{equation}
+As a result we can write density and pressure as:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    p \,&=\ p_0(z) + \rho_0 f_0 U L \bar{p} = p_0(z) + \frac{\rho_0 U^2}{\text{Ro}} \bar p,\\[.5em]
+    \rho \,&=\ \rho_0(z) \lp 1 + \frac{f_0 U L}{g H} \bar{\rho} \rp = \rho_0(z) \lp 1 + \frac{\text{Ro}}{\text{Bu}} \bar \rho \rp,
+  \end{empheq}
+\end{subequations}
+Here, Ro is the Rossby number defined previously and $\text{Bu} =
+  \nicefrac{L_D^2}{L^2}$ is the \textbf{Burger number}\index{Burger number}, with
+$L_D = \sqrt{\nicefrac{g H}{f_0^2}}$ the \textbf{Rossby deformation
+  radius}\index{Rossby deformation radius}. This characteristic lengthscale delineates flows which are dominated by buoyancy/gravity or geostrophy. Typically, the vortices developing in the Gulf Stream have a size comparable to $L_D \sim 30$ km.
+For large (quasi-)geostrophic structures, $L \gg L_D$ and $\text{Bu} \ll 1$, but we still obtain a ratio Ro/Bu smaller than unity.
+
+\section{Geostrophic flows}\index{geostrophic flows}
+\label{sec:geostrophic_flows}
+Whenever nonlinear effects and viscous effects are negligible, planetary flows reach an equilibrium known as \textbf{geostrophic flow} where:
+\begin{equation}
+  \label{eq:geostrophic_balance}
+  \rho 2 \bOmega \times \bu = -\nabla p.
+\end{equation}
+Using a local cartesian coordinate system with $\bi$ pointing eastwards, $\bj$ northwards and $\bk$ in the direction of the geopotential gradient, we can write:
+\begin{equation}
+  \label{eq:geostrophic_balance_cartesian}
+  \bff \times \bu = -\frac{1}{\rho}\nabla p - \rho \bg_\text{eff}.
+\end{equation}
+with $\bff = f \bk$, $f = 2 \Omega \sin \theta$, and $\theta$ the latitude. Sometimes $f$ is approximated with a constant value $f_0$ ($f$-plane approximation) or linearized around a reference latitude $f = f_0 + \beta y$ ($\beta$-plane approximation).
+
+In vertical projection, we recover the hydrostatic balance to first
+approximation. In horizontal projection, we obtain:
+\begin{subequations}
+  \label{eq:geostrophic_balance_horizontal}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    f u \,&=\ -\frac{1}{\rho}\pd{p}{y},\\
+    f v \,&=\ \frac{1}{\rho}\pd{p}{x}.
+  \end{empheq}
+\end{subequations}
+This implies that $f \bu \cdot \nabla p = 0$, which means that pressure is constant along streamlines. The pressure plays the role of the streamfunction and the wind follows the isobars! Further, if $f>0$ (i.e. in the northern hemisphere), the wind is clockwise around a low pressure system (cyclonic flows) and anticlockwise around a high pressure system (anticyclonic flows). This is the \textbf{Buys-Ballot law}.
+
+\section{Application: wind over France}
+\label{sec:wind_france}
+
+As an application we will now predict the wind over France using the
+geostrophic approximation. We suppose that the wind follows the geostrophic
+equilibrium and that pressure is hydrostatic, i.e.
+\begin{equation}
+  \pd{p}{z} = -\rho \pd{\phi}{z},
+\end{equation}
+where $\phi$ is the geopotential.
+
+It is quite customary to use alternate variables for the vertical scale (it is
+always possible as long as there is a bijection): pressure, entropy coordinates
+are therefore routinely used. In pressure coordinates, we can make use of the
+following. Let's take a variable $\psi$ depending on $(x, y, z, t)$ and let's
+rewrite it as a function of $(x, y, \xi, t)$:
+\begin{equation}
+  \left.\pd{\psi}{\xi}\right|_{x,y,t} = \left.\pd{\psi}{z}\right|_{x,y,t} \left.\pd{z}{\xi}\right|_{x,y,t} \quad ; \quad \left.\pd{\psi}{z}\right|_{x,y,t} = \left.\pd{\psi}{\xi}\right|_{x,y,t} \left.\pd{\xi}{z}\right|_{x,y,t}.
+\end{equation}
+Similarly for the horizontal derivatives, we get:
+\begin{equation}
+  \left.\pd{\psi}{x}\right|_{\xi,y,t} = \left.\pd{\psi}{x}\right|_{z,y,t} + \left.\pd{\psi}{z}\right|_{x,y,t} \left.\pd{z}{x}\right|_{\xi,y,t}.
+\end{equation}
+So, in pressure coordinates:
+\begin{equation}
+  0 = \left.\pd{p}{x}\right|_{y,z,t}+ \left.\pd{p}{z}\right|_{x,y,t} \left.\pd{z}{x}\right|_{y,p,t}.
+\end{equation}
+and
+\begin{equation}
+  \left.\pd{p}{x}\right|_{y,z,t} = \rho \left.\pd{\phi}{x}\right|_{y,p,t}.
+\end{equation}
+and the geostrophic equilibrium reads:
+\begin{equation}
+  \label{eq:geostrophic_equilibrium_pressure}
+  \bff \times \bu = -\frac{1}{\rho}\nabla_p \phi.
+\end{equation}

@@ -1,6 +1,8 @@
 % !TEX TS-program = xelatex
 % !TEX encoding = UTF-8 Unicode
 \documentclass[11pt,a4paper,twoside]{book}
+%\documentclass[11pt,b5paper,twoside]{book}
+
 \usepackage{amsmath,amssymb}
 \usepackage{empheq}
 %\usepackage[semibold]{ebgaramond}
@@ -10,7 +12,7 @@
 %\usepackage[OMLmathrm, OMLmathsfit, rmdefault=mdugm]{isomath}
 \usepackage{unicode-math}
 \usepackage{enumitem}
-
+\usepackage{nicefrac}
 \usepackage{tocbibind}
 \usepackage{makeidx}
 \makeindex
@@ -28,7 +30,11 @@
 \usepackage{esint}
 \usepackage{polyglossia}
 \setmainlanguage{english}
-\usepackage[text={18cm,26cm},centering]{geometry} % 
+%\usepackage[text={18cm,26cm},centering]{geometry} % 
+\usepackage[twoside,papersize={210mm,297mm},margin=1in]{geometry}
+%\usepackage[twoside,bindingoffset=6mm,verbose,marginratio={4:6,5:7},%
+%textwidth=117.3mm,height=179.6mm, nofoot, showframe]{geometry}%
+\usepackage{layout}
 \usepackage{natbib}
 \usepackage{graphicx}
 \graphicspath{{pics/}}
@@ -36,6 +42,8 @@
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage[export]{adjustbox}
+\usepackage{wrapfig}
+\setlength\intextsep{0pt}
 
 \usepackage{xcolor} % see https://tex.stackexchange.com/questions/383753/coloring-the-cancellation-line-with-cancel
 \usepackage[thicklines]{cancel}
@@ -82,12 +90,16 @@
 \newcommand{\itA}{\textit A}
 \newcommand{\itB}{\textit B}
 \newcommand{\dAB}{\mathcal D_{AB}}
+\newcommand{\bsigma}{\symbfsfit \sigma}
 \newcommand{\bA}{\symbfit A}
 \newcommand{\bb}{\symbfit{b}}
 \newcommand{\bc}{\symbfit{c}}
 \newcommand{\bff}{\symbfit{f}}
 \newcommand{\bF}{\symbfit{F}}
+\newcommand{\bg}{\symbfit{g}}
+\newcommand{\bi}{\symbfit{i}}
 \newcommand{\bj}{\symbfit{j}}
+\newcommand{\bk}{\symbfit{k}}
 \newcommand{\bJ}{\symbfit J}
 \newcommand{\bn}{\symbfit{n}}
 \newcommand{\bN}{\symbfit N}
@@ -105,6 +117,7 @@
 \newcommand{\bx}{\symbfit x}
 \newcommand{\bX}{\symbfit X}
 \newcommand{\by}{\symbfit y}
+\newcommand{\bOmega}{\symbf \Omega}
 \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\D}[2]{\frac{D #1}{D #2}}
 \newcommand{\dd}[2]{\frac{\mathrm d #1}{\mathrm d #2}}
@@ -118,6 +131,7 @@
 \newcommand{\sigij}{\sigma_{ij}}
 \newcommand{\sigji}{\sigma_{ji}}
 \newcommand{\sigxy}{\sigma_{xy}}
+\newcommand{\matF}{\mathcal F}
 \newcommand{\matL}{\mathcal L}
 \newcommand{\matO}{\mathcal O}
 \newcommand{\matS}{\mathcal S}
@@ -152,6 +166,12 @@
 \input{./02_boundary_conditions.tex}
 \input{./03_viscous_flows.tex}
 \input{./04_thin_viscous_films.tex}
+%\input{./05_waves_in_fluids.tex}
+%\layout
+%\input{./06_instabilities_and_singularities.tex}
+%\input{./07_thermal_plumes.tex}
+%\input{./08_fluid_forces.tex}
+\input{./09_planetary_flows.tex}
 \bibliographystyle{jfm}
 \bibliography{biblio_pof}
 \printindex
