@@ -183,10 +183,80 @@ Here, Ro is the Rossby number defined previously and $\text{Bu} =
   \nicefrac{L_D^2}{L^2}$ is the \textbf{Burger number}\index{Burger number}, with
 $L_D = \sqrt{\nicefrac{g H}{f_0^2}}$ the \textbf{Rossby deformation
   radius}\index{Rossby deformation radius}. This characteristic lengthscale delineates flows which are dominated by buoyancy/gravity or geostrophy. Typically, the vortices developing in the Gulf Stream have a size comparable to $L_D \sim 30$ km.
-For large (quasi-)geostrophic structures, $L \gg L_D$ and $\text{Bu} \ll 1$, but we still obtain a ratio Ro/Bu smaller than unity.
+For large (quasi-) geostrophic structures, $L \gg L_D$ and $\text{Bu} \ll 1$, but we still obtain a ratio Ro/Bu smaller than unity.
 
-\section{Geostrophic flows}\index{geostrophic flows}
-\label{sec:geostrophic_flows}
+\subsection{Nondimensionalisation: a worked-out example}
+Let's rewrite mass conservation with this new set of variables. Noting first
+that the particle derivative may be written in terms of $x$, $y$ and $z$
+derivatives as:
+\begin{eqnarray}
+  \dd{}{t} &&\equiv \pd{}{t} + \frac{u}{r\cos\theta} \pd{}{\phi} + \frac{v}{r} \pd{}{\theta} + w\pd{}{r}\notag\\[.5em]
+  &&= \pd{}{t} + u \frac{R}{r} \frac{\cos \theta_0}{\cos \theta} \pd{}{x} + v \frac{R}{r} \pd{}{y} + w \pd{}{z},
+\end{eqnarray}
+and that the radius may be connected to the alitude as follows $r = R + H \bar z = R + \epsilon L \bar z = R \lp 1 + \epsilon \delta \bar z\rp$, with $\delta = \tfrac{L}{R}$, the mass conservation equation can be rewritten as:
+\begin{multline}
+  \rho_0 \frac{\text{Ro}}{\text{Bu}}\frac{U}{L} \dd{\bar \rho}{\bar t} + \rho_0 \lp 1 + \frac{\text{Ro}}{\text{Bu}}\bar \rho\rp \lp \frac{\epsilon U}{H} \frac{\bar w}{\rho_0} \pd{\rho_0}{\bar z} + 2 \frac{\epsilon U \bar w}{R \lp 1 + \epsilon \delta \bar z\rp} \right.\\
+  \left. + \frac{\epsilon U}{H} \pd{\bar w}{\bar z} + \frac{R U}{R \lp 1 + \epsilon \delta \bar z \rp L} \pd{\bar v}{\bar y} - \frac{U}{R \lp 1 + \epsilon \delta \bar z \rp} \bar v \tan \theta + \frac{R \cos \theta_0}{R \lp 1 + \epsilon \delta \bar z \rp \cos \theta}\frac{U}{L}\pd{\bar u}{\bar x}\rp.
+\end{multline}
+This equation can be made dimensionless:
+\begin{multline}
+  \frac{\text{Ro}}{\text{Bu}} \dd{\bar \rho}{\bar t} + \lp 1 + \frac{\text{Ro}}{\text{Bu}}\bar \rho\rp \lp \frac{1}{\rho_0} \pd{\rho_0}{\bar z} \bar w + 2 \epsilon \delta \frac{\bar w}{1 + \epsilon \delta \bar z} + \pd{\bar w}{\bar z} + \frac{1}{1 + \epsilon \delta \bar z} \pd{\bar v}{\bar y} \right.\\
+  \left. - \delta \frac{\bar v}{1 + \epsilon \delta \bar z} \tan \theta + \frac{\cos \theta_0}{\cos \theta} \frac{1}{1 + \epsilon \delta \bar z} \pd{\bar u}{\bar x}\rp = 0.
+\end{multline}
+So far no approximation has been made. But depending on the scale of the flow, several simplifications can be introduced.
+\prg{Planetary-sized flows.} For flows at the planet scale, such as the polar vortex flow, we have Ro/Bu $\ll 1$, $\epsilon \ll 1$ and $\epsilon \delta \ll 1$.
+Therefore, at leading order we obtain:
+\begin{equation}
+  \bar w \frac{1}{\rho_0} \pd{\rho_0}{\bar z} + \pd{\bar w}{\bar z} + \pd{\bar v}{\bar y} - \delta \bar v \tan \theta + \frac{\cos \theta_0}{\cos \theta}\pd{\bar u}{\bar x} = 0.
+\end{equation}
+In this context it is actually more relevant to express the equation back in dimensional form in spherical coordinates:
+\begin{equation}
+  \frac{\rho_0}{r \cos \theta}\lp \pd{u}{\phi} + \pd{\lp v \cos \theta\rp}{\theta} \rp + \pd{}{r} \lp \rho_0 w \rp = 0.
+\end{equation}
+\prg{Large-scale atmospheric/oceanic flows.} For large-scale atmospheric or oceanic flows, we still have Ro/Bu $\ll 1$ and $\epsilon \ll 1$, but now $\delta \ll 1$ as well.
+At leading order we obtain the simpler equation in dimensional form:
+\begin{equation}
+  \pd{}{z} \lp \rho_0 w \rp + \rho_0 \lp \pd{u}{x} + \pd{v}{y} \rp = 0.
+\end{equation}
+\prg{Mesoscale flows.} For mesoscale flows, such as oceanic eddies, we have $\delta \ll 1$, $\epsilon \delta \ll 1$, Bu $\gg 1$, but neither Ro nor $\epsilon$ are small a priori.
+At leading order we now obtain again:
+\begin{equation}
+  \pd{}{z} \lp \rho_0 w \rp + \rho_0 \lp \pd{u}{x} + \pd{v}{y} \rp = 0.
+\end{equation}
+\subsection{A hierarchy of models for planetary flows}
+Applying the same scaling analysis to the momentum equations, we obtain a
+hierarchy of models depending on the scale of the flow considered.
+\prg{Planetary-sized flows.} At this scale, the radius of curvature of the
+Earth cannot be neglected, and the flow appears to be hydrostatic at leading
+order:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    \frac{\rho_0}{r \cos \theta}\lp \pd{u}{\phi} + \pd{\lp v \cos \theta\rp}{\theta} \rp + \pd{}{r} \lp \rho_0 w \rp & \, =\  0,\\
+    \rho_0 \lp \dd{u}{t} - \frac{uv}{r} \tan \theta - 2 \Omega \sin \theta v \rp &\,=\ -\frac{1}{r \cos \theta} \pd{\tilde p}{\phi},\\
+    \rho_0 \lp \dd{v}{t} + \frac{u^2}{r} \tan \theta + 2 \Omega \sin \theta u \rp &\,=\ -\frac{1}{r} \pd{\tilde p}{\theta},\\
+    \pd{\tilde p}{r} &\,=\ -\tilde \rho g.
+  \end{empheq}
+\end{subequations}
+\prg{Large-scale atmospheric/oceanic flows.} At this scale, the curvature of the Earth may be neglected, and the flow appears hydrostatic at leading order:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    \pd{u}{x} + \pd{v}{y} + \frac{1}{\rho_0} \pd{}{z} \lp \rho_0 w \rp & \,=\  0,\\
+    \rho_0 \lp \dd{u}{t} - 2 \Omega \sin \theta_0 v \rp &\,=\ -\pd{\tilde p}{x},\\
+    \rho_0 \lp \dd{v}{t} + 2 \Omega \sin \theta_0 u \rp &\,=\ -\pd{\tilde p}{y},\\
+    \pd{\tilde p}{z} &\,=\ -\tilde \rho g.
+  \end{empheq}
+\end{subequations}
+\prg{Mesoscale flows.} At this scale, the curvature of the Earth may be neglected, but the flow is not necessarily hydrostatic at leading order:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    &\rho_0\lp\pd{u}{x} + \pd{v}{y}\rp + \pd{}{z} \lp \rho_0 w \rp \,=\  0,\\
+    &\rho_0 \dd{u}{t} \,=\ -\pd{\tilde p}{x} + f v - f' w,\\
+    &\rho_0 \dd{v}{t} \,=\ -\pd{\tilde p}{y} - f u,\\
+    &\rho_0 \dd{w}{t} \,=\ -\pd{\tilde p}{z} - \tilde \rho g + f' u.
+  \end{empheq}
+\end{subequations}
+\section{Geostrophic equilibrium}\index{geostrophic equilibrium}
+\label{sec:geostrophic_equilibrium}
 Whenever nonlinear effects and viscous effects are negligible, planetary flows reach an equilibrium known as \textbf{geostrophic flow} where:
 \begin{equation}
   \label{eq:geostrophic_balance}
@@ -208,7 +278,12 @@ approximation. In horizontal projection, we obtain:
     f v \,&=\ \frac{1}{\rho}\pd{p}{x}.
   \end{empheq}
 \end{subequations}
-This implies that $f \bu \cdot \nabla p = 0$, which means that pressure is constant along streamlines. The pressure plays the role of the streamfunction and the wind follows the isobars! Further, if $f>0$ (i.e. in the northern hemisphere), the wind is clockwise around a low pressure system (cyclonic flows) and anticlockwise around a high pressure system (anticyclonic flows). This is the \textbf{Buys-Ballot law}.
+This implies that $f \bu \cdot \nabla p = 0$, which means that pressure is
+constant along streamlines. The pressure plays the role of the streamfunction
+and the wind follows the isobars! Further, if $f>0$ (i.e. in the northern
+hemisphere), the wind is anticlockwise around a low pressure system (cyclonic
+flows) and clockwise around a high pressure system (anticyclonic flows).
+This is the \textbf{Buys-Ballot law}.
 
 \section{Application: wind over France}
 \label{sec:wind_france}
@@ -246,3 +321,227 @@ and the geostrophic equilibrium reads:
   \label{eq:geostrophic_equilibrium_pressure}
   \bff \times \bu = -\frac{1}{\rho}\nabla_p \phi.
 \end{equation}
+
+\section{Oceanic and atmospheric circulation}
+\label{sec:oceanic_atmospheric_circulation}
+
+The fluid envelopes of the Earth are not static: they flow, destabilize into
+fine turbulence and mix due to complex processes. But at larger scales, the
+flows in the fluid shells exhibit remarkably stable patterns. Associated with
+mass, momentum and especially energy transport these flows have a major impact
+on the climate of the planet. In the following, we examine two remarkable
+examples of such large-scale flows: the oceanic gyres and the emergence of
+western boundary currents (such as the Gulf Stream) in the oceans, and the
+Hadley cell in the atmosphere.
+\subsection{Oceanic circulation: wind-induced gyres}
+\label{sec:oceanic_circulation}
+
+One of the most important factors influencing the climate is the sea surface
+temperature, which exhibits variations along the latitude of course, but also
+zonal variations (i.e. along the longitude). To make sense of this temperature
+distribution, we need to understand the oceanic flows. These are structured in
+large-scale \textbf{gyres}\index{gyres} (or vortices). It is noteworthy that
+these gyres are asymmetric: the \textbf{western boundary
+  currents}\index{western boundary currents} are much stronger, narrower and
+deeper than the eastern boundary currents. In the North Atlantic, such an
+intensification occurs along the US east coast: this is the famous \textbf{Gulf
+  Stream}\index{Gulf Stream}, which transports warm water from the Caribbean up
+to the North Atlantic, moderating the climate of Western Europe. In the
+following we will see how these gyres form and why western boundary currents
+are intensified.
+\subsubsection{The key role of wind}
+\label{sec:key_role_wind}
+Somewhat counter-intuitively, the large-scale oceanic circulation is primarily
+driven by the wind stress at the sea surface. Wind stress is best identified as
+a source of oceanic motion by considering the African gyre in the Indian Ocean:
+this gyre reverses seasonally, following the monsoon winds. This suggests that
+wind is the main driver of the gyres, imparting a shear stress at the sea
+surface and thereby setting the upper layer of the ocean in motion.
+In the following, we model this process, following the pioneering work of Henry
+Stommel \citep{Stommel1948}.
+\subsubsection{Stommel's model for wind-driven gyres}
+\label{sec:stommel_model}
+We start with the equations expressing geostrophic equilibrium for the ocean:
+\begin{equation}
+  \label{eq:geostrophic_equilibrium_ocean}
+  \rho \bff \times \bu = -\nabla p + \pd{}{z} \symbf{\tau},
+\end{equation}
+or in terms of components:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    -\rho fv \,&=\ -\pd{p}{x} + \pd{\tau_{xz}}{z},\\
+    \rho fu \,&=\ - \pd{p}{y} + \pd{\tau_{yz}}{z}.
+  \end{empheq}
+  \label{eq:geostrophic_equilibrium_ocean_components}
+\end{subequations}
+
+\noindent Here, $\symbf{\tau} = \lp\tau_{xz}, \tau_{yz}, 0 \rp$ stands for the components of
+the stress tensor associated with vertical transport. We model these
+stresses using a turbulent viscosity $\nu_T$:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    \tau_{xz} \,&=\ \rho \nu_T \pd{u}{z},\\
+    \tau_{yz} \,&=\ \rho \nu_T \pd{v}{z}.
+  \end{empheq}
+\end{subequations}
+Taking the curl of the geostrophic equilibrium equations~\eqref{eq:geostrophic_equilibrium_ocean_components}, we obtain:
+\begin{equation}
+  \label{eq:curl_geostrophic_equilibrium_ocean}
+  \pd{}{x} \lp \rho f u \rp + \pd{}{y} \lp \rho f v \rp = \pd{}{z} \lp \nabla \times \symbf{\tau} \rp.
+\end{equation}
+Introducing $\beta$, the northward gradient of the Coriolis parameter:
+\begin{equation}
+  \beta = \pd{f}{y},
+\end{equation}
+we can rewrite the equation~\eqref{eq:curl_geostrophic_equilibrium_ocean} as:
+\begin{equation}
+  \label{eq:curl_geostrophic_equilibrium_ocean_beta}
+  \rho \lp \beta v + f \lp \pd{u}{x} + \pd{v}{y} \rp \rp = \pd{}{z} \lp \nabla \times \symbf{\tau} \rp.
+\end{equation}
+Using incompressibility, this equation becomes:
+\begin{equation}
+  \label{eq:curl_geostrophic_equilibrium_ocean_incompressible}
+  \rho \beta v = \rho f \pd{w}{z} + \pd{}{z} \lp \nabla \times \symbf{\tau} \rp.
+\end{equation}
+Integrating this equation from the sea floor $z = z_b$ to the sea surface $z = z_t$ we obtain:
+\begin{equation}
+  \label{eq:curl_geostrophic_equilibrium_ocean_integrated}
+  \rho \beta h \bar v = \rho f \left. w \right]_{z_b}^{z_t} + \left. \nabla \times \symbf{\tau} \right]_{z_b}^{z_t},
+\end{equation}
+This equation calls for a focus on the flow structure near the sea surface and sea floor,
+where viscous and/or turbulent friction are predominant.
+\subsubsection{Ekman layers and Ekman pumping}
+\label{sec:ekman_layers}
+
+Two completely equivalent choices can now be made: either the equation is
+integrated exactly to the sea boundaries where the vertical velocity vanishes
+(at the sea level the vertical velocity is zero on average), either the
+integration is performed up to the edges of the Ekman layers. Within these
+layers, the stress vary significantly to match the wind stress at the surface,
+and the bottom friction on the sea floor, but outside these layers we suppose
+that the horizontal components of the flow do not vary with height, i.e. that
+$\symbf{\tau}$ is zero. The vertical velocity is however non-zero in the
+vicinity of the Ekman layer -- a phenomenon known as \textbf{Ekman
+  pumping}\index{Ekman pumping}.
+
+The detailed analysis of the velocity field structure in the Ekman layers
+reveals that within these regions of typical thickness $\delta = \sqrt{\nu_T /
+    2 f}$, the horizontal velocity is observed to spiral and rotate by an angle of
+$\pi/4$ with respect to the wind direction. This horizontal flow structure does
+not satisfy $\pd{u}{x} + \pd{v}{y} = 0$ and is therefore associated with a
+vertical velocity $w$. Near the sea surface we find:
+\begin{equation}
+  \label{eq:ekman_layer_surface}
+  w = \frac{1}{\rho f} \nabla \times \symbf{\tau}_\text{wind}.
+\end{equation}
+At the sea floor, the vertical velocity can be expressed with the bottom friction or alternatively in terms of the geostrophic flow vorticity:
+\begin{equation}
+  \label{eq:ekman_layer_bottom}
+  w = \frac{\delta}{2} \nabla \times \bu.
+\end{equation}
+
+\subsubsection{Stommel's equation}
+Including these Ekman pumping effects in the integrated
+equation~\eqref{eq:curl_geostrophic_equilibrium_ocean_integrated}, we obtain:
+\begin{equation}
+  \label{eq:stommel_equation}
+  \rho \beta h \bar v = \nabla \times \symbf{\tau}_\text{wind} - \frac{1}{2} \rho f \delta \nabla \times \bar{\bu}.
+\end{equation}
+Introducing the streamfunction $\psi(x,y)$ such that $\bar{\bu} =-\nabla \times \lp \psi \be_z \rp$, we have:
+\begin{equation}
+  \bar u = -\pd{\psi}{y} \quad ; \quad \bar v = \pd{\psi}{x},
+\end{equation}
+we start by noting that $\nabla \times \bar{\bu} = \Delta \psi \be_z$.
+We can therefore rewrite the previous equation as:
+\begin{equation}
+  \label{eq:stommel_equation_streamfunction}
+  r \Delta \psi + \beta \pd{\psi}{x} = \frac{1}{\rho h}\nabla \times \symbf{\tau}_\text{wind},
+\end{equation}
+with $r = \frac{1}{2} f \delta / h$ a friction coefficient. This is \textbf{Stommel's
+  equation}\index{Stommel's equation} for wind-driven oceanic gyres. On Earth, if the typical extent of an oceanic basin is $L \sim 5000$ km,
+then we typically find that $\frac{r}{L} \ll \beta$ indicating that friction is weak compared to the $\beta$ effect.
+
+\subsubsection{A boundary layer?}
+As friction is small, it is tempting to neglect it altogether. Let's do so and
+consider a model rectangular ocean basin of typical size $L$. On the basin
+boundaries we impose $\psi = 0$. Denoting the typical wind stress scale as
+$\tau_0$, we introduce the following non-dimensional variables:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    x, y \,&=\ L \bar{x}, L \bar{y},\\
+    \tau \,&=\ \tau_0 \bar{\tau},\\
+    \psi \,&=\ \frac{\tau_0}{\rho \beta h} \bar{\psi}.
+  \end{empheq}
+\end{subequations}
+Noting $\epsilon = r / \beta L \ll 1$, Stommel's equation may be rewritten in non-dimensional form as:
+\begin{equation}
+  \label{eq:stommel_equation_nondim}
+  \epsilon \Delta \bar{\psi} + \pd{\bar{\psi}}{\bar{x}} = \bar\nabla \times \bar{\tau}_\text{wind}.
+\end{equation}
+\prg{Outer solution.} Neglecting friction ($\epsilon = 0$) we obtain the outer solution:
+\begin{equation}
+  \label{eq:stommel_outer_solution}
+  \bar{\psi}_0(\bar x, \bar y) = \int_0^x \bar\nabla \times \bar{\tau}_\text{wind} \,\mathrm d\xi + g(\bar y).
+\end{equation}
+associated with the velocity field:
+\begin{subequations}
+  \begin{empheq}[left=\empheqlbrace]{alignat=2}
+    \bar{u}_0(\bar x, \bar y) \,&=\ -\pd{ }{\bar y}\int_0^x \bar\nabla \times \bar{\tau}_\text{wind} \,\mathrm d\xi - g'(\bar y),\\
+    \bar{v}_0(\bar x, \bar y) \,&=\ \bar\nabla \times \bar{\tau}_\text{wind}.
+  \end{empheq}
+\end{subequations}
+Let's now consider a model wind stress of the form:
+\begin{equation}
+  \bar{\tau}_\text{wind} = -\cos \lp \pi \bar{y} \rp \be_x,
+\end{equation}
+which corresponds to a wind blowing eastwards in the northern part of the basin
+and westwards in the southern part of the basin. The outer solution is therefore:
+\begin{equation}
+  \bar{\psi}_0(\bar x, \bar y) = \pi \sin \lp \pi \bar{y} \rp \bar x + g(\bar y).
+\end{equation}
+The boundary conditions at $\bar y = 0$ and $\bar y = 1$ impose $g(0) = g(1) =
+  0$. Imposing the western boundary condition corresponds to setting $g(\bar y) =
+  0$. But imposing the eastern boundary condition leads to a contradiction with
+$g(\bar y) = -\pi \sin(\pi \bar y)$. This means that the outer solution cannot
+satisfy all boundary conditions: a boundary layer must form either at the
+western or eastern boundary.
+\prg{Boundary layer.} We now introduce a zoomed coordinate near the western or eastern boundary such
+that $\bar x = \delta \tilde x$ if the boundary layer is on the west side (in
+which case $\tilde x > 0$), and similarly $\bar x - 1 = \delta \tilde x$ if the
+boundary layer is on the east side (in which case $\tilde x < 0$). In both
+cases, Stommel's equation reads:
+\begin{equation}
+  \label{eq:stommel_equation_boundary_layer}
+  \frac{\epsilon}{\delta^2} \pd{^2 \bar{\psi}}{\tilde x^2} + \pd{^2 \bar{\psi}}{\bar y^2} + \frac{1}{\delta}\pd{\bar{\psi}}{\tilde x} = \bar\nabla \times \bar{\tau}_\text{wind}.
+\end{equation}
+The distinguished scaling is obtained for $\delta = \epsilon$, leading to the boundary layer equation:
+\begin{equation}
+  \label{eq:stommel_equation_boundary_layer_distinguished}
+  \pd{^2 \bar{\psi}}{\tilde x^2} + \pd{\bar{\psi}}{\tilde x} = 0.
+\end{equation}
+The solution for both boundary layers scenarios reads:
+\begin{equation}
+  \tilde{\psi} = A(\bar y) e^{-\tilde x} + B(\bar y) = A(\bar y) \lp e^{-\tilde x} - 1 \rp.
+\end{equation}
+While the western boundary layer ($\tilde x > 0$) decays exponentially away
+from the boundary, the eastern boundary layer ($\tilde x < 0$) blows up
+exponentially away from the boundary and is therefore not discarded. As a
+result, the boundary layer must form on the western boundary, leading to an
+intensified western boundary current, as observed in the Gulf Stream. Note that
+the direction of the wind stress is of no importance here, as this forcing term
+is absent from the boudnary layer equations.
+\prg{Composite solution.} The composite solution for the streamfunction is therefore:
+\begin{equation}
+  \bar{\psi}(\bar x, \bar y) = \pi \sin(\pi \bar y) \lp \bar x - 1 \rp + A(\bar y) \lp e^{-\bar x / \epsilon} - 1 \rp + A(\bar y).
+\end{equation}
+The function $A(\bar y)$ is determined by imposing the matching condition:
+\begin{equation}
+  A(\bar y) = \pi \sin(\pi \bar y).
+\end{equation}
+As a result, the final solution reads:
+\begin{equation}
+  \bar{\psi}(\bar x, \bar y) = \pi \sin(\pi \bar y) \lp \bar x - 1 + e^{-\bar x / \epsilon} \rp.
+\end{equation}
+This solution exhibits a strong western boundary current of typical width
+$\epsilon L = r / \beta$: the width of the western boundary current is
+therefore controlled by the friction coefficient $r$ and the $\beta$ effect.
